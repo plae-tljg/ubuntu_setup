@@ -19,7 +19,7 @@
       <div class="content-wrapper">
         <iframe 
           v-if="htmlPath && isClient" 
-          :src="htmlPath" 
+          :src="getFullPath(htmlPath)" 
           class="reference-iframe"
           frameborder="0"
           @load="onIframeLoad"
@@ -62,6 +62,31 @@ export default {
     this.isClient = true;
   },
   methods: {
+    getFullPath(path) {
+      // 如果路径已经是绝对路径（以http或https开头），直接返回
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+      }
+      
+      // 如果路径以/开头，使用VuePress的$withBase处理
+      if (path.startsWith('/')) {
+        // 在客户端环境中，使用window.location.pathname来获取基础路径
+        if (this.isClient) {
+          const currentPath = window.location.pathname;
+          // 提取基础路径（例如：/ubuntu_setup/）
+          // 查找仓库名作为基础路径
+          const pathParts = currentPath.split('/');
+          if (pathParts.length >= 2) {
+            const basePath = '/' + pathParts[1] + '/';
+            return basePath + path.substring(1);
+          }
+        }
+        return path;
+      }
+      
+      // 相对路径直接返回
+      return path;
+    },
     toggleView() {
       this.isExpanded = !this.isExpanded;
     },
@@ -71,7 +96,7 @@ export default {
       try {
         // 构建完整的本地URL
         const baseUrl = window.location.origin;
-        const localUrl = baseUrl + this.htmlPath;
+        const localUrl = baseUrl + this.getFullPath(this.htmlPath);
         window.open(localUrl, '_blank');
       } catch (err) {
         console.error('打开本地文件失败:', err);

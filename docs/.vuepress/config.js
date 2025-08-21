@@ -4,6 +4,8 @@ import { defineUserConfig } from 'vuepress'
 import { path } from '@vuepress/utils'
 
 export default defineUserConfig({
+  // 设置基础路径为仓库名
+  base: '/ubuntu_setup/',
   bundler: viteBundler(),
   alias: {
     '@': path.resolve(__dirname, '../'),

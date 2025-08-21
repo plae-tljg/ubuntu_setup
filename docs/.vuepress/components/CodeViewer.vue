@@ -128,6 +128,31 @@ export default {
     }
   },
   methods: {
+    getFullPath(path) {
+      // 如果路径已经是绝对路径（以http或https开头），直接返回
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+      }
+      
+      // 如果路径以/开头，使用VuePress的基础路径处理
+      if (path.startsWith('/')) {
+        // 在客户端环境中，使用window.location.pathname来获取基础路径
+        if (this.isClient) {
+          const currentPath = window.location.pathname;
+          // 提取基础路径（例如：/ubuntu_setup/）
+          // 查找仓库名作为基础路径
+          const pathParts = currentPath.split('/');
+          if (pathParts.length >= 2) {
+            const basePath = '/' + pathParts[1] + '/';
+            return basePath + path.substring(1);
+          }
+        }
+        return path;
+      }
+      
+      // 相对路径直接返回
+      return path;
+    },
     toggleView() {
       this.isExpanded = !this.isExpanded;
       if (this.isExpanded && !this.codeContent) {
@@ -141,7 +166,7 @@ export default {
       this.error = null;
       
       try {
-        const response = await fetch(this.filePath);
+        const response = await fetch(this.getFullPath(this.filePath));
         if (!response.ok) {
           throw new Error(`无法加载文件: ${response.status} ${response.statusText}`);
         }

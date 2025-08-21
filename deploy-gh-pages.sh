@@ -43,38 +43,122 @@ fi
 
 echo "✅ 构建成功到外部目录: $BUILD_DIR"
 
+# 检查构建目录内容
+echo "🔍 检查构建目录内容..."
+ls -la "$BUILD_DIR"
+echo "📊 构建目录文件数量: $(find "$BUILD_DIR" -type f | wc -l)"
+
 # 检查 gh-pages 分支是否存在
-if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
-    echo "🔄 更新现有的 gh-pages 分支..."
-    git checkout gh-pages
-    git pull origin gh-pages
+echo "🔍 检查 gh-pages 分支状态..."
+
+# 检查远程分支是否存在
+REMOTE_EXISTS=false
+if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+    REMOTE_EXISTS=true
+    echo "🔄 远程 gh-pages 分支存在"
 else
-    echo "🆕 创建新的 gh-pages 分支..."
-    git checkout -b gh-pages
+    echo "ℹ️ 远程 gh-pages 分支不存在，将创建新分支"
 fi
 
-# 清理当前分支，但保留 .git 目录
-echo "🧹 清理当前分支文件..."
-# 使用更安全的方法删除文件
+# 检查本地分支
+if git show-ref --verify --quiet refs/heads/gh-pages; then
+    echo "🔄 本地 gh-pages 分支存在，切换到该分支..."
+    git checkout gh-pages
+    
+    if [ "$REMOTE_EXISTS" = true ]; then
+        echo "🔄 拉取远程分支最新更改..."
+        git pull origin gh-pages
+    else
+        echo "🧹 远程分支不存在，清理本地分支内容..."
+        git rm -rf . 2>/dev/null || true
+        git clean -fdx 2>/dev/null || true
+    fi
+else
+    echo "🆕 本地 gh-pages 分支不存在，创建新分支..."
+    git checkout -b gh-pages
+    
+    if [ "$REMOTE_EXISTS" = true ]; then
+        echo "🔄 设置上游分支并拉取..."
+        git branch --set-upstream-to=origin/gh-pages gh-pages
+        git pull origin gh-pages
+    fi
+fi
+
+# 完全清理当前分支，包括所有文件（除了.git目录）
+echo "🧹 完全清理当前分支文件..."
 git rm -rf . 2>/dev/null || true
+git clean -fdx 2>/dev/null || true
+
+# 手动删除可能残留的文件（包括node_modules）
+echo "🧹 手动清理残留文件..."
+rm -rf node_modules 2>/dev/null || true
+rm -rf docs/.vuepress/dist 2>/dev/null || true
+rm -rf docs/.vuepress/.temp 2>/dev/null || true
+rm -rf docs/.vuepress/cache 2>/dev/null || true
+rm -rf docs/.vuepress/.cache 2>/dev/null || true
 
 # 从外部构建目录复制文件
 echo "📋 从外部构建目录复制文件..."
 cp -r "$BUILD_DIR"/* .
 
+# 检查复制后的文件
+echo "🔍 检查复制后的文件..."
+ls -la
+echo "📊 当前目录文件数量: $(find . -type f | wc -l)"
+
 # 清理外部构建目录
 echo "🧹 清理外部构建目录..."
 rm -rf "$BUILD_DIR"
+
+# 为 gh-pages 分支创建专门的 .gitignore
+echo "📝 创建 gh-pages 分支专用的 .gitignore..."
+cat > .gitignore << 'EOF'
+# GitHub Pages 分支专用 .gitignore
+# 只保留必要的忽略规则
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 临时文件
+.tmp/
+.temp/
+EOF
 
 # 添加所有文件
 echo "➕ 添加文件到 Git..."
 git add .
 
+# 检查Git状态
+echo "🔍 检查Git状态..."
+git status
+
 # 检查是否有更改
 if [ -z "$(git status --porcelain)" ]; then
-    echo "ℹ️ 没有文件更改，无需部署"
+    echo "❌ 没有文件更改，这可能是构建问题"
+    echo "🔍 检查构建目录是否存在..."
+    if [ -d "$BUILD_DIR" ]; then
+        echo "构建目录仍然存在，内容："
+        ls -la "$BUILD_DIR"
+    else
+        echo "构建目录已被删除"
+    fi
+    echo "🔄 切换回 main 分支..."
     git checkout main
-    exit 0
+    exit 1
 fi
 
 # 提交更改
@@ -83,7 +167,13 @@ git commit -m "Deploy to GitHub Pages - $(date '+%Y-%m-%d %H:%M:%S')"
 
 # 推送到远程
 echo "🚀 推送到远程 gh-pages 分支..."
-git push origin gh-pages
+if [ "$REMOTE_EXISTS" = true ]; then
+    echo "🔄 更新现有的远程分支..."
+    git push origin gh-pages
+else
+    echo "🆕 创建新的远程分支..."
+    git push -u origin gh-pages
+fi
 
 # 切换回 main 分支
 echo "🔄 切换回 main 分支..."
