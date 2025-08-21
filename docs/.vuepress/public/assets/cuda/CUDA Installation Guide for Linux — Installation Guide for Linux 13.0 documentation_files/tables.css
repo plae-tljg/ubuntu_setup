@@ -1,0 +1,16 @@
+.rst-content table.docutils.small td,
+.rst-content table.docutils.small th {
+    text-align: center;
+    padding: 8px;
+}
+
+.rst-content table.docutils.small td:nth-child(1),
+.rst-content table.docutils.small th:nth-child(1) {
+    text-align: left;
+    padding: 8px;
+}
+
+html.writer-html5 .rst-content table.docutils.small td > p,
+html.writer-html5 .rst-content table.docutils.small th > p {
+    font-size: 12px;
+}

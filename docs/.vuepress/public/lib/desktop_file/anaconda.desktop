@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Anaconda
+Comment=Anaconda
+Icon=/home/lkm/00app/anaconda3/anaconda.png
+Exec=/home/lkm/00app/anaconda3/bin/anaconda-navigator
+Categories=Graphics; # Choose an appropriate category.
+Terminal=false

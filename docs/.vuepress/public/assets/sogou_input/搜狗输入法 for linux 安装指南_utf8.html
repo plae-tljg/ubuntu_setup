@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>搜狗输入法 for linux 安装指南</title>
+<link href="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/reset.css" type="text/css" rel="stylesheet">
+<link href="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help.css" type="text/css" rel="stylesheet">
+    <link href="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/changelog.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div id="banner">
+        <div class="wrapper">
+            <div id="logo"><a href="https://pinyin.sogou.com/linux/"></a></div>
+
+            <div id="skins"><a href="https://pinyin.sogou.com/skins/" target="_blank">皮肤</a></div>
+            <div id="dict"><a href="http://pinyin.sogou.com/dict/" target="_blank">词库</a></div>
+            <!--            <div id="luntan"><a href="http://pinyin.sogou.com/bbs/forum.php?mod=forumdisplay&fid=115" target="_blank">官方论坛</a></div>        	-->
+        </div>
+    </div>
+    <div id="container">
+    	<div class="wrapper">
+        	<div id="content">
+				<div id="cont_header"></div>
+                <div id="cont_body">
+					<div id="cont_body_head">
+						<div class="cont_title">安装指南</div>
+					<!--	<div id='dl_block'>
+							<div class='dl_link'><a href='download.php?f=linux&bit=64'>64位立即下载</a></div>
+							<div class='dl_link'><a href='download.php?f=linux&bit=32'>32位立即下载</a></div>
+                        </div>
+                    -->
+					</div>
+                    <div class="cont_title_2">Ubuntu搜狗输入法安装指南</div>
+                    <div class="cont_show">搜狗输入法已支持Ubuntu1604、1804、1910、2004、2010</div>
+                    <div class="cont_show">各系统安装步骤可能略有不同</div>
+                    <div class="cont_title_2">1、添加中文语言支持</div>
+                    <div class="cont_show">打开 系统设置——区域和语言——管理已安装的语言——在“语言”tab下——点击“添加或删除语言”</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help_1.png"></div>
+                    <div class="cont_show">弹出“已安装语言”窗口，勾选中文（简体），点击应用</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help_2.png"></div>
+                    <div class="cont_show">回到“语言支持”窗口，在键盘输入法系统中，选择“fcitx”</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help_3.png"></div>
+                    <div class="cont_title_2">注：</div>
+                    <div class="cont_show">如果在键盘输入法系统中，没有“fcitx”选项时，建议先打开终端手动安装fcitx：</div>
+                    <div class="cont_show">sudo apt-get install fcitx</div>
+                    <div class="cont_show">等安装成功之后再执行上述步骤 </div>
+                    <div class="cont_show">点击“应用到整个系统”，关闭窗口，重启电脑</div>
+				    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help_4.png"></div>
+                    <div class="cont_title_2">2、通过命令行安装搜狗输入法</div>
+                    <div class="cont_show">sudo  dpkg -i sogoupinyin_版本号_amd64.deb</div>
+                    <div class="cont_title_2">注：</div>
+                    <div class="cont_show">如果安装过程中提示缺少相关依赖，则执行如下命令解决：</div>
+                    <div class="cont_show">sudo apt -f install</div>
+                    <div class="cont_title_2">3、注销计算机即可正常使用搜狗输入法</div>
+                    <div class="cont_title_2" style="margin-top: 50px;">Ubuntu20.04安装搜狗输入法步骤</div>
+                    <div class="cont_title_2">1、更新源</div>
+                    <div class="cont_show">在终端执行 sudo apt update</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help5.png"></div>
+                    <div class="cont_title_2">2、安装fcitx输入法框架</div>
+                    <div class="cont_show">1. 在终端输入 sudo apt install fcitx</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help6.png"></div>
+                    <div class="cont_show">2. 设置fcitx为系统输入法</div>
+                    <div class="cont_show">点击左下角菜单选择语言支持，将语言选择为fcitx（如下图二）</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help7.png" style="width: 749px;"></div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help8.png"></div>
+                    <div class="cont_show">3. 设置fcitx开机自启动</div>
+                    <div class="cont_show">在终端执行sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help9.png"></div>
+                    <div class="cont_show">4. 卸载系统ibus输入法框架</div>
+                    <div class="cont_show">在终端执行 sudo apt purge ibus</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help10.png"></div>
+                    <div class="cont_title_2">3、安装搜狗输入法</div>
+                    <div class="cont_show">1. 在官网下载搜狗输入法安装包，并安装，安装命令 sudo dpkg -i 安装包名</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help11.png" style="width: 749px;"></div>
+                    <div class="cont_show">2. 安装输入法依赖</div>
+                    <div class="cont_show">在终端执行</div>
+                    <div class="cont_show">sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2</div>
+                    <div class="cont_show">sudo apt install libgsettings-qt1</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help12.png" style="width: 749px;"></div>
+                    <div class="cont_title_2">4、重启电脑、调出输入法</div>
+                    <div class="cont_show"> 1.重启电脑</div>
+                    <div class="cont_show"> 2.查看右上角，可以看到“搜狗”字样，在输入窗口即可且出搜狗输入法。</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help13.png"></div>
+                    <div class="cont_show">3. 没有“搜狗”字样，选择配置，将搜狗加入输入法列表即可</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help14.png"></div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help15.png" style="width: 749px;"></div>
+
+                    <div class="cont_show"> 至此，搜狗输入法安装完毕</div>
+                    <div class="cont_img"><img src="%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%20for%20linux%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97_files/help16.png" style="width: 749px;"></div>
+                </div>
+                <div id="cont_bottom"></div>
+			</div>
+			<style>
+#footer { width:960px; text-align:center;height:100px; float:left;margin:0 auto;}                
+.ftbox {                                                                                                          
+width:100%;                                                                                                       
+	  line-height:24px;                                                                                                 
+padding:30px 0 30px 0;                                                                                            
+		text-align:center;                                                                                                
+		 font-size:12px;                                                                                                  
+		  position:relative;                                                                                               
+				    font-family:Arial, Helvetica, sans-serif;                                                                        
+}                                                                                                                 
+.ftbox a {                                                                                                        
+color:#8e8d8d;                                                                                                    
+	  text-decoration:none;                                                                                             
+}                                                                                                                 
+.ftbox a:hover{                                                                                                   
+	text-decoration: underline;                                                                                       
+} 
+</style>			
+
+<div id="footer">
+			<div class="ftbox"><a href="http://www.sogou.com/fuwu" rel="external nofollow">企业推广</a> - <a href="https://pinyin.sogou.com/">拼音输入法</a> - <a href="http://ie.sogou.com/?f=pinyingw">搜狗浏览器</a> - <a href="http://mail.sogou.com/" rel="external nofollow">G邮箱</a> - <a href="http://hr.sogou.com/" rel="external nofollow">诚聘英才</a><br>
+			 &#169; 2025 SOGOU.COM <a href="https://beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备11001839号-1</a>
+				<a href="http://www.sogou.com/docs/terms.htm" rel="external nofollow">免责声明</a>
+				<a href="https://rule.tencent.com/rule/preview/b692b40e-97b9-4e28-8b55-7f08d598ecec" rel="external nofollow" target="_blank">隐私政策</a>
+			</div></div>
+
+        </div>
+    </div>
+
+
+</body></html>

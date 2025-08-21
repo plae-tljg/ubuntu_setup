@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SSH 密钥管理器
+Comment=管理 SSH 密钥和认证
+Exec=/usr/local/bin/ssh-manager
+Icon=ssh-manager
+Terminal=false
+Type=Application
+Categories=Utility;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Android Studio
+Comment=Android Studio
+Icon=/home/lkm/00app/android-studio-2024.1.1.13-linux/android-studio/bin/studio.png
+Exec=/home/lkm/00app/android-studio-2024.1.1.13-linux/android-studio/bin/studio.sh
+Categories=Graphics; # Choose an appropriate category.
+Terminal=false

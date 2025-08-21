@@ -1,0 +1,12 @@
+node_modules
+
+# VuePress build output
+docs/.vuepress/dist/
+docs/.vuepress/.temp/
+docs/.vuepress/cache/
+docs/.vuepress/.cache/
+
+# Large binary files and libraries
+lib/*.deb
+lib/cursor_style_lib/
+lib/*/

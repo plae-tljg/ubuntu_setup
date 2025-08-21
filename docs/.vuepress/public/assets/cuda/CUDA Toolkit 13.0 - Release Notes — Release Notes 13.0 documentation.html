@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en"><head class="at-element-marker">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/">
+<meta content="The Release Notes for the CUDA Toolkit." name="description">
+<meta content="[CUDA Tegra Toolkit, CUDA Toolkit Development, CUDA Toolkit libraries, CUDA Toolkit release, CUDA Toolkit installation, CUDA Toolkit issues, CUDA Toolkit core files, CUDA Toolkit resolved issues, CUDA Toolkit known issues, CUDA Toolkit documentation]" name="keywords">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUDA Toolkit 13.0 - Release Notes — Release Notes 13.0 documentation</title>
+      <link rel="stylesheet" href="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/pygments.css" type="text/css">
+      <link rel="stylesheet" href="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/theme.css" type="text/css">
+      <link rel="stylesheet" href="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/copybutton.css" type="text/css">
+      <link rel="stylesheet" href="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" type="text/css">
+      <link rel="stylesheet" href="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/omni-style.css" type="text/css">
+      <link rel="stylesheet" href="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/api-styles.css" type="text/css">
+    <link rel="shortcut icon" href="https://docs.nvidia.com/cuda/_static/favicon.ico">
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/documentation_options.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/jquery.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/underscore.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/doctools.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/mermaid-init.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/clipboard.min.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/copybutton.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/design-tabs.js"></script>
+        <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/geoip.js"></script>
+    <script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/theme.js"></script>
+    <link rel="index" title="Index" href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/genindex.html">
+    <link rel="search" title="Search" href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/search.html">
+    <link rel="prev" title="Contents" href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/contents.html">
+ 
+<script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/launch-191c2462b890.min.js"></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/EX35fdf437c1874827ac1a27ab07aa4f8b-libraryCode_source.min.js" async=""></script><script>_satellite["_runScript1"](function(event, target, Promise) {
+function generateToken(){
+	//return state after it has any double quotations removed
+	var d = new Date().getTime();//Timestamp
+	var d2 = (performance && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		var r = Math.random() * 16;//random number between 0 and 16
+		if(d > 0){//Use timestamp until depleted
+			r = (d + r)%16 | 0;
+			d = Math.floor(d/16);
+		} else {//Use microseconds since page-load if supported
+			r = (d2 + r)%16 | 0;
+			d2 = Math.floor(d2/16);
+		}
+		return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+	});
+}
+
+
+
+
+/*assign user a Anonymous token on page load if not allready available*/
+
+//jQuery(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
+  try{
+	/*Setting Anonymous Cookie*/
+	const cookieAToken = "nvweb_A";
+	const cookieEToken = "nvweb_E";
+	/*assign anonymous token*/
+	if (typeof Cookies!== "undefined" && typeof Cookies.get("nvweb_A")=== "undefined") {
+		const cookieValue = generateToken();
+		const daysToExpire = new Date(3147483647 * 1000).toUTCString();
+		document.cookie = cookieAToken + '=' + cookieValue + ';domain=.nvidia.com;path=/' + '; expires=' + daysToExpire; 
+	}
+	
+	/*assign passed param  token*/
+	var paramresults = new RegExp('[\?&]' + 'cookieNameEmail' + '=([^&#]*)').exec(window.location.href);
+	if (paramresults!=null) {
+		const cookieValue = NVIDIAGDC.Browser.getUrlParameter("nvweb_E");
+		const daysToExpire = new Date(3147483647 * 1000).toUTCString();
+		document.cookie = cookieEToken + '=' + paramresults[1] + ';domain=.nvidia.com;path=/' + '; expires=' + daysToExpire; 
+    
+  }
+}catch(e){console.log("webtoken: "+e)}
+
+});
+});</script><script>_satellite["_runScript2"](function(event, target, Promise) {
+try{
+  var _6scProvider = { 
+name: "6sc-api", 
+version: "1.0.0", 
+timeout: 2000, 
+provider: function(callback) { 
+  
+  
+  
+var a = localStorage.getItem("_6senseCompanyDetails"),
+n = JSON.parse(a); 
+  //console.log('company detail populated');
+
+var country = n.company.country;
+if(country == undefined && "" == country){
+    country="Not Identified"
+}
+
+var industry = n.company.industry;
+if(industry == undefined && "" == industry){
+    industry="Not Identified"
+}
+
+var company = n.company.name;
+if(company == undefined && "" == company){
+    company="Not Identified"
+}
+  
+//var pf={};
+var dl_bs='';
+var dl_ps='';
+ 
+var ps=n.scores;  
+for (var key in ps){
+  if(ps[key].product=="deep_learning"){
+    //pf["dl_buying_stage"]=ps[key].buying_stage;
+    //pf["dl_profile_score"]=ps[key].profile_score;
+    dl_bs=ps[key].buying_stage;
+    dl_ps=ps[key].profile_score;
+  }
+} 
+
+  
+var sg=n.segments;
+  segs=sg.names.toString()
+  
+  
+  
+    callback(null, {company: company, industry:industry, segments:segs, dl_buying_stage:dl_bs,dl_profile_score:dl_ps}); 
+  }
+};  
+var cpage=window.location.host+window.location.pathname;
+if(cpage.endsWith('developer-qa.nvidia.com/')==true){
+var _nvcdpProvider = {
+   name: "nvcdp",
+   version: "1.0.0",
+   timeout: 2000, 
+   provider: function(callback) {
+    var tokens=[];
+	var responsetext = "";
+	var responseJson;
+    var webToken='';
+     if(_satellite.cookie.get('nvweb_A') != undefined)
+    webToken=_satellite.cookie.get('nvweb_A'); else webToken='';
+    var emailToken='';
+     if(_satellite.cookie.get('nvweb_E') != undefined)
+    emailToken = _satellite.cookie.get('nvweb_E');  else emailToken='';
+    var sfIdToken='';
+     if(_satellite.cookie.get('nvweb_S') != undefined)
+    sfIdToken =_satellite.cookie.get('nvweb_S');  else sfIdToken='';
+	var requestURL = 'https://api-stage.nvidia.com/services/personalize/v1/personlize/token?sfIdToken='+sfIdToken+'&webToken='+webToken+'&emailToken='+emailToken;
+    var XHR = new XMLHttpRequest();
+    
+    XHR.onreadystatechange = function() {
+        if (XHR.readyState == 4 && XHR.status == 200) {
+			responsetext=XHR.responseText;
+		    responseJson = JSON.parse(responsetext);
+          setTimeout(function() {
+            tokens.push(responseJson);
+     }, 200);
+
+		}
+    }
+    XHR.open("GET", requestURL, true);
+    XHR.timeout = 2000;
+    XHR.setRequestHeader("content-type","application/json");
+    XHR.setRequestHeader("nvidia-partner", true);
+    XHR.send(null);
+     
+     setTimeout(function() {
+            if(tokens.length>0){
+               callback(null, {webtoken:tokens[0].webToken, emailtoken: tokens[0].emailToken,sfidtoken: tokens[0].sfIdToken});
+             }
+     }, 1500);
+     
+      }
+    };
+}
+if(cpage.endsWith('developer-qa.nvidia.com/')==true){
+window.targetGlobalSettings = { 
+dataProviders: [_6scProvider,_nvcdpProvider]
+}
+}else{
+  window.targetGlobalSettings = { 
+dataProviders: [_6scProvider]
+}
+}
+}catch(e){}
+});</script><script>_satellite["_runScript3"](function(event, target, Promise) {
+document.addEventListener(adobe.target.event.REQUEST_SUCCEEDED, function(e) {
+    if (e.detail.responseTokens) {
+        var responseToken = e.detail.responseTokens;
+        var y = responseToken[0];
+        var profileCatAffinity = y['profile.categoryAffinity'];
+        _satellite.setVar('favCategory', profileCatAffinity);
+    }
+});
+});</script>
+ 
+
+<script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RCde71e17d940247cd96c4c6b7435d0fdd-source.min.js" async=""></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RCee1257a03b3249d08ecd7f8224565ef5-source.min.js" async=""></script><script type="text/javascript" async="" id="bizible-settings" data-account="nvidia.com" src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/bizible.js"></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RCb239dc73bb784e559b639c5d018223ee-source.min.js" async=""></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RCbf8b61fdd3434c24aea63dddbb0f3fc1-source.min.js" async=""></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RCca8d79fb3fbe401fa19af031e12cab92-source.min.js" async=""></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RC6554cfb86faa4c7185f0f6d975441a84-source.min.js" async=""></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RC552e766f57c74b3d91815e039f3e3e99-source.min.js" async=""></script><script src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/RC3bedf6072a0349ab989530150d64d79a-source.min.js" async=""></script></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/contents.html">
+            <img src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/Logo_and_CUDA.png" class="logo" alt="Logo">
+          </a>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current" aria-expanded="true">
+<li class="toctree-l1 current" aria-expanded="true"><a class="reference internal current" href="#" aria-expanded="true">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#general-cuda"><button class="toctree-expand" title="Open/close menu"></button>2. General CUDA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cuda-toolkit-major-components">2.1. CUDA Toolkit Major Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cuda-driver">2.2. CUDA Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-features"><button class="toctree-expand" title="Open/close menu"></button>2.3. New Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.1. General CUDA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuda-compiler">2.3.2. CUDA Compiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuda-developer-tools">2.3.3. CUDA Developer Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuda-runtime">2.3.4. CUDA Runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resolved-issues"><button class="toctree-expand" title="Open/close menu"></button>2.4. Resolved Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.4.1. General CUDA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.4.2. CUDA Compiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues"><button class="toctree-expand" title="Open/close menu"></button>2.5. Known Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.5.1. General CUDA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cudla">2.5.2. cuDLA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deprecated-or-dropped-features"><button class="toctree-expand" title="Open/close menu"></button>2.6. Deprecated or Dropped Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.6.1. General CUDA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecated-architectures">2.6.2. Deprecated Architectures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecated-or-dropped-operating-systems">2.6.3. Deprecated or Dropped Operating Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecated-or-dropped-cuda-toolchains">2.6.4. Deprecated or Dropped CUDA Toolchains</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#cuda-libraries"><button class="toctree-expand" title="Open/close menu"></button>3. CUDA Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cublas-library"><button class="toctree-expand" title="Open/close menu"></button>3.1. cuBLAS Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cublas-release-13-0">3.1.1. cuBLAS: Release 13.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cufft-library"><button class="toctree-expand" title="Open/close menu"></button>3.2. cuFFT Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cufft-release-13-0">3.2.1. cuFFT: Release 13.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cusolver-library"><button class="toctree-expand" title="Open/close menu"></button>3.3. cuSOLVER Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cusolver-release-13-0">3.3.1. cuSOLVER: Release 13.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cusparse-library"><button class="toctree-expand" title="Open/close menu"></button>3.4. cuSPARSE Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cusparse-release-13-0">3.4.1. cuSPARSE: Release 13.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#math-library"><button class="toctree-expand" title="Open/close menu"></button>3.5. Math Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuda-math-release-13-0">3.5.1. CUDA Math: Release 13.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nvjpeg-library"><button class="toctree-expand" title="Open/close menu"></button>3.6. nvJPEG Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nvjpeg-release-13-0">3.6.1. nvJPEG: Release 13.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#npp-library"><button class="toctree-expand" title="Open/close menu"></button>3.7. NPP Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#npp-release-13-0">3.7.1. NPP: Release 13.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#notices"><button class="toctree-expand" title="Open/close menu"></button>4. Notices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notice">4.1. Notice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opencl">4.2. OpenCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trademarks">4.3. Trademarks</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/contents.html">Release Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+
+
+  
+
+<li><a href="https://docs.nvidia.com/cuda/index.html" class="icon icon-home"></a> »</li>
+  
+<li>CUDA Toolkit 13.0 - Release Notes</li>
+
+      <li class="wy-breadcrumbs-aside">
+      </li>
+<li class="wy-breadcrumbs-aside">
+
+
+  <span>v13.0 |</span>
+
+
+
+  <a href="https://docs.nvidia.com/cuda/pdf/CUDA_Toolkit_Release_Notes.pdf" class="reference external">PDF</a>
+
+
+
+  <span>|</span>
+
+
+
+  <a href="https://developer.nvidia.com/cuda-toolkit-archive" class="reference external">Archive</a>
+
+
+  <span>&nbsp;</span>
+</li>
+
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p class="rubric-h1 rubric">CUDA Toolkit 13.0 - Release Notes</p>
+<section id="overview">
+<h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<p>Welcome to the release notes for NVIDIA® CUDA® Toolkit 13.0. This 
+release includes enhancements and fixes across the CUDA Toolkit and its 
+libraries.</p>
+<p>This documentation is organized into two main sections:</p>
+<ul>
+<li><p><strong>General CUDA</strong></p>
+<p>Focuses on the core CUDA infrastructure including component versions,
+ driver compatibility, compiler/runtime features, issues, and 
+deprecations.</p>
+</li>
+<li><p><strong>CUDA Libraries</strong></p>
+<p>Covers the specialized computational libraries with their feature 
+updates, performance improvements, API changes, and version history 
+across CUDA 13.x releases.</p>
+</li>
+</ul>
+</section>
+<section id="general-cuda">
+<h1><span class="section-number">2. </span>General CUDA<a class="headerlink" href="#general-cuda" title="Permalink to this headline"></a></h1>
+<section id="cuda-toolkit-major-components">
+<h2><span class="section-number">2.1. </span>CUDA Toolkit Major Components<a class="headerlink" href="#cuda-toolkit-major-components" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starting with CUDA 11, individual components within the CUDA Toolkit 
+(for example: compiler, libraries, tools) are versioned independently.</p>
+</div>
+<p>For CUDA 13.0 , the table below indicates the versions:</p>
+</div></blockquote>
+<div class="wy-table-responsive"><table class="small table-no-stripes longtable docutils align-default" id="id7">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">CUDA 13.0 Component Versions</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 28%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>Component Name</p></th>
+<th class="head"><p>Version Information</p></th>
+<th class="head"><p>Supported Architectures</p></th>
+<th class="head"><p>Supported Platforms</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="4"><p>CUDA C++ Core Compute Libraries</p></td>
+<td><p>Thrust</p></td>
+<td><p>3.0.1</p></td>
+<td rowspan="4"><p>x86_64, arm64-sbsa</p></td>
+<td rowspan="4"><p>Linux, Windows</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUB</p></td>
+<td><p>3.0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>libcu++</p></td>
+<td><p>3.0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cooperative Groups</p></td>
+<td><p>13.0.48</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA Application Compiler (crt)</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA Compilation Optimizer (ctadvisor)</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA Runtime (cudart)</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA culibos</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA cuobjdump</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUPTI</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA cuxxfilt (demangler)</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA Documentation</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64</p></td>
+<td><p>Linux, Windows</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA GDB</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA Nsight Eclipse Plugin</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64</p></td>
+<td><p>Linux</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA NVCC</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA nvdisasm</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA NVML Headers</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA nvprune</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA NVRTC</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA NVTX</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA OpenCL</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64</p></td>
+<td><p>Linux, Windows</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA Profiler API</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA Sandbox dev</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA Compute Sanitizer API</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA cuBLAS</p></td>
+<td><p>13.0.0.19</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA cuFFT</p></td>
+<td><p>12.0.0.15</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA cuFile</p></td>
+<td><p>1.15.0.42</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA cuRAND</p></td>
+<td><p>10.4.0.35</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA cuSOLVER</p></td>
+<td><p>12.0.3.29</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA cuSPARSE</p></td>
+<td><p>12.6.2.49</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA NPP</p></td>
+<td><p>13.0.0.50</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA nvFatbin</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA nvJitLink</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA nvJPEG</p></td>
+<td><p>13.0.0.40</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>CUDA nvptxcompiler</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>CUDA nvvm</p></td>
+<td><p>13.0.48</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>Nsight Compute</p></td>
+<td><p>2025.3.0.19</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL (Windows 11)</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>Nsight Systems</p></td>
+<td><p>2025.3.2.367</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux, Windows, WSL</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>Nsight Visual Studio Edition (VSE)</p></td>
+<td><p>2025.3.0.25168</p></td>
+<td><p>x86_64 (Windows)</p></td>
+<td><p>Windows</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>nvidia_fs<a class="footnote-reference brackets" href="#fn1" id="id1">1</a></p></td>
+<td><p>2.26.6</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>Visual Studio Integration</p></td>
+<td><p>13.0.39</p></td>
+<td><p>x86_64 (Windows)</p></td>
+<td><p>Windows</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>NVIDIA Linux Driver</p></td>
+<td><p>580.65.06</p></td>
+<td><p>x86_64, arm64-sbsa</p></td>
+<td><p>Linux</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="cuda-driver">
+<h2><span class="section-number">2.2. </span>CUDA Driver<a class="headerlink" href="#cuda-driver" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Running a CUDA application requires the system with at least one
+ CUDA capable GPU and a driver that is compatible with the CUDA Toolkit.
+ See <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions__table-cuda-toolkit-driver-versions">Table 3</a>. For more information various GPU products that are CUDA capable, visit <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">https://developer.nvidia.com/cuda-gpus</a>.</p>
+<p>Each release of the CUDA Toolkit requires a minimum version of the 
+CUDA driver. The CUDA driver is backward compatible, meaning that 
+applications compiled against a particular version of the CUDA will 
+continue to work on subsequent (later) driver releases.</p>
+<p>More information on compatibility can be found at <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#cuda-compatibility-and-upgrades">https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#cuda-compatibility-and-upgrades</a>.</p>
+<p><strong>Note</strong>: Starting with CUDA 11.0, the toolkit 
+components are individually versioned, and the toolkit itself is 
+versioned as shown in the table below.</p>
+<p>The minimum required driver version for CUDA minor version 
+compatibility is shown below. CUDA minor version compatibility is 
+described in detail in <a class="reference external" href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html">https://docs.nvidia.com/deploy/cuda-compatibility/index.html</a></p>
+</div></blockquote>
+<div class="wy-table-responsive"><table class="small table-no-stripes docutils align-default" id="id8">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">CUDA Toolkit and Minimum Required Driver Version for CUDA Minor Version Compatibility</span><a class="headerlink" href="#id8" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>CTK Version</p></th>
+<th class="head" colspan="2"><p>Driver Range for Minor Version Compatibility</p></th>
+</tr>
+<tr class="row-even"><th class="head"></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>13.x</p></td>
+<td><p>&gt;= 580</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>12.x</p></td>
+<td><p>&gt;= 525</p></td>
+<td><p>&lt; 580</p></td>
+</tr>
+<tr class="row-odd"><td><p>11.x</p></td>
+<td><p>&gt;= 450</p></td>
+<td><p>&lt; 525</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>* Using a Minimum Required Version that is <strong>different</strong> from Toolkit Driver Version could be allowed in compatibility mode – please read the CUDA Compatibility Guide for details.</p>
+<p>** Starting with CUDA 13.0, the Windows display driver is <strong>no longer</strong>
+ bundled with the CUDA Toolkit package. Users must download and install 
+the appropriate NVIDIA driver separately from the official driver 
+download page.</p>
+<p>For more information on supported driver versions, see the <a class="reference external" href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html">CUDA Compatibility Guide</a> for drivers.</p>
+<p>*** CUDA 11.0 was released with an earlier driver version, but by 
+upgrading to Tesla Recommended Drivers 450.80.02 (Linux) / 452.39 
+(Windows), minor version compatibility is possible across the CUDA 11.x 
+family of toolkits.</p>
+<p>The version of the development NVIDIA GPU Driver packaged in each CUDA Toolkit release is shown below.</p>
+<dl class="footnote brackets">
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Only available on select Linux distros</p>
+</dd>
+</dl>
+<div class="wy-table-responsive"><table class="small table-no-stripes longtable colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">CUDA Toolkit and Corresponding Driver Versions</span><a class="headerlink" href="#id9" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUDA Toolkit</p></th>
+<th class="head" colspan="2"><p>Toolkit Driver Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Linux x86_64 Driver Version</p></td>
+<td><p>Windows x86_64 Driver Version</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 13.0 GA</p></td>
+<td><p>&gt;=580.65.06</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.9 Update 1</p></td>
+<td><p>&gt;=575.57.08</p></td>
+<td><p>&gt;=576.57</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.9 GA</p></td>
+<td><p>&gt;=575.51.03</p></td>
+<td><p>&gt;=576.02</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.8 Update 1</p></td>
+<td><p>&gt;=570.124.06</p></td>
+<td><p>&gt;=572.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.8 GA</p></td>
+<td><p>&gt;=570.26</p></td>
+<td><p>&gt;=570.65</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.6 Update 3</p></td>
+<td><p>&gt;=560.35.05</p></td>
+<td><p>&gt;=561.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.6 Update 2</p></td>
+<td><p>&gt;=560.35.03</p></td>
+<td><p>&gt;=560.94</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.6 Update 1</p></td>
+<td><p>&gt;=560.35.03</p></td>
+<td><p>&gt;=560.94</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.6 GA</p></td>
+<td><p>&gt;=560.28.03</p></td>
+<td><p>&gt;=560.76</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.5 Update 1</p></td>
+<td><p>&gt;=555.42.06</p></td>
+<td><p>&gt;=555.85</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.5 GA</p></td>
+<td><p>&gt;=555.42.02</p></td>
+<td><p>&gt;=555.85</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.4 Update 1</p></td>
+<td><p>&gt;=550.54.15</p></td>
+<td><p>&gt;=551.78</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.4 GA</p></td>
+<td><p>&gt;=550.54.14</p></td>
+<td><p>&gt;=551.61</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.3 Update 1</p></td>
+<td><p>&gt;=545.23.08</p></td>
+<td><p>&gt;=546.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.3 GA</p></td>
+<td><p>&gt;=545.23.06</p></td>
+<td><p>&gt;=545.84</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.2 Update 2</p></td>
+<td><p>&gt;=535.104.05</p></td>
+<td><p>&gt;=537.13</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.2 Update 1</p></td>
+<td><p>&gt;=535.86.09</p></td>
+<td><p>&gt;=536.67</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.2 GA</p></td>
+<td><p>&gt;=535.54.03</p></td>
+<td><p>&gt;=536.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.1 Update 1</p></td>
+<td><p>&gt;=530.30.02</p></td>
+<td><p>&gt;=531.14</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.1 GA</p></td>
+<td><p>&gt;=530.30.02</p></td>
+<td><p>&gt;=531.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 12.0 Update 1</p></td>
+<td><p>&gt;=525.85.12</p></td>
+<td><p>&gt;=528.33</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 12.0 GA</p></td>
+<td><p>&gt;=525.60.13</p></td>
+<td><p>&gt;=527.41</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.8 GA</p></td>
+<td><p>&gt;=520.61.05</p></td>
+<td><p>&gt;=520.06</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.7 Update 1</p></td>
+<td><p>&gt;=515.48.07</p></td>
+<td><p>&gt;=516.31</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.7 GA</p></td>
+<td><p>&gt;=515.43.04</p></td>
+<td><p>&gt;=516.01</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.6 Update 2</p></td>
+<td><p>&gt;=510.47.03</p></td>
+<td><p>&gt;=511.65</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.6 Update 1</p></td>
+<td><p>&gt;=510.47.03</p></td>
+<td><p>&gt;=511.65</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.6 GA</p></td>
+<td><p>&gt;=510.39.01</p></td>
+<td><p>&gt;=511.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.5 Update 2</p></td>
+<td><p>&gt;=495.29.05</p></td>
+<td><p>&gt;=496.13</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.5 Update 1</p></td>
+<td><p>&gt;=495.29.05</p></td>
+<td><p>&gt;=496.13</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.5 GA</p></td>
+<td><p>&gt;=495.29.05</p></td>
+<td><p>&gt;=496.04</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.4 Update 4</p></td>
+<td><p>&gt;=470.82.01</p></td>
+<td><p>&gt;=472.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.4 Update 3</p></td>
+<td><p>&gt;=470.82.01</p></td>
+<td><p>&gt;=472.50</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.4 Update 2</p></td>
+<td><p>&gt;=470.57.02</p></td>
+<td><p>&gt;=471.41</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.4 Update 1</p></td>
+<td><p>&gt;=470.57.02</p></td>
+<td><p>&gt;=471.41</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.4.0 GA</p></td>
+<td><p>&gt;=470.42.01</p></td>
+<td><p>&gt;=471.11</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.3.1 Update 1</p></td>
+<td><p>&gt;=465.19.01</p></td>
+<td><p>&gt;=465.89</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.3.0 GA</p></td>
+<td><p>&gt;=465.19.01</p></td>
+<td><p>&gt;=465.89</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.2.2 Update 2</p></td>
+<td><p>&gt;=460.32.03</p></td>
+<td><p>&gt;=461.33</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.2.1 Update 1</p></td>
+<td><p>&gt;=460.32.03</p></td>
+<td><p>&gt;=461.09</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.2.0 GA</p></td>
+<td><p>&gt;=460.27.03</p></td>
+<td><p>&gt;=460.82</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.1.1 Update 1</p></td>
+<td><p>&gt;=455.32</p></td>
+<td><p>&gt;=456.81</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.1 GA</p></td>
+<td><p>&gt;=455.23</p></td>
+<td><p>&gt;=456.38</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.0.3 Update 1</p></td>
+<td><p>&gt;= 450.51.06</p></td>
+<td><p>&gt;= 451.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 11.0.2 GA</p></td>
+<td><p>&gt;= 450.51.05</p></td>
+<td><p>&gt;= 451.48</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 11.0.1 RC</p></td>
+<td><p>&gt;= 450.36.06</p></td>
+<td><p>&gt;= 451.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 10.2.89</p></td>
+<td><p>&gt;= 440.33</p></td>
+<td><p>&gt;= 441.22</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 10.1 (10.1.105 general release, and updates)</p></td>
+<td><p>&gt;= 418.39</p></td>
+<td><p>&gt;= 418.96</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 10.0.130</p></td>
+<td><p>&gt;= 410.48</p></td>
+<td><p>&gt;= 411.31</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 9.2 (9.2.148 Update 1)</p></td>
+<td><p>&gt;= 396.37</p></td>
+<td><p>&gt;= 398.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 9.2 (9.2.88)</p></td>
+<td><p>&gt;= 396.26</p></td>
+<td><p>&gt;= 397.44</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 9.1 (9.1.85)</p></td>
+<td><p>&gt;= 390.46</p></td>
+<td><p>&gt;= 391.29</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 9.0 (9.0.76)</p></td>
+<td><p>&gt;= 384.81</p></td>
+<td><p>&gt;= 385.54</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 8.0 (8.0.61 GA2)</p></td>
+<td><p>&gt;= 375.26</p></td>
+<td><p>&gt;= 376.51</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 8.0 (8.0.44)</p></td>
+<td><p>&gt;= 367.48</p></td>
+<td><p>&gt;= 369.30</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA 7.5 (7.5.16)</p></td>
+<td><p>&gt;= 352.31</p></td>
+<td><p>&gt;= 353.66</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA 7.0 (7.0.28)</p></td>
+<td><p>&gt;= 346.46</p></td>
+<td><p>&gt;= 347.62</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><p>CUDA Toolkit driver bundling (pre-CUDA 13.0):</p>
+<ul class="simple">
+<li><p>The CUDA Toolkit previously included an NVIDIA display driver for convenience.</p></li>
+<li><p>This bundled driver was intended only for development purposes.</p></li>
+<li><p>It is not recommended for production use, especially with Tesla GPUs.</p></li>
+</ul>
+</li>
+<li><p>Recommended driver for Tesla GPUs:</p>
+<ul>
+<li><p>For production environments using Tesla GPUs, download the latest
+ certified driver from the official NVIDIA Driver Downloads site:</p>
+<p><a class="reference external" href="https://www.nvidia.com/drivers">https://www.nvidia.com/drivers</a></p>
+</li>
+</ul>
+</li>
+<li><p>Optional driver installation during Toolkit setup:</p>
+<ul class="simple">
+<li><p>During CUDA Toolkit installation, users may choose to skip driver installation:</p>
+<ul>
+<li><p>On Windows: via interactive or silent install options.</p></li>
+<li><p>On Linux: by skipping driver meta packages.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Change in CUDA 13.0 (Windows-specific):</p>
+<ul class="simple">
+<li><p>Starting with CUDA 13.0, the Windows display driver is <strong>no longer bundled</strong> with the CUDA Toolkit.</p></li>
+<li><p>Windows users must <strong>manually download and install</strong> the appropriate driver from the official NVIDIA site.</p></li>
+</ul>
+</li>
+<li><p>Driver compatibility notes:</p>
+<ul class="simple">
+<li><p>Some compatibility tables may list “N/A” for Windows driver versions.</p></li>
+<li><p>Users must still ensure the installed driver meets or exceeds the minimum required version for the CUDA Toolkit.</p></li>
+<li><p>For details, refer to the official CUDA Compatibility Guide for Drivers:</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html">https://docs.nvidia.com/deploy/cuda-compatibility/index.html</a></p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="new-features">
+<span id="cuda-general-new-features"></span><h2><span class="section-number">2.3. </span>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline"></a></h2>
+<p>CUDA 13.0 is a new major version. CUDA follows semantic versioning, 
+and guarantees ABI stability within the major version series. CUDA 
+Toolkit releases in the 13.x series are ABI-compatible with drivers 
+corresponding to the same series (r580 and newer). Note that CUDA’s API 
+can evolve over the course of a major release to include new 
+functionality, and not all new functionality may be supported on older 
+drivers.</p>
+<section id="id2">
+<h3><span class="section-number">2.3.1. </span>General CUDA<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Arm platforms are now unified in CUDA Toolkit, enabling 
+single-install and consistent builds across all Arm architectures. Note 
+that this applies to new architectures only and does not apply to Jetson
+ Orin, which remains as-is.</p></li>
+<li><p>Updated vector types with 32-byte alignment for increased load/store performance on Blackwell (see additional details below).</p></li>
+<li><p>Added support for the following new operating system distributions:</p>
+<ul>
+<li><p>Red Hat Enterprise Linux 10.0 and 9.6</p></li>
+<li><p>Debian 12.10</p></li>
+<li><p>Fedora 42</p></li>
+<li><p>Rocky Linux 10.0 and 9.6</p></li>
+</ul>
+</li>
+<li><p>SM101 has been renumbered as SM110 from this release.</p></li>
+<li><p>CUDA 13.0 supports all NVIDIA architectures from Turing through Grace Blackwell.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">cuMemCreate</span></code> and <code class="docutils literal notranslate"><span class="pre">cudaMallocAsync</span></code> on the host, with <code class="docutils literal notranslate"><span class="pre">CU_MEM_LOCATION_TYPE_HOST</span></code>.</p></li>
+<li><p>Improved error reporting from CUDA batched memcpy APIs, using 
+CUDA rich error reporting introduced in CTK 12.9. As a result, the 
+batched memcpy APIs have been superseded with a new function prototype 
+eliding the now-unnecessary <code class="docutils literal notranslate"><span class="pre">failIdx</span></code> out parameter.</p></li>
+<li><p>Added CUDA Runtime API support for rich error reporting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuda-checkpoint</span></code>
+ utility updated to allow GPU migration. Users can now specify how GPUs 
+from the old and new machines should be matched by specifying UUID 
+pairs.</p></li>
+<li><p>Coherent memory platforms (including Grace Hopper) can now be 
+initialized in non-NUMA mode, where video memory and kernel memory are 
+managed separately as on more traditional platforms (this does not 
+affect coherency or bandwidth, only memory organization).</p></li>
+<li><p>Fatbin file compression now uses Zstd instead of LZ4, improving compression ratios and resulting in smaller generated binaries.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">cuGreenCtxGetId</span></code> function to allow unique identification of green context IDs without needing to convert from a primary context.</p></li>
+<li><p>Registers can now additionally spill to shared memory, which is 
+approximately 10x lower latency than spilling to L2 cache. This feature 
+is opt-in and controllable via the pragma <code class="docutils literal notranslate"><span class="pre">enable_smem_spilling</span></code>.</p></li>
+<li><p>CUDA Runtime now uses contextless loading.</p></li>
+<li><p>Hostnames are now supported as part of <code class="docutils literal notranslate"><span class="pre">nvidia-imex</span></code> <code class="docutils literal notranslate"><span class="pre">nodes_config</span></code> domain definitions. This allows dynamic reassignment of the underlying IP addresses of compute nodes by updating the DNS or <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> files.</p></li>
+<li><p>All Windows userspace <code class="docutils literal notranslate"><span class="pre">.exe</span></code> and <code class="docutils literal notranslate"><span class="pre">.dll</span></code> files are now signed.</p></li>
+<li><p>Added support for managed memory discard in UVM, through the following new APIs:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuMemDiscardBatchAsync</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuMemDiscardAndPrefetchBatchAsync</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="cuda-compiler">
+<h3><span class="section-number">2.3.2. </span>CUDA Compiler<a class="headerlink" href="#cuda-compiler" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>For changes to PTX, refer to <a class="reference external" href="https://docs.nvidia.com/cuda/parallel-thread-execution/#ptx-isa-version-9-0">https://docs.nvidia.com/cuda/parallel-thread-execution/#ptx-isa-version-9-0</a>.</p></li>
+<li><p><strong>CUDA Runtime API</strong>:</p>
+<ul class="simple">
+<li><p>The prototype for the CUDA Runtime API function <code class="docutils literal notranslate"><span class="pre">cudaGraphKernelNodeCopyAttributes</span></code> has been updated. It now takes <code class="docutils literal notranslate"><span class="pre">hDst</span></code> followed by <code class="docutils literal notranslate"><span class="pre">hSrc</span></code> to align with the calling convention used by most copy APIs.</p></li>
+</ul>
+</li>
+<li><p><strong>nvJitLinkCreate</strong>:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">options</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">nvJitLinkCreate</span></code> is now of type <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span> <span class="pre">const</span> <span class="pre">*</span></code> instead of <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">**</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>General Compiler (NVCC, nvFatbin, fatbinary)</strong>:</p>
+<p>The default compression mode is now equivalent to using <code class="docutils literal notranslate"><span class="pre">--compress-mode=balance</span></code>. As a result, newly generated binaries will benefit from the higher compression ratio provided by the Zstandard algorithm.</p>
+</li>
+<li><p><strong>NVCC</strong>:</p>
+<blockquote>
+<div><p>A new flag, <code class="docutils literal notranslate"><span class="pre">-jobserver</span></code>, has been added to NVCC to control thread usage by <code class="docutils literal notranslate"><span class="pre">-split-compile</span></code> and <code class="docutils literal notranslate"><span class="pre">--threads</span></code> when invoked under GNU Make with <code class="docutils literal notranslate"><span class="pre">-jN</span></code> (where <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>). This option is supported on <strong>Linux only</strong>.</p>
+<ul class="simple">
+<li><p>Requires GNU Make 4.4+ to work out of the box.</p></li>
+<li><p>Can also work with GNU Make 4.3+ with appropriate Makefile modifications.</p></li>
+</ul>
+<p>For more details, see the <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/#jobserver-jobserver">NVCC option listing</a>.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Fatbinary</strong>:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-image</span></code> option, which was previously deprecated, has been removed in CUDA 13.0.
+Users should use <code class="docutils literal notranslate"><span class="pre">-image3</span></code> or <code class="docutils literal notranslate"><span class="pre">-image2</span></code> instead, depending on their requirements.</p>
+</li>
+<li><p><strong>New host compiler support in CUDA 13.0</strong>:</p>
+<ul class="simple">
+<li><p>Clang 20</p></li>
+<li><p>GCC 15</p></li>
+</ul>
+</li>
+<li><p><strong>libNVVM</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">libNVVM</span></code> has been updated to align with the LLVM 20 release.</p></li>
+<li><p>Split from the <code class="docutils literal notranslate"><span class="pre">NVCC</span></code> component</p></li>
+</ul>
+</li>
+<li><p><strong>libNVPTXCompiler</strong></p>
+<ul class="simple">
+<li><p>Split from the <code class="docutils literal notranslate"><span class="pre">NVCC</span></code> component</p></li>
+</ul>
+</li>
+<li><p><strong>CUDA CRT</strong></p>
+<ul class="simple">
+<li><p>Split from the <code class="docutils literal notranslate"><span class="pre">NVCC</span></code> component</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="cuda-developer-tools">
+<h3><span class="section-number">2.3.3. </span>CUDA Developer Tools<a class="headerlink" href="#cuda-developer-tools" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>A new developer tool, <strong>Compile Time Advisor</strong> (<cite>ctadvisor</cite>),
+ has been introduced in CUDA 13.0. This tool helps users analyze the 
+compilation time of their CUDA C++ code and provides actionable 
+suggestions to reduce build time.</p></li>
+</ul>
+<p>For details on new features, improvements, and bug fixes, see the changelogs for:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.nvidia.com/nsight-systems/ReleaseNotes/index.html">Nsight Systems</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/nsight-visual-studio-edition/release-notes/index.html">Nsight Visual Studio Edition</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/cupti//release-notes/release-notes.html#">CUPTI</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/nsight-compute/ReleaseNotes/index.html#whats-new">Nsight Compute</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/compute-sanitizer/ReleaseNotes/index.html">Compute Sanitizer</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#changelog">CUDA-C++-Programming-Guide</a>.</p></li>
+</ul>
+</section>
+<section id="cuda-runtime">
+<h3><span class="section-number">2.3.4. </span>CUDA Runtime<a class="headerlink" href="#cuda-runtime" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>CUDA cuLibOS</p>
+<p>Split from <code class="docutils literal notranslate"><span class="pre">cudart</span></code></p>
+</li>
+</ul>
+</section>
+</section>
+<section id="resolved-issues">
+<h2><span class="section-number">2.4. </span>Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permalink to this headline"></a></h2>
+<section id="id3">
+<h3><span class="section-number">2.4.1. </span>General CUDA<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>The behavior of <code class="docutils literal notranslate"><span class="pre">cuInit</span></code>
+ on Windows has been unified with Linux for systems using NVSwitch. If 
+the Fabric Manager service is not running and the system is expected to 
+use NVSwitch or NVLink for P2P connectivity, <code class="docutils literal notranslate"><span class="pre">cuInit</span></code> will return <code class="docutils literal notranslate"><span class="pre">CUDA_ERROR_NOT_READY</span></code> until the configuration issue is resolved.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.4.2. </span>CUDA Compiler<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>Under certain scenarios involving an over-aligned type and the MSVC <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">pack</span></code> directive,
+NVCC incorrectly computed the size, alignment, and other layout characteristics of the type.</p>
+<p>This issue can occur when using an over-aligned type as the embedded object of <code class="docutils literal notranslate"><span class="pre">std::optional&lt;T&gt;</span></code>
+from the MSVC STL. It only affects Windows when NVCC is used with an MSVC host compiler.</p>
+<p>For example, NVCC may incorrectly determine the layout of variable <code class="docutils literal notranslate"><span class="pre">z</span></code> in the following code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre id="codecell0"><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">alignas</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="n">complex</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">complex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell0">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<p>This may lead to a crash or out-of-memory error during later 
+compilation stages. The issue was introduced in CUDA 12.9. It is fixed 
+in CUDA 13.0.</p>
+</li>
+<li><p>When the <code class="docutils literal notranslate"><span class="pre">[[no_unique_address]]</span></code>
+ attribute is applied to an empty member variable within an otherwise 
+empty object, NVCC may crash during the device compilation stage.</p>
+<p>For example, the following code could trigger a crash:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre id="codecell1"><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Foo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Bar</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">[[</span><span class="n">no_unique_address</span><span class="p">]]</span><span class="w"> </span><span class="n">Foo</span><span class="w"> </span><span class="n">x</span><span class="p">{};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<p>This issue is resolved in CUDA 13.0.</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="known-issues">
+<h2><span class="section-number">2.5. </span>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline"></a></h2>
+<section id="id5">
+<h3><span class="section-number">2.5.1. </span>General CUDA<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Certain Linux kernels with KASLR enabled have a known issue in 
+HMM initialization, causing CUDA initialization to fail. This issue is 
+indicated by the following debug message:</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-css notranslate"><div class="highlight"><pre id="codecell2"><span></span><span class="o">[</span><span class="nt">64689</span><span class="p">.</span><span class="nc">125237</span><span class="o">]</span><span class="w"> </span><span class="nt">nvidia-uvm</span><span class="o">:</span><span class="w"> </span><span class="nt">uvm_pmm_gpu</span><span class="p">.</span><span class="nc">c</span><span class="p">:</span><span class="nd">3176</span><span class="w"> </span><span class="nt">devmem_alloc_pagemap</span><span class="o">[</span><span class="nt">pid</span><span class="p">:</span><span class="nd">92821</span><span class="o">]</span><span class="w"> </span><span class="nt">request_free_mem_region</span><span class="o">()</span><span class="w"> </span><span class="nt">err</span><span class="w"> </span><span class="nt">-34</span><span class="w"></span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+<p>Fixes to this issue are being handled in upstream kernels. In the meantime, you can use one of the following workarounds:</p>
+<ul>
+<li><p>Option 1: Disable KASLR (Preferred option)</p>
+<p>If using GRUB, edit /etc/default/grub and add <code class="docutils literal notranslate"><span class="pre">nokaslr</span></code> to <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX_DEFAULT</span></code>:</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre id="codecell3"><span></span>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nokaslr"
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div></blockquote>
+<p>Then, update GRUB and reboot:</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre id="codecell4"><span></span>sudo update-grub
+sudo reboot
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Option 2: Disable HMM for UVM</p>
+<ol class="arabic">
+<li><p>Create or edit /etc/modprobe.d/uvm.conf.</p></li>
+<li><p>Add or update the following line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre id="codecell5"><span></span>options nvidia_uvm uvm_disable_hmm=1
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</li>
+<li><p>Unload and reload the <code class="docutils literal notranslate"><span class="pre">nvidia_uvm</span></code> kernel module or reboot the system:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre id="codecell6"><span></span>sudo modprobe -r nvidia_uvm
+sudo modprobe nvidia_uvm
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell6">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Copy to clipboard</title>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+</svg>
+    </button></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>On Mediatek Dimensity Auto Cockpit platforms, setting the <code class="docutils literal notranslate"><span class="pre">NvSciBufGeneralAttrKey_EnableGpuCompression</span></code> attribute causes NvSciBuf import into CUDA to fail with the following error:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cudaErrorInvalidValue</span></code> / <code class="docutils literal notranslate"><span class="pre">CUDA_ERROR_INVALID_VALUE</span></code></p>
+<p>Compression is not supported in CUDA for NvSciBuf interoperability on this platform.</p>
+</li>
+<li><p>Starting with CUDA 13.0, on Windows Server 2022 systems with NVSwitch deployments in TCC mode, <code class="docutils literal notranslate"><span class="pre">cuInit()</span></code> may return <code class="docutils literal notranslate"><span class="pre">CUDA_ERROR_NOT_READY</span></code> if the Fabric Manager (FM) is not running or the GPU fabric is misconfigured. <em>[5328746]</em></p>
+<p>This change aligns Windows behavior with Linux, where the driver now 
+fails initialization instead of silently falling back to reduced 
+performance.</p>
+<p>To avoid this issue:</p>
+<ul class="simple">
+<li><p>Ensure the Fabric Manager service is correctly installed and running.</p></li>
+<li><p>Alternatively, configure the <code class="docutils literal notranslate"><span class="pre">RmGpuFabricProbe</span></code> registry key if the system is intended to run without NVSwitch and Fabric Manager.</p></li>
+</ul>
+<p>This change may introduce regressions in legacy workflows that relied
+ on the previous fallback behavior. It is recommended to validate 
+affected systems using NVSwitch on Windows.</p>
+</li>
+</ul>
+</section>
+<section id="cudla">
+<h3><span class="section-number">2.5.2. </span>cuDLA<a class="headerlink" href="#cudla" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Calling cuDLA APIs on the Tegra THOR platform is not supported, 
+as the THOR SoC does not include a DLA engine. Attempting to do so may 
+result in unexpected behavior.</p></li>
+</ul>
+</section>
+</section>
+<section id="deprecated-or-dropped-features">
+<h2><span class="section-number">2.6. </span>Deprecated or Dropped Features<a class="headerlink" href="#deprecated-or-dropped-features" title="Permalink to this headline"></a></h2>
+<section id="id6">
+<h3><span class="section-number">2.6.1. </span>General CUDA<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>CUDA 13.0 deprecates the following legacy vector types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">double4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">long4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ulong4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">longlong4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ulonglong4</span></code></p></li>
+</ul>
+<p>These types are being replaced by new aligned variants:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*_16a</span></code> and <code class="docutils literal notranslate"><span class="pre">*_32a</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">double4_16a</span></code>, <code class="docutils literal notranslate"><span class="pre">double4_32a</span></code>)</p></li>
+</ul>
+<p>Deprecation warnings can be managed as follows:</p>
+<ul class="simple">
+<li><p>Globally silenced by defining <code class="docutils literal notranslate"><span class="pre">__NV_NO_VECTOR_DEPRECATION_DIAG</span></code></p></li>
+<li><p>Locally suppressed using the macro pair <code class="docutils literal notranslate"><span class="pre">__NV_SILENCE_HOST_DEPRECATION_BEGIN</span></code> / <code class="docutils literal notranslate"><span class="pre">__NV_SILENCE_HOST_DEPRECATION_END</span></code></p></li>
+</ul>
+<p>These legacy types are planned for removal in CUDA 14.0.</p>
+</li>
+<li><p>The <strong>CUDA installer</strong> for Windows <strong>no longer</strong>
+ bundles the display driver. Users must install the display driver 
+separately, either before or after installing the CUDA Toolkit.</p></li>
+<li><p><strong>Multi-device launch APIs</strong> and related references for Cooperative Groups <strong>have been removed</strong>. These APIs were previously marked as deprecated in CUDA 12.x:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cudaLaunchCooperativeKernelMultiDevice</span></code> has been removed from <code class="docutils literal notranslate"><span class="pre">cuda_runtime_api.h</span></code>.</p></li>
+<li><p>The accompanying parameter struct <code class="docutils literal notranslate"><span class="pre">cudaLaunchParam</span></code> has been removed from <code class="docutils literal notranslate"><span class="pre">driver_types.h</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">this_multi_grid</span></code> and <code class="docutils literal notranslate"><span class="pre">multi_grid_group</span></code> have been removed from <code class="docutils literal notranslate"><span class="pre">cooperative_groups.h</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Changes to cudaDeviceProperties structure</strong>:</p>
+<p>In CUDA 13.0, several deprecated fields have been removed from the <code class="docutils literal notranslate"><span class="pre">cudaDeviceProperties</span></code> structure. To ensure forward compatibility, use the recommended replacement APIs listed below:</p>
+<p><strong>Removed Fields and Their Replacements</strong></p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Removed Field</strong></p></th>
+<th class="head"><p><strong>Replacement API</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>clockRate</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cudaDeviceGetAttribute(cudaDevAttrClockRate)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>deviceOverlap</p></td>
+<td><p>Use the <code class="docutils literal notranslate"><span class="pre">asyncEngineCount</span></code> field</p></td>
+</tr>
+<tr class="row-even"><td><p>kernelExecTimeoutEnabled</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cudaDeviceGetAttribute(cudaDevAttrKernelExecTimeout)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>computeMode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cudaDeviceGetAttribute(cudaDevAttrComputeMode)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>maxTexture1DLinear</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cudaDeviceGetTexture1DLinearMaxWidth()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>memoryClockRate</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cudaDeviceGetAttribute(cudaDevAttrMemoryClockRate)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>singleToDoublePrecisionPerfRatio</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cudaDeviceGetAttribute(cudaDevAttrSingleToDoublePrecisionPerfRatio)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>cooperativeMultiDeviceLaunch</p></td>
+<td><p><em>No replacement available</em></p></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Removed cudaDeviceAttr Types (No Replacement Available)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cudaDevAttrCooperativeMultiDeviceLaunch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cudaDevAttrMaxTimelineSemaphoreInteropSupported</span></code></p></li>
+</ul>
+</li>
+<li><p>The following legacy header files related to deprecated texture 
+and surface references have been removed from the CUDA 13.0 runtime:</p>
+<ul class="simple">
+<li><p>cuda_surface_types.h</p></li>
+<li><p>cuda_texture_types.h</p></li>
+<li><p>surface_functions.h</p></li>
+<li><p>texture_fetch_functions.h</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="deprecated-architectures">
+<h3><span class="section-number">2.6.2. </span>Deprecated Architectures<a class="headerlink" href="#deprecated-architectures" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Architecture support for Maxwell, Pascal, and Volta is considered
+ feature-complete. Offline compilation and library support for these 
+architectures have been removed in CUDA Toolkit 13.0 major version 
+release. The use of CUDA Toolkits through the 12.x series to build 
+applications for these architectures will continue to be supported, but 
+newer toolkits will be unable to target these architectures.</p></li>
+</ul>
+</section>
+<section id="deprecated-or-dropped-operating-systems">
+<h3><span class="section-number">2.6.3. </span>Deprecated or Dropped Operating Systems<a class="headerlink" href="#deprecated-or-dropped-operating-systems" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Support for Ubuntu 20.04 has been dropped starting with this release. Users are advised to migrate to Ubuntu 22.04 LTS or later.</p></li>
+</ul>
+</section>
+<section id="deprecated-or-dropped-cuda-toolchains">
+<h3><span class="section-number">2.6.4. </span>Deprecated or Dropped CUDA Toolchains<a class="headerlink" href="#deprecated-or-dropped-cuda-toolchains" title="Permalink to this headline"></a></h3>
+<p><strong>CUDA Tools</strong></p>
+<ul>
+<li><p>The profiling tools <strong>NVIDIA Visual Profiler</strong> and <strong>nvprof</strong> have been removed in CUDA 13.0. Users are encouraged to migrate to the next-generation tools:</p>
+<ul class="simple">
+<li><p>NVIDIA Nsight Systems for GPU and CPU sampling and tracing</p></li>
+<li><p>NVIDIA Nsight Compute for detailed GPU kernel profiling</p></li>
+</ul>
+</li>
+<li><p>The pre-built CUDA Demo Suite applications have been removed in 
+CUDA 13.0. Users are encouraged to build CUDA Samples from source, 
+available on GitHub.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">nv-p2p</span></code>
+ APIs are deprecated starting with CUDA 13.0 and will be removed in CUDA
+ 14.0. These APIs remain functional in CUDA 13.0 but will no longer 
+receive enhancements or bug fixes.</p></li>
+<li><p>The following CUPTI APIs and features have been removed in CUDA 13.0:</p>
+<ul class="simple">
+<li><p>CUPTI Event API (<code class="docutils literal notranslate"><span class="pre">cupti_events.h</span></code>)</p></li>
+<li><p>CUPTI Metric API (<code class="docutils literal notranslate"><span class="pre">cupti_metrics.h</span></code>)</p></li>
+<li><p>PC Sampling Activity API (<code class="docutils literal notranslate"><span class="pre">cupti_activity.h</span></code>)</p></li>
+<li><p>Source/SASS-level metrics (<code class="docutils literal notranslate"><span class="pre">cupti_activity.h</span></code>)</p></li>
+</ul>
+</li>
+<li><p>The following APIs have been deprecated in CUDA 13.0:</p>
+<ul class="simple">
+<li><p>CUPTI Profiling API (<code class="docutils literal notranslate"><span class="pre">cupti_profiler_target.h</span></code>)</p></li>
+<li><p>Perfworks Metric API (<code class="docutils literal notranslate"><span class="pre">nvperf_host.h</span></code>)</p></li>
+</ul>
+<p>Users are encouraged to transition to the following replacements:</p>
+<ul class="simple">
+<li><p>CUPTI Range Profiling API (<code class="docutils literal notranslate"><span class="pre">cupti_range_profiler.h</span></code>)</p></li>
+<li><p>CUPTI Profiler Host API (<code class="docutils literal notranslate"><span class="pre">cupti_profiler_host.h</span></code>)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>CUDA Compiler</strong></p>
+<ul class="simple">
+<li><p>The following host compilers are no longer supported as of CUDA 13.0:</p>
+<ul>
+<li><p>Intel ICC 2021.7</p></li>
+<li><p>Microsoft Visual Studio 2017 (MSVC 2017)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="cuda-libraries">
+<h1><span class="section-number">3. </span>CUDA Libraries<a class="headerlink" href="#cuda-libraries" title="Permalink to this headline"></a></h1>
+<p>This section covers CUDA Libraries release notes for 13.x releases.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation will be updated to accurately reflect supported C++ standard libraries for CUDA Math Libraries.</p>
+</div>
+<section id="cublas-library">
+<h2><span class="section-number">3.1. </span>cuBLAS Library<a class="headerlink" href="#cublas-library" title="Permalink to this headline"></a></h2>
+<section id="cublas-release-13-0">
+<h3><span class="section-number">3.1.1. </span>cuBLAS: Release 13.0<a class="headerlink" href="#cublas-release-13-0" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p><strong>New Features</strong></p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cublasGemmEx</span></code>, <code class="docutils literal notranslate"><span class="pre">cublasGemmBatchedEx</span></code>, and <code class="docutils literal notranslate"><span class="pre">cublasGemmStridedBatchedEx</span></code> functions now accept <code class="docutils literal notranslate"><span class="pre">CUBLAS_GEMM_AUTOTUNE</span></code> as a valid value for the <code class="docutils literal notranslate"><span class="pre">algo</span></code>
+ parameter. When this option is used, the library benchmarks a selection
+ of available algorithms internally and chooses the optimal one based on
+ the given problem configuration. The selected algorithm is cached 
+within the current <code class="docutils literal notranslate"><span class="pre">cublasHandle_t</span></code>, so subsequent calls with the same problem descriptor will reuse the cached configuration for improved performance.</p>
+<p>This is an experimental feature. Users are encouraged to transition 
+to the cuBLASLt API, which provides fine-grained control over algorithm 
+selection through the heuristics API and includes support for additional
+ data types such as FP8 and block-scaled formats, as well as kernel 
+fusion.  (see autotuning example in <a class="reference external" href="https://github.com/NVIDIA/CUDALibrarySamples/tree/master/cuBLASLt/LtSgemmSimpleAutoTuning">cuBLASLt</a>).</p>
+</li>
+<li><p>Improved performance of BLAS Level 3 non-GEMM kernels (SYRK, 
+HERK, TRMM, SYMM, HEMM) for FP32 and CF32 precisions on NVIDIA Blackwell
+ GPUs.</p></li>
+<li><p>This release adds support of SM110 GPUs for arm64-sbsa on Linux.</p></li>
+</ul>
+</li>
+<li><p><strong>Known Issues</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cublasLtMatmul</span></code>
+ previously ignored user-specified auxiliary (Aux) data types for ReLU 
+epilogues and defaulted to using a bitmask. The correct behavior is now 
+enforced: an error is returned if an invalid Aux data type is specified 
+for ReLU epilogues. <em>[CUB-7984]</em></p></li>
+</ul>
+</li>
+<li><p><strong>Deprecations</strong></p>
+<ul class="simple">
+<li><p>The experimental feature for atomic synchronization along the rows
+(<code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_ATOMIC_SYNC_NUM_CHUNKS_D_ROWS</span></code>) and columns
+(<code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_ATOMIC_SYNC_NUM_CHUNKS_D_COLS</span></code>) of the output matrix which was deprecated in 12.8 has now been <strong>removed</strong>.</p></li>
+<li><p>Starting with this release, cuBLAS will return <code class="docutils literal notranslate"><span class="pre">CUBLAS_STATUS_NOT_SUPPORTED</span></code>
+if any of the following descriptor attributes are set but the corresponding
+scale is not supported:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_A_SCALE_POINTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_B_SCALE_POINTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_D_SCALE_POINTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_D_OUT_SCALE_POINTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBLASLT_MATMUL_DESC_EPILOGUE_AUX_SCALE_POINTER</span></code></p></li>
+</ul>
+</li>
+<li><p>Previously, this restriction applied only to <a class="reference external" href="https://docs.nvidia.com/cuda/cublas/#narrow-precision-data-types-usage">non-narrow precision</a> matmuls.
+It now also applies to narrow precision matmuls when a scale is set
+for a non-narrow precision tensor.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="cufft-library">
+<h2><span class="section-number">3.2. </span>cuFFT Library<a class="headerlink" href="#cufft-library" title="Permalink to this headline"></a></h2>
+<section id="cufft-release-13-0">
+<h3><span class="section-number">3.2.1. </span>cuFFT: Release 13.0<a class="headerlink" href="#cufft-release-13-0" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>New Features</strong></p>
+<ul>
+<li><p>Added new error codes:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_MISSING_DEPENDENCY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_NVRTC_FAILURE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_NVJITLINK_FAILURE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_NVSHMEM_FAILURE</span></code></p></li>
+</ul>
+</li>
+<li><p>Introduced <code class="docutils literal notranslate"><span class="pre">CUFFT_PLAN_NULL</span></code>, a value that can be assigned to a <code class="docutils literal notranslate"><span class="pre">cufftHandle</span></code> to indicate a null handle. It is safe to call <code class="docutils literal notranslate"><span class="pre">cufftDestroy</span></code> on a null handle.</p></li>
+<li><p>Improved performance for single-precision C2C multi-dimensional FFTs and large power-of-2 FFTs.</p></li>
+</ul>
+</li>
+<li><p><strong>Known Issues</strong></p>
+<ul>
+<li><p>An issue identified in CUDA 13.0 affects the correctness of a 
+specific subset of cuFFT kernels, specifically half-precision and 
+bfloat16 size-1 strided R2C and C2R transforms. A fix will be included 
+in a future CUDA release.</p></li>
+</ul>
+</li>
+<li><p><strong>Deprecations</strong></p>
+<ul>
+<li><p>Removed support for Maxwell, Pascal, and Volta GPUs, corresponding to compute capabilities earlier than Turing.</p></li>
+<li><p>Removed legacy cuFFT error codes:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_INCOMPLETE_PARAMETER_LIST</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_PARSE_ERROR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUFFT_LICENSE_ERROR</span></code></p></li>
+</ul>
+</li>
+<li><p>Removed the <code class="docutils literal notranslate"><span class="pre">libcufft_static_nocallback.a</span></code> static library. Users should link against <code class="docutils literal notranslate"><span class="pre">libcufft_static.a</span></code> instead, as both are functionally equivalent.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="cusolver-library">
+<h2><span class="section-number">3.3. </span>cuSOLVER Library<a class="headerlink" href="#cusolver-library" title="Permalink to this headline"></a></h2>
+<section id="cusolver-release-13-0">
+<h3><span class="section-number">3.3.1. </span>cuSOLVER: Release 13.0<a class="headerlink" href="#cusolver-release-13-0" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p><strong>New Features</strong></p>
+<ul>
+<li><p>cuSOLVER offers a new math mode to leverage improved performance of <a class="reference external" href="https://docs.nvidia.com/cuda/cublas/#bf16x9">emulated FP32 arithmetic</a> on Nvidia Blackwell GPUs.</p>
+<p>To enable and control this feature, the following new APIs have been added:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cusolverDnSetMathMode()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cusolverDnGetMathMode()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cusolverDnSetEmulationStrategy()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cusolverDnGetEmulationStrategy()</span></code></p></li>
+</ul>
+</li>
+<li><p>Performance improvements for <code class="docutils literal notranslate"><span class="pre">cusolverDnXsyevBatched()</span></code> have been made by introducing an internal algorithm switch on Blackwell GPUs for matrices of size <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;=</span> <span class="pre">32</span></code>.</p>
+<p>To revert to the previous algorithm for all problem sizes, use <a class="reference external" href="https://docs.nvidia.com/cuda/cusolver/index.html#cusolverdnsetadvoptions">cusolverDnSetAdvOptions()</a>.</p>
+<p>For more details, refer to the <a class="reference external" href="https://docs.nvidia.com/cuda/cusolver/index.html#cusolverdnxsyevbatched">cusolverDnXsyevBatched()</a> documentation.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Deprecations</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuSOLVERMg</span></code> is deprecated and may be removed in an upcoming major release. Users are encouraged to use <a class="reference external" href="https://docs.nvidia.com/cuda/cusolvermp/">cuSOLVERMp</a>
+ for multi-GPU functionality across both single and multi-node 
+environments. To disable the deprecation warning, add the compiler flag <code class="docutils literal notranslate"><span class="pre">-DDISABLE_CUSOLVERMG_DEPRECATED</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cuSOLVERSp</span></code> and <code class="docutils literal notranslate"><span class="pre">cuSOLVERRf</span></code> are fully deprecated and may be removed in an upcoming major release. Users are encouraged to use the <a class="reference external" href="https://developer.nvidia.com/cudss">cuDSS</a> library for better performance and ongoing support.</p>
+<p>For help with the transition, refer to the <a class="reference external" href="https://github.com/NVIDIA/CUDALibrarySamples/tree/master/cuDSS">cuDSS samples</a> or <a class="reference external" href="https://github.com/NVIDIA/CUDALibrarySamples/tree/master/cuSOLVERSp2cuDSS">CUDA samples</a> for migrating from <code class="docutils literal notranslate"><span class="pre">cuSOLVERSp</span></code> to <code class="docutils literal notranslate"><span class="pre">cuDSS</span></code>.</p>
+<p>To disable the deprecation warning, add the compiler flag: <code class="docutils literal notranslate"><span class="pre">-DDISABLE_CUSOLVER_DEPRECATED</span></code>.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Resolved Issues</strong></p>
+<ul>
+<li><p>The supported input matrix size for <code class="docutils literal notranslate"><span class="pre">cusolverDnXsyevd</span></code>, <code class="docutils literal notranslate"><span class="pre">cusolverDnXsyevdx</span></code>, <code class="docutils literal notranslate"><span class="pre">cusolverDnXsyevBatched</span></code>, <code class="docutils literal notranslate"><span class="pre">cusolverDn&lt;t&gt;syevd</span></code>, and <code class="docutils literal notranslate"><span class="pre">cusolverDn&lt;t&gt;syevdx</span></code> is no longer limited to <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;=</span> <span class="pre">32768</span></code>.</p>
+<p>This update also applies to routines that share the same internal implementation: <code class="docutils literal notranslate"><span class="pre">cusolverDnXgesvdr</span></code>, <code class="docutils literal notranslate"><span class="pre">cusolverDnXgesvdp</span></code>, <code class="docutils literal notranslate"><span class="pre">cusolverDn&lt;t&gt;sygvd</span></code>, <code class="docutils literal notranslate"><span class="pre">cusolverDn&lt;t&gt;sygvdx</span></code>, and <code class="docutils literal notranslate"><span class="pre">cusolverDn&lt;t&gt;gesvdaStridedBatched</span></code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="cusparse-library">
+<h2><span class="section-number">3.4. </span>cuSPARSE Library<a class="headerlink" href="#cusparse-library" title="Permalink to this headline"></a></h2>
+<section id="cusparse-release-13-0">
+<h3><span class="section-number">3.4.1. </span>cuSPARSE: Release 13.0<a class="headerlink" href="#cusparse-release-13-0" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>New Features</strong></p>
+<ul>
+<li><p>Added support for 64-bit index matrices in SpGEMM computation. <em>[CUSPARSE-2365]</em></p></li>
+</ul>
+</li>
+<li><p><strong>Known Issues</strong></p>
+<ul>
+<li><p>cuSPARSE logging APIs can crash on Windows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUSPARSE_SPMM_CSR_ALG3</span></code> does not return deterministic results as stated in the documentation.</p></li>
+</ul>
+</li>
+<li><p><strong>Deprecation</strong></p>
+<ul>
+<li><p>Dropped support for pre-Turing architectures (Maxwell, Volta, and Pascal).</p></li>
+</ul>
+</li>
+<li><p><strong>Resolved Issues</strong></p>
+<ul>
+<li><p>Fixed a bug in <code class="docutils literal notranslate"><span class="pre">cusparseSparseToDense_bufferSize</span></code> that caused it to request up to 16× more memory than required. <em>[CUSPARSE-2352]</em></p></li>
+<li><p>Fixed unwanted 16-byte alignment requirements on the external 
+buffer. Most routines will now work with any alignment. In the generic 
+API, only <code class="docutils literal notranslate"><span class="pre">cusparseSpGEMM</span></code> routines are still affected. <em>[CUSPARSE-2352]</em></p></li>
+<li><p>Fixed incorrect results from <code class="docutils literal notranslate"><span class="pre">cusparseCsr2cscEx2</span></code> when any of the input matrix dimensions are zero, such as when <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">0</span></code>. <em>[CUSPARSE-2319]</em></p></li>
+<li><p>Fixed incorrect results from CSR SpMV when any of the input matrix dimensions are zero, such as when <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">0</span></code>. <em>[CUSPARSE-1800]</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="math-library">
+<h2><span class="section-number">3.5. </span>Math Library<a class="headerlink" href="#math-library" title="Permalink to this headline"></a></h2>
+<section id="cuda-math-release-13-0">
+<h3><span class="section-number">3.5.1. </span>CUDA Math: Release 13.0<a class="headerlink" href="#cuda-math-release-13-0" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>New Features</strong></p>
+<ul>
+<li><p>Single and double precision math functions received targeted 
+performance and accuracy improvements through algorithmic 
+simplifications, reduced branching, and tighter approximations.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">atan2f</span></code>, <code class="docutils literal notranslate"><span class="pre">atan2</span></code>: Up to 10% faster with minor improvements in accuracy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sinhf</span></code>, <code class="docutils literal notranslate"><span class="pre">coshf</span></code>, <code class="docutils literal notranslate"><span class="pre">acoshf</span></code>, <code class="docutils literal notranslate"><span class="pre">asinhf</span></code>, <code class="docutils literal notranslate"><span class="pre">asinh</span></code>: Up to 50% speedups with minor improvements in accuracy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cbrtf</span></code>, <code class="docutils literal notranslate"><span class="pre">rcbrtf</span></code>: 15% faster with minor improvements in accuracy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">erfinvf</span></code>, <code class="docutils literal notranslate"><span class="pre">erfcinvf</span></code>, <code class="docutils literal notranslate"><span class="pre">normcdfinvf</span></code>: Minor accuracy improvements, performance neutral.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ldexpf</span></code>, <code class="docutils literal notranslate"><span class="pre">ldexp</span></code>: Up to 3x faster in single precision and 30% faster in double precision, with no accuracy loss.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modff</span></code>, <code class="docutils literal notranslate"><span class="pre">modf</span></code>: Up to 50% faster in single precision and 10% faster in double precision, with no accuracy loss.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="nvjpeg-library">
+<h2><span class="section-number">3.6. </span>nvJPEG Library<a class="headerlink" href="#nvjpeg-library" title="Permalink to this headline"></a></h2>
+<section id="nvjpeg-release-13-0">
+<h3><span class="section-number">3.6.1. </span>nvJPEG: Release 13.0<a class="headerlink" href="#nvjpeg-release-13-0" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><strong>Deprecations</strong></p>
+<ul>
+<li><p>Removed the <code class="docutils literal notranslate"><span class="pre">nvjpegEncoderParamsCopyHuffmanTables</span></code> API.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Resolved Issues</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>nvJPEG is now more robust and no longer crashes or exhibits undefined behavior when decoding malformed or truncated bitstreams. <em>[5168024, 5133845, 5143450]</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nvjpegEncodeYUV</span></code> now avoids reading outside of allocated device memory in certain cases. <em>[5133826]</em></p></li>
+<li><p>Optimized memory usage when encoding RGB inputs using the hardware encoder.</p></li>
+<li><p>Fixed issues related to rounding in various transform, sampling, 
+and conversion steps, improving image quality for both encoder and 
+decoder. <em>[5064901, 3976092]</em></p></li>
+<li><p>Various bug fixes for improved security.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="npp-library">
+<h2><span class="section-number">3.7. </span>NPP Library<a class="headerlink" href="#npp-library" title="Permalink to this headline"></a></h2>
+<section id="npp-release-13-0">
+<h3><span class="section-number">3.7.1. </span>NPP: Release 13.0<a class="headerlink" href="#npp-release-13-0" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p><strong>Deprecations</strong></p>
+<ul>
+<li><p><strong>Removal of Legacy Non-Context APIs</strong></p>
+<p>All legacy NPP APIs without the <cite>_Ctx</cite> suffix have been deprecated and are now removed starting with this release.
+Developers should transition to the context-aware (<cite>_Ctx</cite>) versions to ensure continued support and compatibility with the latest CUDA releases.</p>
+</li>
+<li><p><strong>Deprecation of ``nppGetStreamContext()``</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">nppGetStreamContext()</span></code>
+ API has been deprecated and removed. Developers are strongly encouraged
+ to adopt application-managed stream contexts by explicitly managing the
+ <code class="docutils literal notranslate"><span class="pre">NppStreamContext</span></code> structure.
+For guidance, refer to the <a class="reference external" href="https://github.com/NVIDIA/CUDALibrarySamples/tree/master/NPP#application-managed-context-and-stream-handling-in-npp">NPP Documentation – General Conventions</a> and the usage demonstrated in the <a class="reference external" href="https://github.com/NVIDIA/CUDALibrarySamples/tree/master/NPP#application-managed-context-and-stream-handling-in-npp">StreamContexts example</a>.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Resolved Issues</strong></p>
+<ul class="simple">
+<li><p>Fixed an issue in <code class="docutils literal notranslate"><span class="pre">nppiFloodFillRange_8u_C1IR_Ctx</span></code> where the flood fill operation did not correctly fill the full target area. <em>[5141474]</em></p></li>
+<li><p>Resolved a bug in the <code class="docutils literal notranslate"><span class="pre">nppiDebayer()</span></code> API that affected proper reconstruction of color data during Bayer pattern conversion. <em>[5138782]</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="notices">
+<h1><span class="section-number">4. </span>Notices<a class="headerlink" href="#notices" title="Permalink to this headline"></a></h1>
+<section id="notice">
+<h2><span class="section-number">4.1. </span>Notice<a class="headerlink" href="#notice" title="Permalink to this headline"></a></h2>
+<p>This document is provided for information purposes only and shall not
+ be regarded as a warranty of a certain functionality, condition, or 
+quality of a product. NVIDIA Corporation (“NVIDIA”) makes no 
+representations or warranties, expressed or implied, as to the accuracy 
+or completeness of the information contained in this document and 
+assumes no responsibility for any errors contained herein. NVIDIA shall 
+have no liability for the consequences or use of such information or for
+ any infringement of patents or other rights of third parties that may 
+result from its use. This document is not a commitment to develop, 
+release, or deliver any Material (defined below), code, or 
+functionality.</p>
+<p>NVIDIA reserves the right to make corrections, modifications, 
+enhancements, improvements, and any other changes to this document, at 
+any time without notice.</p>
+<p>Customer should obtain the latest relevant information before placing
+ orders and should verify that such information is current and complete.</p>
+<p>NVIDIA products are sold subject to the NVIDIA standard terms and 
+conditions of sale supplied at the time of order acknowledgement, unless
+ otherwise agreed in an individual sales agreement signed by authorized 
+representatives of NVIDIA and customer (“Terms of Sale”). NVIDIA hereby 
+expressly objects to applying any customer general terms and conditions 
+with regards to the purchase of the NVIDIA product referenced in this 
+document. No contractual obligations are formed either directly or 
+indirectly by this document.</p>
+<p>NVIDIA products are not designed, authorized, or warranted to be 
+suitable for use in medical, military, aircraft, space, or life support 
+equipment, nor in applications where failure or malfunction of the 
+NVIDIA product can reasonably be expected to result in personal injury, 
+death, or property or environmental damage. NVIDIA accepts no liability 
+for inclusion and/or use of NVIDIA products in such equipment or 
+applications and therefore such inclusion and/or use is at customer’s 
+own risk.</p>
+<p>NVIDIA makes no representation or warranty that products based on 
+this document will be suitable for any specified use. Testing of all 
+parameters of each product is not necessarily performed by NVIDIA. It is
+ customer’s sole responsibility to evaluate and determine the 
+applicability of any information contained in this document, ensure the 
+product is suitable and fit for the application planned by customer, and
+ perform the necessary testing for the application in order to avoid a 
+default of the application or the product. Weaknesses in customer’s 
+product designs may affect the quality and reliability of the NVIDIA 
+product and may result in additional or different conditions and/or 
+requirements beyond those contained in this document. NVIDIA accepts no 
+liability related to any default, damage, costs, or problem which may be
+ based on or attributable to: (i) the use of the NVIDIA product in any 
+manner that is contrary to this document or (ii) customer product 
+designs.</p>
+<p>No license, either expressed or implied, is granted under any NVIDIA 
+patent right, copyright, or other NVIDIA intellectual property right 
+under this document. Information published by NVIDIA regarding 
+third-party products or services does not constitute a license from 
+NVIDIA to use such products or services or a warranty or endorsement 
+thereof. Use of such information may require a license from a third 
+party under the patents or other intellectual property rights of the 
+third party, or a license from NVIDIA under the patents or other 
+intellectual property rights of NVIDIA.</p>
+<p>Reproduction of information in this document is permissible only if 
+approved in advance by NVIDIA in writing, reproduced without alteration 
+and in full compliance with all applicable export laws and regulations, 
+and accompanied by all associated conditions, limitations, and notices.</p>
+<p>THIS DOCUMENT AND ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS,
+ FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND 
+SEPARATELY, “MATERIALS”) ARE BEING PROVIDED “AS IS.” NVIDIA MAKES NO 
+WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE WITH RESPECT TO 
+THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF 
+NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE. 
+TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL NVIDIA BE LIABLE 
+FOR ANY DAMAGES, INCLUDING WITHOUT LIMITATION ANY DIRECT, INDIRECT, 
+SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED 
+AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF ANY USE OF 
+THIS DOCUMENT, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF 
+SUCH DAMAGES. Notwithstanding any damages that customer might incur for 
+any reason whatsoever, NVIDIA’s aggregate and cumulative liability 
+towards customer for the products described herein shall be limited in 
+accordance with the Terms of Sale for the product.</p>
+</section>
+<section id="opencl">
+<h2><span class="section-number">4.2. </span>OpenCL<a class="headerlink" href="#opencl" title="Permalink to this headline"></a></h2>
+<p>OpenCL is a trademark of Apple Inc. used under license to the Khronos Group Inc.</p>
+</section>
+<section id="trademarks">
+<h2><span class="section-number">4.3. </span>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline"></a></h2>
+<p>NVIDIA and the NVIDIA logo are trademarks or registered trademarks of
+ NVIDIA Corporation in the U.S. and other countries. Other company and 
+product names may be trademarks of the respective companies with which 
+they are associated.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr>
+
+  <div role="contentinfo">
+<img src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/NVIDIA-LogoBlack.svg" class="only-light">
+<img src="CUDA%20Toolkit%2013.0%20-%20Release%20Notes%20%E2%80%94%20Release%20Notes%2013.0%20documentation_files/NVIDIA-LogoWhite.svg" class="only-dark">
+
+<p class="notices">
+<a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a>
+|
+<a href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/" target="_blank">Manage My Privacy</a>
+|
+<a href="https://www.nvidia.com/en-us/preferences/start/" target="_blank">Do Not Sell or Share My Data</a>
+|
+<a href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/" target="_blank">Terms of Service</a>
+|
+<a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a>
+|
+<a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_blank">Corporate Policies</a>
+|
+<a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a>
+|
+<a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a>
+</p>
+
+<p>
+  Copyright © 2007-2025, NVIDIA Corporation &amp; affiliates. All rights reserved.
+</p>
+
+    <p>
+      <span class="lastupdated">Last updated on Aug 08, 2025.
+      </span></p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+ 
+<script type="text/javascript">if (typeof _satellite !== "undefined"){_satellite.pageBottom();}</script><script>_satellite["_runScript4"](function(event, target, Promise) {
+//if(typeof s!='undefined'){
+ try{
+  
+  window.ClickDownTrack=function(obj,eventVal,prefix){  
+    try{
+      if(typeof s!='undefined'){
+    secName = prefix+":"+s.pageName;
+    secName=secName.toLowerCase();
+    s.linkTrackVars='events';
+    if(prefix!=='download'){s.eVar4=prefix.toLowerCase();s.linkTrackVars='events,eVar4';}
+    s.events=eventVal;s.linkTrackEvents=eventVal;
+    if(prefix!=='download'){s.tl(obj,'d',prefix);}else{s.tl(obj,'d',secName);}
+	  s.linkTrackVars="None"
+	  s.linkTrackEvents="None" }
+    }catch(e){console.log("Bt downTrack"+e)}
+}
+  }catch(e){console.log("Bt downTrack"+e)}
+try{
+setTimeout(function(){
+if(typeof jQuery!='undefined'){
+jQuery(".col-md-8,col-md-4").on("click","a[href*='driveworks/files/driveinstall-latest']",function(){ClickDownTrack(this,'event4','download');
+});
+jQuery(".col-md-4").on("click","a[href*='driveworks/files/driveinstall-latest']",function(){ClickDownTrack(this,'event4','download');
+});
+jQuery("#panelTargetInstaller").on("click","button.cudaDownloadButton", function() {
+var getTitle=jQuery(this).parent('a').attr('title');ClickDownTrack(this,'event4',getTitle);
+});
+
+jQuery('#agree').on('click', function() {
+   var getIframeVal=jQuery(this).parents('#agreement').children('iframe').attr('src').substring(jQuery('#agree').parents('#agreement').children('iframe').attr('src').lastIndexOf('/')+1).replace('.html','');
+     ClickDownTrack(this,'event10,event4',getIframeVal)})
+if(document.URL.indexOf('embedded/downloads')<0){
+jQuery("a[href*=jetpack-l4t]").click(function(){ClickDownTrack(this,'event10','download')});  
+}
+if(document.URL.indexOf('gameworksdownload')>-1){
+jQuery("a[href*=aftermath-12-windows],a[href*=vrworks-25-sdk]").click(function(){ClickDownTrack(this,'event10','download')}); 
+}
+jQuery('.downloads ul li a.ng-scope.ng-binding').click(function(){
+if(jQuery(this).attr('href')!=='#'){
+  if(jQuery(this).attr('href').indexOf('index.html')<0){
+    if(jQuery(this).attr('href').indexOf('asset')>-1||jQuery(this).attr('href').indexOf('-sdk')>-1){
+      var getVal='download';
+      var lnk=jQuery(this).attr('href');
+      var parts= lnk.split("/");
+      if(parts[parts.length-1]==""){
+      	getVal=parts[parts.length-2];
+      }else{
+      getVal=parts[parts.length-1];
+      }
+      
+      ClickDownTrack(this,'event10',getVal)
+    }
+  }
+}
+})
+  
+if(document.URL.indexOf('/vrworks/vrworks-360video/download')>-1){
+jQuery('.field .field-items .btn').on('click',function(){var getVal=jQuery(this).attr('href').replace('https://developer.nvidia.com/','').replace(/\//g,'-');ClickDownTrack(this,'event10',getVal)})
+}
+if(document.URL.indexOf('rdp/cudnn-download')>-1){
+jQuery('.panel-body p a').on('click',function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('nvidia-grid-software-management-sdk-downloads')>-1){
+  jQuery('#block-system-main a[href*=NVIDIA-GRID-Software-Management-SDK],#block-system-main a[href*=gridsdk-userguide]').click(function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('nvwmi-sdk')>-1){
+jQuery('.panel-success a[href*=standalone],.panel-success a[href*=sdk],a[href*=api-reference]').click(function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('user')>-1){
+jQuery('#console .container .downloadable-file-link').click(function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('rdp/digits-download')>-1){
+  jQuery('a[href*=nv-deep-learning-repo],a[href*=digits-2-ubuntu-1404-prod]').click(function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('video-codec-sdk-archive')>-1){
+  jQuery('.col-md-8 a[href*=video-sdk-601],.col-md-8 a[href*=video_codec_sdk]').click(function(){ClickDownTrack(this,'event10','download')})
+} 
+if(document.URL.indexOf('ffmpeg')>-1){
+  jQuery('a[href*=Using_FFmpeg_with_NVIDIA_GPU_Hardware_Acceleration-pdf]').click(function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('designworks/video_codec_sdk/downloads/v8.0')>-1){
+jQuery('a[href*=accept_eula]').click(function(){ClickDownTrack(this,'event10','download')})
+}
+if(document.URL.indexOf('embedded/downloads')>-1){
+if(_satellite.getVar('authStage')=='logged-in'){jQuery('.downloads ul li a.ng-scope.ng-binding').click(function(){
+if(jQuery(this).attr('href')!=='#'){
+  if(jQuery(this).attr('href').indexOf('index.html')<0){
+    if(jQuery(this).attr('href').indexOf('embedded')>-1){
+      ClickDownTrack(this,'event10','download')
+    }
+  }
+}
+}) }else{jQuery('.downloads li a').click(function(){var $this=jQuery(this); var getText=$this.text();ClickOmniTracki(this,'event10','button:section:',getText);})}
+}
+
+
+
+}},2000);
+//}
+}catch(e){console.log("Bt downTrack"+e)}
+//}
+});</script><script>_satellite["_runScript5"](function(event, target, Promise) {
+if(typeof jQuery!=='undefined'){
+jQuery('#navbar-collapse a').click(function() {
+	var $this = jQuery(this);
+  var getVal = $this.text();
+
+  if(getVal=='Join'){_satellite.cookie.remove('_dtfmch');}if(!jQuery(this).hasClass("dropdown-toggle")){
+     if(getVal=='Log out'){
+    ClickOmniTrackNavi(this, 'event10,event11,event13', 'link:nav:header:', getVal);
+   }else{ClickOmniTrackNavi(this, 'event10,event11', 'link:nav:header:', getVal);}  
+  }
+
+});
+
+  
+  
+  
+jQuery('.footer-boilerplate a').click(function() {
+	var $this = jQuery(this);
+	var getVal = $this.text();
+	ClickOmniTracki(this, 'event10', 'link:footer:', getVal);
+});}
+});</script><script>_satellite["_runScript6"](function(event, target, Promise) {
+
+//if(typeof s!='undefined'){
+   
+  window.ClickOmniTracki=function(obj,eventVal,prefix,secName){  
+  try
+   {
+    if(typeof s!='undefined'){
+      secName = prefix+secName+":"+s.pageName ;
+     secName=secName.toLowerCase();
+      s.events=eventVal;s.linkTrackEvents=eventVal;
+      s.eVar10=s.prop10=secName;
+      s.linkTrackVars='events,eVar10,prop10';
+      s.tl(obj,'o',secName); 
+	    s.linkTrackVars="None"
+	    s.linkTrackEvents="None"}
+	 }catch(error){console.log("Bt DownTrack"+error)}}
+window.ClickOmniTrackNavi=function(obj,eventVal,prefix,secName){  
+  try
+   {  
+      if(typeof s!='undefined'){
+     var secN=secName.lastIndexOf('/')+1;
+      secName=secName.substring(secN);
+      secName=secName.toLowerCase();
+      secName=secName.replace(/\//g,':').replace('#','');
+      s.eVar11=s.prop11=secName;
+      secName = prefix+secName+":"+s.pageName;
+      s.events=eventVal;s.linkTrackEvents=eventVal;
+      s.eVar10=s.prop10=secName; 
+      s.linkTrackVars='events,eVar10,prop10,eVar11';
+      s.tl(obj,'o',secName); 
+	    s.linkTrackVars="None"
+	    s.linkTrackEvents="None" }
+	 }catch(error){console.log("Bt DownTrack"+error)}}
+
+
+window.ClickOmniFilter=function(obj,eventVal,prefix,secName,filter){  
+  try
+   {  
+      if(typeof s!='undefined'){
+     var secN=secName.lastIndexOf('/')+1;
+      secName=secName.substring(secN);
+      secName=secName.toLowerCase();
+      secName=secName.replace(/\//g,':').replace('#','');
+     s.eVar35=filter.toLowerCase().replace(/[".]/g,"").replace(/, /g,"|").trim().replace(/: /g,":");
+      secName = prefix+secName+":"+s.pageName;
+      s.events=eventVal;s.linkTrackEvents=eventVal;
+      s.eVar10=s.prop10=secName; 
+      s.linkTrackVars='events,eVar10,prop10,eVar35';
+      s.tl(obj,'o',secName); 
+	    s.linkTrackVars="None"
+	    s.linkTrackEvents="None"}
+	 }catch(error){console.log("Bt DownTrack"+error)}}
+
+//}
+
+window.ClickOmniTrackRec=function(obj,eventVal,prefix,secName,recType){  
+  try
+   {
+    if(typeof s!='undefined'){
+      s.list3=secName;
+      secName = prefix+secName+":"+s.pageName ;
+      secName=secName.toLowerCase();
+      s.events=eventVal;s.linkTrackEvents=eventVal;
+      s.eVar10=s.prop10=secName;
+	  s.eVar130=recType;
+	  s.linkTrackVars='events,eVar10,prop10,eVar130,list3';
+      s.tl(obj,'o',secName); 
+	    s.linkTrackVars="None"
+	    s.linkTrackEvents="None"}
+	 }catch(error){console.log("Bt DownTrack"+error)}}
+
+window.ClickOmniSearch=function(obj,eventVal,prefix,secName){  
+  try
+   { 
+   if(typeof s!='undefined'){
+   
+       	var srchKeyword=secName;
+      secName = prefix+secName+":"+s.pageName ;
+     secName=secName.toLowerCase();
+      s.events=eventVal;s.linkTrackEvents=eventVal;
+      s.eVar10=s.prop10=secName;
+    	s.eVar20=s.prop20=srchKeyword;
+      s.linkTrackVars='events,eVar10,prop10,eVar20,prop20';
+    	
+      s.tl(obj,'o',secName); 
+	    s.linkTrackVars="None"
+	    s.linkTrackEvents="None"}
+	 }catch(error){console.log("Bt DownTrack"+error)}}
+
+window.ClickOmniSearchSum = function(obj, eventVal, prefix, secName, summary) {
+    try {
+        s.eVar42 = s.prop42 = '';
+        var srchKeyword = secName;
+        secName = prefix + secName + ":" + s.pageName;
+        secName = secName.toLowerCase();
+        s.events = eventVal;
+        s.linkTrackEvents = eventVal;
+        s.eVar10 = s.prop10 = secName;
+        s.eVar20 = s.prop20 = srchKeyword;
+        s.eVar146 = summary;
+        s.linkTrackVars = 'events,eVar10,prop10,eVar20,prop20,eVar146';
+        if (_satellite.getVar('browserDoNotTrack') == "disabled") {
+            s.tl(true, 'o', secName);
+        }
+        s.linkTrackVars = "None"
+        s.linkTrackEvents = "None"
+    } catch (error) {console.log("Bt DownTrack" + error)}
+}
+});</script>
+ 
+
+
+
+</body></html>

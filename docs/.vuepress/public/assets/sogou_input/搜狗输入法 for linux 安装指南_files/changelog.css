@@ -1,0 +1,27 @@
+#banner{position: relative; height:82px;max-width: 1920px;min-width: 1300px;_width:expression((document.documentElement.clientWidth>1920||document.body.clientWidth>1920)?"1920px":((document.documentElement.clientWidth<1300||document.body.clientWidth<1300)?"1300px":"100%"));margin: 0 auto;overflow: hidden;background: url(../images/changelog/header_3.png) no-repeat center 0;}
+
+.wrapper{ width:960px; margin:0 auto;}
+
+#logo a{ width:370px; height:59px; float:left;margin-top:12px; background:url(../images/logo3.png) no-repeat;_display:inline;}
+#skins a{ width:100px; height:59px; float:left; margin:36px 0 0 410px; position:absolute; font-size:16px; color:#ff6600; font-weight:bold; _display:inline;}
+#dict a{ width:100px; height:59px; float:left; margin:36px 0 0 460px; position:absolute; font-size:16px; color:#ff6600; font-weight:bold; _display:inline;}
+#luntan a{ width:100px; height:59px; float:left; margin:36px 0 0 510px; position:absolute; font-size:16px; color:#ff6600; font-weight:bold; _display:inline;}
+
+#container{ width:100%; background:#fcfcfc;}
+#content{ width:960px; float:left;margin-top:-10px;}
+#cont_header{ width:960px; float:left; height:18px; background:url(../images/border-top.png) no-repeat;}
+#cont_body{ width:960px; float:left; background:url(../images/border-body.png) repeat-y;}
+#cont_body_header{width:900px; height:31px;margin:0px auto; margin-top:45px;background:url(../images/changelog/change_log_header.png) no-repeat;}
+#date_line_logs{width:700px; float:left; margin:20px 0 0 108px;}
+#date_line_logs ul li{ width:700px; float:left;}
+#date_line_top{ width:125px;height:19px;background:url(../images/changelog/date_line.png) top right no-repeat;}
+.date_line_cont{ width:700px;float:left;}
+.date_line_site{ width:133px;height:20px;float:left;background:url(../images/changelog/date_bg.png) 0 0 no-repeat;}
+.date_num{ width:100px; height:20px;text-align:center;float:left;line-height:18px;
+font-size:14px;color:#ffffff;font-family:'Î¢ÈíÑÅºÚ';}
+.date_title{ width:400px; height:20px;float:left;margin:-3px 0 0 10px;font-size:18px;font-weight:bold;color:#494949;font-family:'Î¢ÈíÑÅºÚ';}
+.date_cont{ width:500px; height:16px;float:left;margin:7px 0 0 25px;font-size:14px;color:#666666;font-family:'Î¢ÈíÑÅºÚ';}
+.date_line_center{ width:125px;height:25px;float:left;background:url(../images/changelog/date_line.png) center right no-repeat;}
+.date_line_center_end{ width:125px;height:30px;float:left;background:url(../images/changelog/date_line.png) center right no-repeat;}
+#date_line_btm{ width:125px;height:19px;background:url(../images/changelog/date_line.png) bottom right no-repeat;}
+#cont_bottom{ width:960px; height:17px; float:left; background:url(../images/border-btm.png) no-repeat;}

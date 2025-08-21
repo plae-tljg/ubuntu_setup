@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Arduino
+Comment=Arduino IDE
+Icon=/home/lkm/00app/arduino-ide_2.3.2_Linux_64bit/resources/app/resources/icons/512x512.png
+Exec=/home/lkm/00app/arduino-ide_2.3.2_Linux_64bit/arduino-ide
+Categories=Graphics; # Choose an appropriate category.
+Terminal=false

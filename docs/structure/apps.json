@@ -1,0 +1,394 @@
+{
+  "folders": [
+    {
+      "id": "internet",
+      "name": "Internet",
+      "icon": "📁",
+      "apps": [
+        {
+          "id": "google-chrome",
+          "name": "Google Chrome",
+          "icon": "🌐"
+        },
+        {
+          "id": "chromium",
+          "name": "Chromium",
+          "icon": "🌐"
+        },
+        {
+          "id": "remmina",
+          "name": "Remmina",
+          "icon": "🖥️"
+        },
+        {
+          "id": "transmission",
+          "name": "Transmission",
+          "icon": "📥"
+        },
+        {
+          "id": "thunderbird",
+          "name": "Thunderbird Email",
+          "icon": "📧"
+        },
+        {
+          "id": "github-desktop",
+          "name": "GitHub Desktop",
+          "icon": "📚"
+        },
+        {
+          "id": "zerotier-gui",
+          "name": "ZeroTier GUI",
+          "icon": "🔗"
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "name": "Games",
+      "icon": "🎮",
+      "apps": [
+        {
+          "id": "solitaire",
+          "name": "Solitaire",
+          "icon": "🃏"
+        },
+        {
+          "id": "sudoku",
+          "name": "Sudoku",
+          "icon": "🔢"
+        },
+        {
+          "id": "mines",
+          "name": "Mines",
+          "icon": "💣"
+        },
+        {
+          "id": "mahjongg",
+          "name": "Mahjongg",
+          "icon": "🀄"
+        },
+        {
+          "id": "2048-qt",
+          "name": "2048-qt",
+          "icon": "🎯"
+        },
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "icon": "🎮"
+        }
+      ]
+    },
+    {
+      "id": "office",
+      "name": "Office",
+      "icon": "📄",
+      "apps": [
+        {
+          "id": "libreoffice",
+          "name": "LibreOffice",
+          "icon": "📊"
+        },
+        {
+          "id": "wps",
+          "name": "WPS",
+          "icon": "📝"
+        },
+        {
+          "id": "meld",
+          "name": "Meld",
+          "icon": "🔍"
+        },
+        {
+          "id": "fldiff",
+          "name": "fldiff",
+          "icon": "📋"
+        },
+        {
+          "id": "document-viewer",
+          "name": "Document Viewer",
+          "icon": "📖"
+        },
+        {
+          "id": "archive-manager",
+          "name": "Archive Manager",
+          "icon": "📦"
+        }
+      ]
+    },
+    {
+      "id": "multimedia",
+      "name": "Multimedia",
+      "icon": "🎬",
+      "apps": [
+        {
+          "id": "vlc",
+          "name": "VLC",
+          "icon": "🎥"
+        },
+        {
+          "id": "videos",
+          "name": "Videos",
+          "icon": "🎬"
+        },
+        {
+          "id": "mp4client",
+          "name": "MP4Client",
+          "icon": "🎵"
+        },
+        {
+          "id": "gmtp",
+          "name": "gMTP",
+          "icon": "📱"
+        },
+        {
+          "id": "cheese",
+          "name": "Cheese",
+          "icon": "📷"
+        },
+        {
+          "id": "image-viewer",
+          "name": "Image Viewer",
+          "icon": "🖼️"
+        },
+        {
+          "id": "shotwell",
+          "name": "Shotwell",
+          "icon": "📸"
+        },
+        {
+          "id": "imagemagick",
+          "name": "ImageMagick",
+          "icon": "🖼️"
+        },
+        {
+          "id": "document-scanner",
+          "name": "Document Scanner",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "name": "System",
+      "icon": "⚙️",
+      "apps": [
+        {
+          "id": "terminal",
+          "name": "Terminal",
+          "icon": "💻"
+        },
+        {
+          "id": "startup-disk-creator",
+          "name": "Startup Disk Creator",
+          "icon": "💿"
+        },
+        {
+          "id": "disks",
+          "name": "Disks",
+          "icon": "💾"
+        },
+        {
+          "id": "additional-drivers",
+          "name": "Additional Drivers",
+          "icon": "🔧"
+        },
+        {
+          "id": "power-statistics",
+          "name": "Power Statistics",
+          "icon": "⚡"
+        },
+        {
+          "id": "disk-usage-analyzer",
+          "name": "Disk Usage Analyzer",
+          "icon": "📊"
+        },
+        {
+          "id": "advanced-network-config",
+          "name": "Advanced Network Configuration",
+          "icon": "🌐"
+        },
+        {
+          "id": "texinfo",
+          "name": "Texinfo",
+          "icon": "📚"
+        },
+        {
+          "id": "backups",
+          "name": "Backups",
+          "icon": "💾"
+        },
+        {
+          "id": "passwords-keys",
+          "name": "Passwords and Keys",
+          "icon": "🔑"
+        },
+        {
+          "id": "logs",
+          "name": "Logs",
+          "icon": "📋"
+        }
+      ]
+    },
+    {
+      "id": "preferences",
+      "name": "Preferences",
+      "icon": "⚙️",
+      "apps": [
+        {
+          "id": "software-updater",
+          "name": "Software Updater",
+          "icon": "🔄"
+        },
+        {
+          "id": "software-updates",
+          "name": "Software & Updates",
+          "icon": "📦"
+        },
+        {
+          "id": "startup-applications",
+          "name": "Startup Applications",
+          "icon": "🚀"
+        },
+        {
+          "id": "software",
+          "name": "Software",
+          "icon": "📱"
+        },
+        {
+          "id": "snap-store",
+          "name": "Snap Store",
+          "icon": "📱"
+        },
+        {
+          "id": "tweaks",
+          "name": "Tweaks",
+          "icon": "🔧"
+        },
+        {
+          "id": "help",
+          "name": "Help",
+          "icon": "❓"
+        },
+        {
+          "id": "language-support",
+          "name": "Language Support",
+          "icon": "🌍"
+        },
+        {
+          "id": "fcitx",
+          "name": "fcitx",
+          "icon": "⌨️"
+        },
+        {
+          "id": "fcitx-config",
+          "name": "fcitx Configuration",
+          "icon": "⚙️"
+        },
+        {
+          "id": "fonts",
+          "name": "Fonts",
+          "icon": "🔤"
+        },
+        {
+          "id": "characters",
+          "name": "Characters",
+          "icon": "🔤"
+        }
+      ]
+    },
+    {
+      "id": "gpu",
+      "name": "GPU",
+      "icon": "🎮",
+      "apps": [
+        {
+          "id": "nvidia-settings",
+          "name": "NVIDIA Settings",
+          "icon": "🎮"
+        },
+        {
+          "id": "nvidia-xconfig",
+          "name": "NVIDIA X Config",
+          "icon": "⚙️"
+        }
+      ]
+    },
+    {
+      "id": "ide",
+      "name": "IDE",
+      "icon": "💻",
+      "apps": [
+        {
+          "id": "android-studio",
+          "name": "Android Studio",
+          "icon": "📱"
+        },
+        {
+          "id": "anaconda",
+          "name": "Anaconda",
+          "icon": "🐍"
+        },
+        {
+          "id": "vs-code",
+          "name": "VS Code",
+          "icon": "💻"
+        },
+        {
+          "id": "arduino",
+          "name": "Arduino",
+          "icon": "🔌"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "name": "Tools",
+      "icon": "🔧",
+      "apps": [
+        {
+          "id": "ssh-key-manager",
+          "name": "SSH Key Manager",
+          "icon": "🔑"
+        },
+        {
+          "id": "virtualbox",
+          "name": "VirtualBox",
+          "icon": "🖥️"
+        },
+        {
+          "id": "genymotion",
+          "name": "Genymotion",
+          "icon": "📱"
+        },
+        {
+          "id": "shareboard",
+          "name": "Shareboard",
+          "icon": "📋"
+        },
+        {
+          "id": "calendar",
+          "name": "Calendar",
+          "icon": "📅"
+        },
+        {
+          "id": "todo",
+          "name": "To Do",
+          "icon": "✅"
+        }
+      ]
+    }
+  ],
+  "standalone": [
+    {
+      "id": "calculator",
+      "name": "Calculator",
+      "icon": "🧮"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "icon": "🖱️"
+    }
+  ]
+}

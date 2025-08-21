@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Cursor
+Comment=Cursor App
+Icon=/home/lkm/00app/cursor/00icon/cursor-ai.jpeg
+Exec=/home/lkm/00app/cursor/cursor_launcher.sh
+Categories=Graphics; # Choose an appropriate category.
+Terminal=false
