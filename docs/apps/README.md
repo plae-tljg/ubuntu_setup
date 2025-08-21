@@ -1,3 +1,0 @@
-# Apps
-
-Examples like firefox.  
