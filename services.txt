@@ -1,0 +1,21 @@
+llama.cpp
+ollama
+siyuan notes
+memos
+
+asr server with web
+tts server with web
+ai singer with web
+ai writer with web
+img gen, stable diffusion
+
+docker firefox
+docker 
+
+smtp server
+ftp, sftp
+
+finance manager
+
+
+phone server

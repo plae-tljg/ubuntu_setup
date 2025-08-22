@@ -2,7 +2,7 @@ kolourpaint
 sublime text
 wireshark
 brave web browser
-\drawio
+drawio
 neovim
 audacity
 grub customizer
