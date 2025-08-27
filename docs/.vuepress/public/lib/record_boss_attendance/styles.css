@@ -1,0 +1,832 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* 顶部区域 */
+.top-section {
+    display: flex;
+    gap: 25px;
+}
+
+.add-record-form {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+.add-record-form h2, .date-controls-section h2, .records-table-section h2, .timeline-section h2 {
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* 表单网格布局 */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group select {
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 日期控制 */
+.date-input {
+    margin-bottom: 15px;
+}
+
+.date-input input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.date-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.date-buttons .btn {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-right: 0;
+}
+
+.available-dates {
+    margin-top: 15px;
+}
+
+.date-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.date-tag {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.date-tag:hover {
+    background: #cbd5e0;
+    border-color: #667eea;
+}
+
+/* 时间轴区域（整行） */
+.timeline-section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+/* 底部信息区域 */
+.bottom-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    min-height: 400px;
+}
+
+.records-table-section, .date-controls-section {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.date-controls-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.records-table-section h2, .timeline-section h2 {
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* 表格样式 */
+.table-container {
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.records-table th,
+.records-table td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.records-table th {
+    background: #f7fafc;
+    font-weight: 600;
+    color: #4a5568;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.records-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    display: inline-block;
+    min-width: 60px;
+}
+
+.status-badge.status-present {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.status-badge.status-absent {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.status-badge.status-partial {
+    background: #fef5e7;
+    color: #744210;
+}
+
+/* 时间轴容器 */
+.timeline-container {
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* 优化时间轴显示 */
+.horizontal-timeline {
+    width: 100%;
+    min-width: fit-content;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* 水平时间轴样式 */
+.horizontal-timeline {
+    overflow: visible;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.timeline-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.timeline-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+    animation: move 2s linear infinite;
+}
+
+@keyframes move {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+.timeline-title h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-info {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    opacity: 0.95;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-header {
+    display: flex;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-bottom: 2px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    width: fit-content;
+}
+
+.boss-label {
+    min-width: 140px;
+    padding: 18px 20px;
+    font-weight: 700;
+    color: #2d3748;
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    border-right: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.time-slot {
+    min-width: 60px;
+    width: 60px;
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #4a5568;
+    border-right: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.time-slot::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 8px;
+    background: #cbd5e0;
+}
+
+.boss-timeline-row {
+    display: flex;
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.boss-timeline-row:hover {
+    background: rgba(102, 126, 234, 0.02);
+    transform: translateX(2px);
+}
+
+.boss-timeline-row:last-child {
+    border-bottom: none;
+}
+
+.boss-name {
+    min-width: 140px;
+    width: 140px;
+    padding: 18px 20px;
+    font-weight: 700;
+    color: #2d3748;
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    border-right: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.timeline-cell {
+    min-width: 60px;
+    width: 60px;
+    height: 70px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.timeline-cell.present {
+    background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
+    border-color: #48bb78;
+    box-shadow: inset 0 0 0 1px rgba(72, 187, 120, 0.3);
+}
+
+.timeline-cell.absent {
+    background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+    border-color: #f56565;
+    box-shadow: inset 0 0 0 1px rgba(245, 101, 101, 0.3);
+}
+
+.timeline-cell.empty {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+}
+
+/* 边界标记单元格样式 */
+.timeline-cell.boundary-cell {
+    position: relative;
+}
+
+.timeline-cell.boundary-cell::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.6);
+}
+
+.timeline-cell.boundary-cell:hover::before {
+    width: 6px;
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    box-shadow: 0 0 12px rgba(102, 126, 234, 0.8);
+}
+
+.timeline-cell:hover {
+    transform: scale(1.08);
+    z-index: 5;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.timeline-cell.present:hover {
+    background: linear-gradient(135deg, #9ae6b4 0%, #68d391 100%);
+}
+
+.timeline-cell.absent:hover {
+    background: linear-gradient(135deg, #feb2b2 0%, #fc8181 100%);
+}
+
+.cell-content {
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.cell-content:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* 记录标记特殊样式 - 现在显示在边界上 */
+.record-marker {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+    animation: recordPulse 2s ease-in-out infinite;
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.record-marker:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6) !important;
+}
+
+@keyframes recordPulse {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.05); }
+}
+
+.status-indicator {
+    font-size: 1.4rem;
+    color: #4a5568;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.status-indicator[title*="在办公室"] {
+    color: #38a169;
+    animation: pulse 2s infinite;
+}
+
+.status-indicator[title*="不在办公室"] {
+    color: #a0aec0;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* 底部数据管理 */
+.data-management-section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.data-management-section h2 {
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #48bb78;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #38a169;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #f56565;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #e53e3e;
+    transform: translateY(-2px);
+}
+
+/* 滚动条样式 */
+.table-container::-webkit-scrollbar,
+.timeline-container::-webkit-scrollbar,
+.horizontal-timeline::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track,
+.timeline-container::-webkit-scrollbar-track,
+.horizontal-timeline::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb,
+.timeline-container::-webkit-scrollbar-thumb,
+.horizontal-timeline::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover,
+.timeline-container::-webkit-scrollbar-thumb:hover,
+.horizontal-timeline::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 时间轴滚动条样式 */
+.timeline-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 6px;
+    border: 2px solid #f1f1f1;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* 响应式设计优化 */
+@media (max-width: 1400px) {
+    .timeline-cell, .time-slot {
+        min-width: 55px;
+        width: 55px;
+    }
+    
+    .boss-label, .boss-name {
+        min-width: 130px;
+        width: 130px;
+        padding: 16px 18px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .timeline-cell, .time-slot {
+        min-width: 50px;
+        width: 50px;
+    }
+    
+    .boss-label, .boss-name {
+        min-width: 120px;
+        width: 120px;
+        padding: 15px;
+    }
+    
+    .timeline-title h3 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .timeline-cell, .time-slot {
+        min-width: 45px;
+        width: 45px;
+        height: 65px;
+    }
+    
+    .boss-label, .boss-name {
+        min-width: 110px;
+        width: 110px;
+        padding: 14px;
+        font-size: 1rem;
+    }
+    
+    .timeline-title h3 {
+        font-size: 1.3rem;
+    }
+    
+    .timeline-info {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-cell, .time-slot {
+        min-width: 40px;
+        width: 40px;
+        height: 60px;
+    }
+    
+    .boss-label, .boss-name {
+        min-width: 100px;
+        width: 100px;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    
+    .timeline-title h3 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-info {
+        font-size: 0.85rem;
+    }
+    
+    .cell-content {
+        font-size: 0.8rem;
+        padding: 3px 6px;
+    }
+    
+    .status-indicator {
+        font-size: 1.2rem;
+    }
+    
+    .record-marker {
+        font-size: 0.75rem !important;
+        padding: 2px 4px !important;
+        left: 6px !important;
+    }
+    
+    /* 中等屏幕下边界标记的宽度调整 */
+    .timeline-cell.boundary-cell::before {
+        width: 3px;
+    }
+    
+    .timeline-cell.boundary-cell:hover::before {
+        width: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-cell, .time-slot {
+        min-width: 35px;
+        width: 35px;
+        height: 55px;
+    }
+    
+    .boss-label, .boss-name {
+        min-width: 90px;
+        width: 90px;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-title h3 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-info {
+        font-size: 0.8rem;
+    }
+    
+    .cell-content {
+        font-size: 0.75rem;
+        padding: 2px 4px;
+    }
+    
+    .status-indicator {
+        font-size: 1.1rem;
+    }
+    
+    .record-marker {
+        font-size: 0.7rem !important;
+        padding: 1px 3px !important;
+        left: 4px !important;
+    }
+    
+    /* 小屏幕下边界标记的宽度调整 */
+    .timeline-cell.boundary-cell::before {
+        width: 3px;
+    }
+    
+    .timeline-cell.boundary-cell:hover::before {
+        width: 4px;
+    }
+}
+
+/* 其他响应式样式 */
+@media (max-width: 1200px) {
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .top-section {
+        flex-direction: column;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
