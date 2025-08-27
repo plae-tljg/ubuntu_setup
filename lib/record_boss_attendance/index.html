@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Attendance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Boss Attendance Tracker</h1>
+        </header>
+        
+        <div class="main-content">
+            <!-- 顶部：添加记录和日期选择 -->
+            <div class="top-section">
+                <div class="add-record-form">
+                    <h2>添加新记录</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bossName">老板姓名</label>
+                            <input type="text" id="bossName" placeholder="输入老板姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recordType">记录类型</label>
+                            <select id="recordType">
+                                <option value="arrive">到达办公室</option>
+                                <option value="leave">离开办公室</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recordTime">时间</label>
+                            <input type="time" id="recordTime" min="09:00" max="18:30" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">描述 (可选)</label>
+                            <input type="text" id="description" placeholder="如：午餐、会议等">
+                        </div>
+                        
+                        <div class="form-group">
+                            <button id="addRecord" class="btn btn-primary">添加记录</button>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+            
+            <!-- 时间轴区域（整行） -->
+            <div class="timeline-section">
+                <h2>出勤时间轴</h2>
+                <div id="timeline" class="timeline-container"></div>
+            </div>
+            
+            <!-- 底部信息区域 -->
+            <div class="bottom-section">
+                <!-- 左侧：出勤记录表格 -->
+                <div class="records-table-section">
+                    <h2>出勤记录</h2>
+                    <div class="table-container">
+                        <table class="records-table">
+                            <thead>
+                                <tr>
+                                    <th>老板姓名</th>
+                                    <th>状态</th>
+                                    <th>到达时间</th>
+                                    <th>离开时间</th>
+                                    <th>在办公室时长</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recordsTableBody">
+                                <!-- 动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 右侧：日期选择 -->
+                <div class="date-controls-section">
+                    <h2>日期选择</h2>
+                    <div class="date-input">
+                        <input type="date" id="selectedDate" value="">
+                    </div>
+                    <div class="date-buttons">
+                        <button id="prevDate" class="btn btn-secondary">◀ 前一天</button>
+                        <button id="today" class="btn btn-secondary">今天</button>
+                        <button id="nextDate" class="btn btn-secondary">后一天 ▶</button>
+                    </div>
+                    <div class="available-dates">
+                        <div id="dateList" class="date-list"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部：数据管理 -->
+            <div class="data-management-section">
+                <h2>数据管理</h2>
+                <div class="button-group">
+                    <button id="importCSV" class="btn btn-primary">📥 导入CSV</button>
+                    <button id="exportCSV" class="btn btn-secondary">📤 导出CSV</button>
+                    <button id="clearData" class="btn btn-danger">🗑️ 清空数据</button>
+                </div>
+                <input type="file" id="fileInput" accept=".csv" style="display: none;">
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
