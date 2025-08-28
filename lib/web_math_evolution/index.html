@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能符号操作求解器</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-brain"></i> 智能符号操作求解器</h1>
+        <p class="subtitle">基于进化算法的符号表达式生成工具</p>
+    </header>
+    
+    <div class="container">
+        <aside class="control-panel">
+            <section id="input-section">
+                <h2><i class="fas fa-sliders-h"></i> 参数设置</h2>
+                <div class="input-group">
+                    <label for="target-number">目标数值:</label>
+                    <input type="number" id="target-number" placeholder="例如: 800">
+                </div>
+                
+                <div class="input-group">
+                    <label for="available-numbers">可用数字 (逗号分隔):</label>
+                    <input type="text" id="available-numbers" placeholder="例如: 1,1,4,5,1,4">
+                </div>
+                
+                <div class="input-group">
+                    <label>可用操作:</label>
+                    <div class="operations-checkboxes">
+                        <label><input type="checkbox" class="operation" value="+" checked> 加法 <i class="fas fa-plus"></i></label>
+                        <label><input type="checkbox" class="operation" value="-" checked> 减法 <i class="fas fa-minus"></i></label>
+                        <label><input type="checkbox" class="operation" value="*" checked> 乘法 <i class="fas fa-times"></i></label>
+                        <label><input type="checkbox" class="operation" value="/" checked> 除法 <i class="fas fa-divide"></i></label>
+                        <label><input type="checkbox" class="operation" value="^" checked> 幂运算 <i class="fas fa-superscript"></i></label>
+                        <label><input type="checkbox" class="operation" value="%" checked> 取模 <i class="fas fa-percentage"></i></label>
+                        <label><input type="checkbox" class="operation" value="concat" checked> 连接 <i class="fas fa-link"></i></label>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>算法参数:</label>
+                    <div class="algorithm-params">
+                        <div class="param-row">
+                            <label for="population-size">种群大小:</label>
+                            <input type="number" id="population-size" value="200" min="10" max="500">
+                        </div>
+                        <div class="param-row">
+                            <label for="generations">最大代数:</label>
+                            <input type="number" id="generations" value="100" min="10" max="500">
+                        </div>
+                        <div class="param-row">
+                            <label for="mutation-rate">变异率:</label>
+                            <input type="range" id="mutation-rate" value="0.2" min="0" max="1" step="0.05">
+                            <span id="mutation-rate-value">0.2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="solve-button"><i class="fas fa-play"></i> 开始求解</button>
+                <button id="stop-button" disabled><i class="fas fa-stop"></i> 停止</button>
+            </section>
+            
+            <section id="stats-section">
+                <h2><i class="fas fa-chart-line"></i> 运行统计</h2>
+                <div id="algorithm-stats">
+                    <p>当前代数: <span id="current-generation">0</span></p>
+                    <p>最佳适应度: <span id="best-fitness">-</span></p>
+                    <p>当前最佳解: <span id="current-best">-</span></p>
+                    <p>距离目标: <span id="target-distance">-</span></p>
+                    <p>计算时间: <span id="computation-time">0.00</span> 秒</p>
+                </div>
+                
+                <div id="progress-container">
+                    <label>进度:</label>
+                    <div id="evolution-progress">
+                        <div id="progress-bar"></div>
+                    </div>
+                    <span id="progress-percent">0%</span>
+                </div>
+            </section>
+        </aside>
+        
+        <main>
+            <section id="result-section">
+                <h2><i class="fas fa-trophy"></i> 最佳解决方案</h2>
+                <div id="solution-container">
+                    <p>请输入目标数值和可用数字，然后点击开始求解。</p>
+                </div>
+                
+                <div id="visualization-container">
+                    <!-- 这里会动态添加最佳解的可视化元素 -->
+                </div>
+            </section>
+            
+            <section id="population-section">
+                <h2><i class="fas fa-users"></i> 种群可视化</h2>
+                <div class="generation-controls">
+                    <button id="prev-gen" disabled><i class="fas fa-chevron-left"></i></button>
+                    <span id="current-gen-display">当前代: 0</span>
+                    <button id="next-gen" disabled><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div id="generation-grid">
+                    <!-- 这里会展示当前代的所有个体图形化表示 -->
+                    <div class="empty-message">点击"开始求解"按钮查看种群进化过程</div>
+                </div>
+            </section>
+            
+            <section id="evolution-history">
+                <h2><i class="fas fa-history"></i> 进化历史</h2>
+                <div id="evolution-chart-container">
+                    <canvas id="evolution-chart"></canvas>
+                </div>
+                <div id="evolution-best-solutions">
+                    <!-- 这里会显示历史最佳解决方案 -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <p>智能符号操作求解器 &copy; 2023 | 基于进化算法的智能探索</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/visualCalculator.js"></script>
+    <script src="scripts/evolutionSolver.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
