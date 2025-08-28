@@ -1,0 +1,470 @@
+:root {
+    --primary-color: #3a7bd5;
+    --primary-gradient: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    --secondary-color: #2c3e50;
+    --accent-color: #00d2ff;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --border-radius: 8px;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: var(--primary-gradient);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+header .subtitle {
+    opacity: 0.8;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+    gap: 1.5rem;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+aside.control-panel {
+    flex: 0 0 350px;
+    position: sticky;
+    top: 1rem;
+    align-self: flex-start;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+section {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+section:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    padding: 1rem;
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h2 i {
+    color: var(--primary-color);
+}
+
+#input-section, #stats-section {
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.input-group:last-child {
+    border-bottom: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.2);
+    outline: none;
+}
+
+.operations-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.operations-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.operations-checkboxes i {
+    color: var(--primary-color);
+    width: 16px;
+    text-align: center;
+}
+
+.algorithm-params {
+    padding: 0.5rem 0;
+}
+
+.param-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.param-row label {
+    flex: 0 0 120px;
+    margin-bottom: 0;
+}
+
+.param-row input[type="range"] {
+    flex: 1;
+}
+
+#mutation-rate-value {
+    flex: 0 0 40px;
+    text-align: right;
+}
+
+button {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#stop-button {
+    background: var(--danger-color);
+    margin-top: 0.5rem;
+}
+
+#algorithm-stats {
+    padding: 1rem;
+}
+
+#algorithm-stats p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#algorithm-stats span {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+#progress-container {
+    padding: 0 1rem 1rem;
+}
+
+#evolution-progress {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--primary-gradient);
+    border-radius: 5px;
+    transition: width 0.3s;
+}
+
+#progress-percent {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+#solution-container {
+    padding: 1.5rem;
+    min-height: 100px;
+}
+
+#visualization-container {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    min-height: 100px;
+}
+
+.visual-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.visual-box:hover {
+    transform: scale(1.1);
+}
+
+.operation-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0 0.5rem;
+}
+
+.result-box {
+    background: var(--success-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.generation-controls {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.generation-controls button {
+    width: auto;
+    margin: 0;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+#current-gen-display {
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+}
+
+#generation-grid {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    min-height: 300px;
+    position: relative;
+}
+
+.empty-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #aaa;
+    text-align: center;
+    font-style: italic;
+}
+
+.individual-card {
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.individual-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.individual-card.best {
+    border: 2px solid var(--success-color);
+}
+
+.individual-fitness {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+}
+
+.individual-expression {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+.individual-value {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.individual-visualization {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.individual-visualization .visual-box {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+}
+
+#evolution-chart-container {
+    padding: 1rem;
+    height: 200px;
+}
+
+#evolution-best-solutions {
+    padding: 1rem;
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+}
+
+.solution-card {
+    flex: 0 0 200px;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    transition: var(--transition);
+}
+
+.solution-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.solution-gen {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.3rem;
+}
+
+.solution-expression {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+.solution-fitness {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    aside.control-panel {
+        flex: 0 0 auto;
+        position: static;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .operations-checkboxes {
+        grid-template-columns: 1fr;
+    }
+} 

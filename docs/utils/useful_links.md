@@ -12,3 +12,4 @@
 | 名称         | 链接                                                                 |
 | ------------ | -------------------------------------------------------------------- |
 | 出勤记录 | <span style="color:red"><a :href="$withBase('/lib/record_boss_attendance/index.html')">`/lib/record_boss_attendance/index.html`</a></span> |
+| web math evolution algorithm | <span style="color:red"><a :href="$withBase('/lib/web_math_evolution/index.html')">`/lib/web_math_evolution/index.html`</a></span> |
