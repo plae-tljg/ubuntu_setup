@@ -1,0 +1,62 @@
+#tecmint_incontent {
+height: 280px;
+}
+#tecmint_incontent_2 {
+height: 280px;
+}
+#tecmint_incontent_3 {
+height: 280px;
+}
+#tecmint_incontent_dynamic {
+height: 280px;
+}
+#tecmint_leaderboard_article_top {
+height: 280px;
+}
+#tecmint_leaderboard_atf {
+height: 100px;
+}
+#tecmint_right_rail_1 {
+height: 280px;
+}
+#tecmint_right_rail_2 {
+height: 280px;
+}
+#tecmint_right_rail_4 {
+height: 280px;
+}
+@media only screen and (min-device-width: 768px) {
+#tecmint_incontent {
+height: 90px;
+}
+#tecmint_incontent_2 {
+height: 90px;
+}
+#tecmint_incontent_3 {
+height: 90px;
+}
+#tecmint_incontent_dynamic {
+height: 280px;
+}
+#tecmint_leaderboard_article_top {
+height: 90px;
+}
+#tecmint_leaderboard_atf {
+height: 90px;
+}
+#tecmint_leaderboard_btf {
+height: 309px;
+}
+#tecmint_right_rail_1 {
+height: 600px;
+}
+#tecmint_right_rail_2 {
+height: 600px;
+}
+#tecmint_right_rail_3 {
+height: 600px;
+}
+#tecmint_right_rail_4 {
+height: 250px;
+}
+}
