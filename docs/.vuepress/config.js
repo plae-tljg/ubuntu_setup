@@ -89,6 +89,13 @@ export default defineUserConfig({
             '/utils/user_config/cursor_style.md',
           ],
         },
+        {
+          text: '有趣命令',
+          children: [
+            '/utils/interesting_cmd/README.md',
+            '/utils/interesting_cmd/hidden_img.md',
+          ],
+        },
       ],
     },
     // 导航栏配置

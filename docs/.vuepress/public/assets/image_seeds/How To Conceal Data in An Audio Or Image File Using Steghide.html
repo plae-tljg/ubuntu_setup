@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--			 			  	     		     
+.-.-. .-.-. .-..--. .-. .-. .-. .-..--.   .-. .-..--. .-..-.    	   
+| |~.-.~| | | | ~~  | | | | | | | | ~~.-. | | | | ~~  | | ~       	   
+| |  ~  | | | | _   | | | | | | | |.--.~  | | | | _    \|     	      	       
+| |     | | | |`-'  | | | | | | | | ~~.-. | | | |`-'     |\     	      
+| |     | | | | __  `-'_`-'_`-' | |.--.~  | | | | __   _ | |    	    
+`-'     `-' `-'`--'   `-' `-'   `-' ~~    `-' `-'`--' `-'`-'     	   
+       	      	      	      	     	   	       	    	      	    
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope="" itemtype="http://schema.org/WebPage"><head>       	       	      
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
+<meta name="robots" content="index,follow">	     	    	    	 
+<meta http-equiv="imagetoolbar" content="no">       	  	     	       
+<title>How To Conceal Data in An Audio Or Image File Using Steghide</title>    	    
+<link href="How%20To%20Conceal%20Data%20in%20An%20Audio%20Or%20Image%20File%20Using%20Steghide_files/style.css" rel="stylesheet" type="text/css">  	    	 	 		   	    	 	   
+<!--share script-->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({
+publisher: "f0328d25-d3c3-40d8-bbb4-ab6163f85a16", doNotHash: true, doNotCopy: true, hashAddressBar: false, onhover: false });</script>
+<!--end share script-->
+</head><body>
+&nbsp;<b>MEWBIES@:&nbsp;&nbsp;<a href="https://www.facebook.com/Mewbies" target="_blank">Facebook</a>&nbsp;&nbsp;<a href="https://twitter.com/mewbies" target="_blank">Twitter</a>&nbsp;&nbsp;<a href="https://plus.google.com/+Mewbies" target="_blank">G+</a>&nbsp;&nbsp;<a href="https://www.youtube.com/mewbiesdotcom" target="_blank">YouTube</a>&nbsp;&nbsp;<a href="http://mewbies.deviantart.com/" target="_blank">DeviantArt</a></b>&nbsp;&nbsp;<b><a href="http://mewbies.com/mewbies_posting/index.php" target="_blank">Forum</a>&nbsp;&nbsp;<a href="http://www.yourworldoftext.com/mewbies" target="_blank">Wall</a></b>
+
+<table border="0"><tbody><tr>
+<td>&nbsp;<b><span style="font-size:13px">SHARE:</span></b></td>
+<td><span class="st_facebook_custom"></span></td>
+<td><span class="st_twitter_custom" st_via="Mewbies" st_msg="#mewbies"></span></td>
+<td><span class="st_googleplus_custom"></span></td>
+<td><span class="st_sharethis_custom" st_via="Mewbies" st_msg="#mewbies"></span></td>
+</tr></tbody></table><pre>    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+   ██                                                                       ██
+  █▌          -   <b>STEGHIDE - CONCEAL DATA IN AUDIO OR IMAGE FILE</b>   -         █▌
+ █▌                                                                           █▌
+ █     _________________________________________________________________      ▐▌
+ █    /  <a href="http://steghide.sourceforge.net/" target="_blank">Steghide</a> is a steganography program that is able to hide data  \     ▐▌
+ █    |  in various kinds of image- and audio-files.                    |     ▐▌
+ █    |  Features  include  the  compression  of the embedded data,     |     ▐▌
+ █    |  encryption of the embedded data and automatic integrity        |     ▐▌
+ █    |  checking  using a checksum. The color- respectivly             |     ▐▌
+ █    |  sample-frequencies are not changed thus making the embedding   |     ▐▌
+ █    |  resistant against first-order statistical tests.               |     ▐▌
+ █    |                                                                 |     ▐▌
+ █    |  The JPEG, BMP, WAV and AU file formats are supported for use   |     ▐▌
+ █    |  as cover file. There are  no restrictions on the format of the |     ▐▌
+ █    \  secret data."                                                  /     ▐▌
+ █     -----------------------------------------------------------------      ▐▌
+ █           \   ,__,                                                         ▐▌
+ █            \  (00)____                                                     ▐▌
+ █               (__)    )\                                                   ▐▌
+ █                  ||-v|| *                                                  ▐▌
+ █                                                                            ▐▌
+ █ In <a href="https://mewbies.com/steganography/steghide/mooeow_secret.wav" target="_blank">THIS</a> wav file (2.9MB; download it if you want to view my hidden file) I ▐▌
+ █ have hidden a secret pdf file. Password is: mewbies                        ▐▌
+
+                     <audio controls="controls" height="100" width="100"><source src="How%20To%20Conceal%20Data%20in%20An%20Audio%20Or%20Image%20File%20Using%20Steghide_files/mooeow_secret.wav"><embed height="50" width="100" src="How%20To%20Conceal%20Data%20in%20An%20Audio%20Or%20Image%20File%20Using%20Steghide_files/mooeow_secret.wav"></audio> 
+ █ <b>NOTES:</b>                                                                     ▐▌
+ █ ``````                                                                     ▐▌
+ █ <b>1.</b> Steghide, by Stefan Hetzl, works very nicely and very easy to use. Be   ▐▌ 
+ █    aware though that the 'cover file' needs to much larger than hidden     ▐▌
+ █    file/data. If it isn't large enough you will have the error             ▐▌
+ █    "steghide: the cover file is too short to embed the data".              ▐▌
+ █    I don't know what the size ratio cover:hidden is (more than 31+:1 on    ▐▌
+ █    the files I tested it with). I wish there was a command to determine    ▐▌
+ █    size needed to encrypted it into x cover file.                          ▐▌
+ █ <b>2.</b> The size of original cover file will though be the same size (at least  ▐▌
+ █    in my test) as the encrypted cover file it creates.                     ▐▌
+ █                                                                            ▐▌
+ █ <b>LINUX:</b>                                                                     ▐▌
+ █ ``````                                                                     ▐▌
+ █ <b>su</b>                                                                         ▐▌
+ █ <b>aptitude install steghide</b>                                                  ▐▌
+ █ <b>exit</b>                                                                       ▐▌
+ █ <b><a href="http://steghide.sourceforge.net/documentation/manpage.php" target="_blank">man steghide</a></b>                                                               ▐▌
+ █                                                                            ▐▌
+ █ <b>WINDOWS:</b>                                                                   ▐▌
+ █ ````````                                                                   ▐▌
+ █ Unzip it, done. Manual is included in the zip or find on line <a href="http://steghide.sourceforge.net/documentation/manpage.php" target="_blank">here</a>.        ▐▌
+ █ Launch a command prompt window: Press the Windows logo key on your         ▐▌
+ █ keyboard +r to launch Run, then type in the 'Open' drop down window: <b>cmd</b>   ▐▌
+ █                                                                            ▐▌
+ █ Change to the directory containing steghide.exe; for example if it is on D ▐▌
+ █ drive type in and press enter: <b>D:</b>                                          ▐▌
+ █ <b>cd D:\Downloads\steghide\</b>                                                  ▐▌
+ █                                                                            ▐▌
+ █ <b>USAGE LINUX &amp; WINDOWS:</b>                                                     ▐▌
+ █ ``````````````````````                                                     ▐▌
+ █ To hide a file in an audio or image file:                                  ▐▌
+ █ Basic example; mooeow.wav is the cover file containing the hidden          ▐▌
+ █ encrypted secret.pdf:                                                      ▐▌
+ █ <b>steghide embed -cf mooeow.wav -ef secret.pdf</b>                               ▐▌
+ █ To include a password in cmd line (-p mewbies) and declare name of the     ▐▌
+ █ output file (-sf mooeow_secret.wav):                                       ▐▌
+ █ <b>steghide embed -cf mooeow.wav -ef secret.pdf -p mewbies -sf mooeow_secret.wav</b>
+ █                                                                            ▐▌
+ █ -cf is the cover file that will become the output file                     ▐▌
+ █ -ef is the encrypted, hidden file                                          ▐▌
+ █ -p is the password                                                         ▐▌
+ █ -sf stego file to output name to (or it will overwrite the original)       ▐▌
+ █                                                                            ▐▌ 
+ █ To extract the embedded / hidden file:                                     ▐▌
+ █ <b>steghide extract -sf mooeow_secret.wav</b>                                     ▐▌
+ █ You'll be prompted for the password.                                       ▐▌
+ █                                                                            ▐▌
+ █ To view information about the embedded data only:                          ▐▌
+ █ <b>steghide info mooeow_secret.wav</b>                                            ▐▌
+ █ Or declare -p to view more information and not be prompted for pass:       ▐▌
+ █ <b>steghide info mooeow_secret.wav -p mewbies</b>                                 ▐▌
+ █                                                                            ▐▌
+ █ //----------------------------------------------------------------------   ▐▌
+ █                                                                            ▐▌
+ █ If you find mistakes, have suggestions, and or questions please post at    ▐▌
+ █ mewbies forum <a href="http://mewbies.com/mewbies_posting/index.php" target="_blank">HERE</a> - thank you.                                            ▐▌
+ █                                                                            ▐▌
+ █ Last update on 26 Dec '13                                                  ▐▌
+ █                                                                            ▐▌
+ █▌                                                                           █▌
+  █▌                          -   mewbies.com   -                            █▌
+   █▌                                                                       █▌
+    ██▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄██
+ </pre>
+</body></html>
