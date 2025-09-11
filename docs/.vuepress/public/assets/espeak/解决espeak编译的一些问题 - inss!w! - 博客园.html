@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    <meta name="keywords" content="Linux" />
+    <meta name="description" content="Full dictionary is not installed for ‘zh’] 主要：espeak --compile=zh 参考：ubuntu完美安装espeak支持中文和粤语 不再报错:Full dictionary is not installed for &amp;#39;zh&amp;#39; $ " />
+    <meta property="og:description" content="Full dictionary is not installed for ‘zh’] 主要：espeak --compile=zh 参考：ubuntu完美安装espeak支持中文和粤语 不再报错:Full dictionary is not installed for &amp;#39;zh&amp;#39; $ " />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>解决espeak编译的一些问题 - inss!w! - 博客园</title>
+    <link rel="icon" id="favicon" href="https://assets.cnblogs.com/favicon_v3_2.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://www.cnblogs.com/Hfolsvh/p/15057694.html" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=T00YsJW24hynb8p8gLnYNM6CRU0ewQSEUipMlEa1vs0" />
+    
+
+    
+        <link id="highlighter-theme-cnblogs" type="text/css" rel="stylesheet" href="/css/hljs/cnblogs.css?v=5J1NDtbnnIr2Rc2SdhEMlMxD4l9Eydj88B31E7_NhS4" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/Hfolsvh/custom.css?v=EPaDS3lfyDDkaRutjsmz&#x2B;IsPA3o=" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-simplememory-mobile-pure.min.css?v=NjJnIg2ndXmoshSBcUyxF6kOyJTJ44pIM16pEa8vFeU" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/Hfolsvh/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/Hfolsvh/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/Hfolsvh/wlwmanifest.xml" />
+    
+    <script type="application/ld&#x2B;json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://www.cnblogs.com/Hfolsvh/p/15057694.html",
+      "headline": "解决espeak编译的一些问题",
+      "description": "Full dictionary is not installed for ‘zh’] 主要：espeak --compile=zh 参考：ubuntu完美安装espeak支持中文和粤语 不再报错:Full dictionary is not installed for \u0026#39;zh\u0026#39; $ git clon",
+      "image": [
+        
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.cnblogs.com/Hfolsvh/",
+        "name": "inss!w!",
+        "url": "https://www.cnblogs.com/Hfolsvh/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.cnblogs.com/",
+        "name": "博客园",
+        "url": "https://www.cnblogs.com/"
+      },
+      "datePublished": "2021-07-25T13:51:00.0000000&#x2B;08:00",
+      "dateModified": "2022-02-12T15:23:00.0000000&#x2B;08:00",
+      "wordCount": "618",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://www.cnblogs.com/Hfolsvh/",
+        "name": "inss!w!",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.cnblogs.com/",
+          "name": "博客园"
+        }
+      }
+    }
+    </script>
+
+    <script>
+        var currentBlogId = 598953;
+        var currentBlogApp = 'Hfolsvh';
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+        var hasCustomScript = true;
+        window.cb_enable_mathjax = true;
+        window.mathEngine = 0;
+        window.codeHighlightEngine = 1;
+        window.enableCodeLineNumber = false;
+        window.codeHighlightTheme = 'cnblogs';
+        window.darkModeCodeHighlightTheme = 'vs2015';
+        window.isDarkCodeHighlightTheme = false;
+        window.isDarkModeCodeHighlightThemeDark = true;
+        window.isDisableCodeHighlighter = false;
+        window.enableCodeThemeTypeFollowSystem = false;
+        window.enableMacStyleCodeBlock = false;
+    </script>
+        <script>
+            window.currentPostId = 15057694;
+            window.currentPostDateAdded = '2021-07-25 13:51';
+        </script>
+    <script src="https://assets.cnblogs.com/scripts/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn-www.cnblogs.com/js/blog-common.min.js?v=zSfH-G9P2CHXgfxbEFpYd36FqklVn0E_3lNPejTS8gk"></script>
+        <script>updateCustomBlogReferrer();</script>
+    
+</head>
+<body class="skin-simplememory no-navbar mathjax2">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding">                    
+                    <a href="https://www.cnblogs.com/" title="开发者的网上家园" role="banner">
+                        <img src="//assets.cnblogs.com/logo.svg" alt="博客园logo" />
+                    </a>
+                </li>               
+                <li><a href="https://cnblogs.vip/">会员</a></li>                
+                <li><a href="https://www.cnblogs.com/cmt/p/18500368">众包</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="countClicks('nav', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="countClicks('nav', 'skin-navbar-q')">博问</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="countClicks('nav', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://www.cnblogs.com/cmt/p/19081960">赞助商</a></li>
+                <li><a href="https://chat2db-ai.com/" target="_blank" onclick="countClicks('nav', 'skin-navbar-chat2db')">Chat2DB</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search dropdown" action="https://zzk.cnblogs.com/s" method="get" role="search">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="search" tabindex="3" autocomplete="off" />
+                        <button id="zzk_search_button" onclick="window.navbarSearchManager.triggerActiveOption()">
+                            <img id="search_icon" class="focus-hidden" src="//assets.cnblogs.com/icons/search.svg" alt="搜索" />
+                            <img class="hidden focus-visible" src="//assets.cnblogs.com/icons/enter.svg" alt="搜索" />
+                        </button>
+                        <ul id="navbar_search_options" class="dropdown-menu quick-search-menu">
+                            <li tabindex="0" class="active" onclick="zzkSearch(event, document.getElementById('zzk_search_input').value)">
+                                <div class="keyword-wrapper">
+                                    <img src="//assets.cnblogs.com/icons/search.svg" alt="搜索" />
+                                    <div class="keyword"></div>
+                                </div>
+                                <span class="search-area">所有博客</span>
+                            </li>
+                                    <li tabindex="1" onclick="zzkBlogSearch(event, 'Hfolsvh', document.getElementById('zzk_search_input').value)">
+                                        <div class="keyword-wrapper">
+                                            <img src="//assets.cnblogs.com/icons/search.svg" alt="搜索" />
+                                            <div class="keyword"></div>
+                                        </div>
+                                        <span class="search-area">当前博客</span>
+                                    </li>
+                        </ul>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="//assets.cnblogs.com/icons/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="//assets.cnblogs.com/icons/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="//assets.cnblogs.com/icons/message.svg" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <a id="navbar_lite_mode_indicator" data-current-page="blog" style="display: none" href="javascript:void(0)" alt="简洁模式" title="简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示">
+                        <img class="navbar-icon" src="//assets.cnblogs.com/icons/lite-mode-on.svg" alt="简洁模式" />
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="//assets.cnblogs.com/icons/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="https://vip.cnblogs.com/my">会员中心</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+
+    <div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/Hfolsvh/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/Hfolsvh">inss!w!</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div>
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/Hfolsvh/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/inss%21w%21">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/Hfolsvh/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div>
+	</div>
+</div>
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                <a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/Hfolsvh/p/15057694.html" title="发布于 2021-07-25 13:51">
+    <span role="heading" aria-level="2">解决espeak编译的一些问题</span>
+    
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<ol>
+<li><code>Full dictionary is not installed for ‘zh’]</code><br>
+主要：espeak --compile=zh<br>
+参考：<a href="https://blog.csdn.net/qq_24406903/article/details/89811732" target="_blank" rel="noopener nofollow">ubuntu完美安装espeak支持中文和粤语 不再报错:Full dictionary is not installed for 'zh'</a></li>
+</ol>
+<pre><code>$ git clone https://github.com/caixxiong/espeak-data/
+$ cd espeak-data/
+$ unzip espeak-data.zip
+$ sudo cp -r * /usr/lib/arm-linux-gnueabihf/espeak-data/
+$ espeak --compile=zh
+
+</code></pre>
+<p>2.<code>Can’t access ® file ‘zh_rules’</code><br>
+参考：<a href="https://blog.csdn.net/qq_20466211/article/details/114437016" title="树莓派-6-中文语音合成和智能对话" target="_blank" rel="noopener nofollow">树莓派-6-中文语音合成和智能对话</a></p>
+<pre><code>$ cd espeak-1.47.11-source/dictsource/
+$ espeak –compile=zh
+</code></pre>
+<p>另外，若命令权限不够，在命令前加sudo</p>
+
+</div>
+<div id="MySignature" role="contentinfo">
+    
+<div>            作者：<a href="https://www.cnblogs.com/Hfolsvh/" target="_blank">inss!w!</a></div>
+<div>            出处：<a href="https://www.cnblogs.com/Hfolsvh/" target="_blank">https://www.cnblogs.com/Hfolsvh/</a></div>
+<div>            版权声明：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！
+ </div>
+</div>
+<div class="clear"></div>
+<div id="blog_post_info_block" role="contentinfo">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date" data-last-update-days="202.0638888888889" data-date-updated="2022-02-12 15:23">2021-07-25 13:51</span>&nbsp;
+<a href="https://www.cnblogs.com/Hfolsvh">inss!w!</a>&nbsp;
+阅读(<span id="post_view_count">3035</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(15057694);return false;">收藏</a>&nbsp;
+<a href="javascript:void(0)" onclick="reportManager.report({ currentUserId: '', targetType: 'blogPost', targetId: '15057694', targetLink: 'https://www.cnblogs.com/Hfolsvh/p/15057694.html', title: '解决espeak编译的一些问题' })">举报</a>
+</div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script>
+    var cb_entryId = 15057694, cb_entryCreatedDate = '2021-07-25 13:51', cb_postType = 1, cb_postTitle = '解决espeak编译的一些问题';
+    var allowComments = true, cb_blogId = 598953, cb_blogApp = 'Hfolsvh', cb_blogUserGuid = 'b64b3010-0c69-49d7-add3-08d7e5fab1e4';
+    mermaidRender.render()
+    markdown_highlight()
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");    
+</script>
+<a id="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav">
+        <div class="comment-nav-right">
+            <span id="span_refresh_tips"></span><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a>
+        </div>
+    </div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+        <div id="cnblogs_ch"></div>
+    <div id="opt_under_post"></div>
+        <div id="blog_c1" class="under-post-card">
+            <a href="https://developer.huawei.com/consumer/cn/activity/digixActivity/digixcmsdetail/101750143863263087?ha_source=BKYQ3&amp;ha_sourceId=89000408" rel="nofollow" target="_blank" onclick="countCreativeClicks('C1-HarmonyOS-创新赛')">
+                <img src="https://img2024.cnblogs.com/blog/35695/202508/35695-20250830121216742-1062949948.jpg" onload="countCreativeImpressions('C1-HarmonyOS-创新赛')" alt="" style="width:300px!important;height:250px!important;min-width:300px!important;max-width:300px!important;" />
+                <span id="c1_impression" style="display:none"></span>
+            </a>
+        </div>
+    <div id="under_post_card1"></div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+        var commentManager = new blogCommentManager();
+        commentManager.renderComments(0);
+        fixPostBody();
+        window.footnoteTipManager.generateFootnoteTips();
+
+            window.tocManager.displayDisableTocTips = false;
+            window.tocManager.generateToc();
+            
+            setTimeout(function() { countViews(cb_blogId, cb_entryId); }, 50);
+            
+            deliverT2();
+            deliverC1C2();
+            loadNewsAndKb();
+            
+            LoadPostCategoriesTags(cb_blogId, cb_entryId);
+            
+            LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+            GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+            loadOptUnderPost();
+            GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+                </script>
+</div>
+
+	</div>
+	</div>
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+    <h3 class="catListTitle">公告</h3>
+<div id="blog-news" class="sidebar-news">
+    <div id="sidebar_news_container">
+    </div>
+</div>
+<script>loadBlogNews();</script>
+
+ 
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div>
+	</div>
+	<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer">
+		<a href="https://www.cnblogs.com/" id="footer_site_link" class="footer-brand">博客园</a>
+<span class="footer-copyright"> &nbsp;&copy;&nbsp; 2004-2025</span>
+<br /><span class="footer-icp">
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602011771"><img src="//assets.cnblogs.com/images/ghs.png" />浙公网安备 33010602011771号</a>
+    <a href="https://beian.miit.gov.cn" target="_blank">浙ICP备2021040463号-3</a>
+</span>
+
+
+
+	</div>
+</div>
+
+
+
+    <div id="page_end_html">
+        <script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.js"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script src="https://blog-static.cnblogs.com/files/gshang/gshang.owo.2020.01.05.1.js"></script>
+<script src="https://blog-static.cnblogs.com/files/ctgu/perfect-scrollbar.min.js"></script>
+<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+<script src="https://blog-static.cnblogs.com/files/gshang/sidebarContent.js"></script>
+<script src="https://blog-static.cnblogs.com/files/gshang/notiflix-2.0.0.min.js"></script>
+<script src="https://blog-static.cnblogs.com/files/gshang/highlight.pack.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script type="text/javascript" src="https://files.cnblogs.com/files/gshang/51La.min.js"></script>
+
+<script>
+	// 运行脚本
+	$('code.language-runCode').each(function() {
+		window.eval($(this).text());
+		$(this).parent('pre').remove();
+	});
+
+	function toHeader() {
+		$("html,body").finish().animate({
+			"scrollTop": "0px"
+		}, 500);
+	}
+
+	function toggleSidebar() {
+		$('#sideBarMain').toggleClass('sidebar-show');
+		//$('.float-btn li:not(.btn-sidebar)').toggle();
+		//$('#sideBarMain>div:not(#sidebar_scroller)').show();
+		//$('#sidebar_scroller').hide();
+		$('.btn-sidebar').toggleClass('btn-sidebar-open');
+	}
+
+	function toggleMain() {
+		$('#main').toggleClass('main-hide');
+		$('.btn-main').toggleClass('btn-main-open');
+		if ($('.btn-content').length > 0) {
+			$('.btn-content').toggle();
+		}
+	}
+
+
+	function toggleContent() {
+		$('#sidebar_scroller').toggle();
+		//$('#sideBarMain').toggleClass('sidebar-show');
+		$('#sideBarMain>*:not(#sidebar_scroller)').toggle();
+		$('.btn-content').toggleClass('btn-content-open');
+	}
+
+	$('#sideBarMain').toggleClass('sidebar-hide');
+
+	/*
+	var w = document.body.clientWidth;
+	if (w >= 1200) {
+		//  侧边
+		$(document).ajaxComplete(function(event, xhr, option) {
+			if (option.url.indexOf("TopLists") > -1) {
+				toggleContent()
+			}
+		})
+	}
+	*/
+	$(function() {
+		if (isLogined) {
+			$('#navigator').append('<div class="islogin"><a rel="nofollow noopener"  rel="nofollow noopener"  href="javascript:logout()">退出</a></div>')
+		} else {
+			$('#navigator').append('<div class="islogin"><a rel="nofollow noopener"  rel="nofollow noopener"  href="https://account.cnblogs.com/signin">登录</a></div>')
+		}
+		//侧边固定
+		$(document).scroll(function() {
+			var $top = parseInt($(window).scrollTop()) + $(window).height();
+			var sideBarHeight = $('#sideBarMain').outerHeight();
+			var mainContentHeight = $('#mainContent').outerHeight();
+			if (mainContentHeight > sideBarHeight) {
+				if ($top >= sideBarHeight && $top < mainContentHeight) {
+					$("#sideBarMain").addClass('sidebar-fixed')
+				} else {
+					$("#sideBarMain").removeClass('sidebar-fixed')
+				}
+			}
+
+			if ($(window).scrollTop() < $('#header').outerHeight()) {
+				$("#sideBarMain").removeClass('sidebar-fixed');
+				$('.btn-top').fadeOut();
+			} else {
+				$('.btn-top').fadeIn();
+			}
+		});
+
+		// 设置网页favicon图标
+
+		$('head').append($('<link rel="shortcut icon" type="image/x-icon"/>').attr('href',
+			'https://images.cnblogs.com/cnblogs_com/Hfolsvh/1753635/t_210103022625%E5%A4%B4%E5%83%8F.png?a=1626540133295'));
+		$('#blogLogo').attr('src', 'https://images.cnblogs.com/cnblogs_com/Hfolsvh/1753635/t_210103022625%E5%A4%B4%E5%83%8F.png?a=1626540133295')
+
+
+		// 设置评论区头像
+		$(document).ajaxComplete(function(event, xhr, option) {
+			//评论头像
+			if (option.url.indexOf("GetComments") > -1) {
+				setTimeout(function() {
+
+					owoEmoji();
+					$.each($(".feedbackItem"), function(index, ele) {
+						var self = $(ele);
+						var obj = self.find(".blog_comment_body");
+						var id = obj.attr("id").split("_")[2];
+						var blog = self.find('a[id^="a_comment_author"]');
+						var blogUrl = blog.attr("href");
+						var imgSrc = $("#comment_" + id + "_avatar").html() || "http://pic.cnblogs.com/avatar/simple_avatar.gif";
+						self.prepend('<a rel="nofollow noopener"  rel="nofollow noopener"  href="' + blogUrl + '"><img src="' + imgSrc +
+							'" style="float:left;" class="comment_avatar"></a');
+						$(".feedbackListSubtitle").addClass("feedbackListSubtitle_right");
+						$(".feedbackCon").addClass("feedbackCon_right");
+					});
+
+					//myscroll();
+
+				}, 300)
+			}
+		})
+
+		// 引入owo插件
+		owoEmoji = function() {
+			$(".commentbox_footer").before(
+				'<div class="OwO" onclick="load_face(this)"><div class="OwO-logo"><i class="fa fa-smile-o" aria-hidden="true"></i></div></div>'
+			);
+		}
+
+		// 表情按钮按下
+		load_face = function(b) {
+			var c = new OwO({
+				logo: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
+				container: document.getElementsByClassName("OwO")[0],
+				target: document.getElementById("tbCommentBody"),
+				api: "https://cdn.jsdelivr.net/gh/gshang2018/home/gshang.owo.json",
+				position: "up",
+				width: "100%",
+				maxHeight: "250px"
+			});
+			b.classList.add("OwO-open");
+			b.onclick = null
+		}
+		// 侧边悬浮按钮
+		$('#home').append(
+			'<div class="float-btn"><ul>' +
+			'<li class="btn-top"><a rel="nofollow noopener"  rel="nofollow noopener"  href="javascript:toHeader()"></a></li>' +
+			'<li class="btn-main"><a rel="nofollow noopener"  rel="nofollow noopener"  href="javascript:toggleMain()"></a></li>' +
+			'<li class="btn-sidebar"><a rel="nofollow noopener"  rel="nofollow noopener"  href="javascript:toggleSidebar()"></a></li>' +
+			'</ul></div>'
+		)
+		// 博文
+		if ($("#topics").length > 0) {
+			$('.btn-top').after('<li class="btn-comment"><a rel="nofollow noopener"  rel="nofollow noopener"  href="#commentform_title"></a></li>');
+			$('#main').toggleClass('main-hide');
+			$('.btn-main').addClass('btn-main-open');
+
+			//高亮
+			$('pre code').each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
+
+			// 表格滚动
+			$("table").each(function() {
+				$(this).css('cssText', 'width:100%!important;display:table;');
+				$(this).wrapAll('<div class="tablebox"></div>');
+				$(".tablebox").css('overflow', 'auto');
+			});
+
+
+			// 新窗口打开
+			$('#cnblogs_post_body a[href^="http"]').each(function() {
+				$(this).attr('target', '_blank');
+			});
+
+			// fancybox
+			$(".cnblogs-markdown img").each(function() {
+				var element = document.createElement("a");
+				$(element).attr("data-fancybox", "gallery");
+				$(element).attr("href", $(this).attr("src"));
+				$(element).attr('data-caption', $(this).attr("alt"));
+				$(this).wrap(element);
+				if ($(this).attr("alt") != "") {
+					$(this).parent().after('<div class="img-caption">' + $(this).attr("alt") + '</div>');
+				}
+			})
+
+			// 代码复制
+			for (i = 0; i <= $('pre').length; i++) {
+				$('pre').eq(i).wrapAll('<div class="copyItem"></div>');
+				$(".copyItem").css('position', 'relative');
+				$('pre').eq(i).before('<div class="clipboard-button" id="copy_btn_' + i +
+					' " data-clipboard-target="#copy_target_' +
+					i + '"title="复制"></div>');
+				$('pre').eq(i).attr('id', 'copy_target_' + i);
+			}
+
+			$('pre code').each(function() {
+				var lines = $(this).text().split('\n').length - 1;
+				var $numbering = $('<ul/>').addClass('pre-numbering');
+				$(this)
+					.addClass('has-numbering')
+					.parent()
+					.append($numbering);
+				for (i = 1; i <= lines; i++) {
+					$numbering.append($('<li/>').attr('data-number', i));
+				}
+			});
+
+			var clipboard = new ClipboardJS('.clipboard-button');
+			clipboard.on('success', function(e) {
+				e.trigger.innerHTML = '成功';
+				setTimeout(function() {
+					e.trigger.innerHTML = '';
+				}, 2 * 1000);
+				e.clearSelection();
+			});
+			clipboard.on('error', function(e) {
+				e.trigger.innerHTML = '失败';
+				setTimeout(function() {
+					e.trigger.innerHTML = '';
+				}, 2 * 1000);
+				e.clearSelection();
+			});
+		}
+
+
+
+		// 侧边目录
+		if ($("#topics").length > 0) {
+			//先获取第一个h标签, 之后循环时作为上一个h标签
+			var $ph = $('#cnblogs_post_body :header:eq(0)');
+			if ($ph.length > 0) {
+				$('.btn-comment').after('<li class="btn-content"><a rel="nofollow noopener"  rel="nofollow noopener"  href="javascript:toggleContent()"></a></li>');
+				$('.btn-content').hide();
+				//     $('#sideBarMain').remove();
+				//设置层级为1
+				$ph.attr('offset', '1');
+				//添加导航目录的内容
+				$('#sideBarMain').prepend(
+					'<div id="sidebar_scroller" class="sidebar-block"><h3 class="catListTitle">导航目录</h3><ul class="nav"></ul></div>'
+				);
+				//取当前边栏的宽度
+				//$('#sidebar_scroller').css('width', ($('#sideBarMain').width()) + 'px');
+				//让导航目录停留在页面顶端
+				//  $('#sidebar_scroller').stickUp();
+				//遍历文章里每个h标签
+				$('#cnblogs_post_body :header').each(function(i) {
+					var $h = $(this);
+					//设置h标签的id, 编号从0开始
+					$h.attr('id', 'scroller-' + i);
+					//比上一个h标签层级小, 级数加1
+					if ($h[0].tagName > $ph[0].tagName) {
+						$h.attr('offset', parseInt($ph.attr('offset')) + 1);
+					} //比上一个h标签层级大, 级数减1
+					else if ($h[0].tagName < $ph[0].tagName) {
+
+						var h = parseInt($h[0].tagName.substring(1));
+						var ph = parseInt($ph[0].tagName.substring(1));
+
+						var offset = parseInt($ph.attr('offset')) - (ph - h);
+						if (offset < 1) {
+							offset = 1
+						};
+						$h.attr('offset', offset);
+					} //和上一个h标签层级相等时, 级数不变
+					else {
+						$h.attr('offset', $ph.attr('offset'));
+					}
+					//添加h标签的目录内容
+					$('#sidebar_scroller ul').append('<li class="scroller-offset' + $h.attr('offset') + '"><a rel="nofollow noopener"  rel="nofollow noopener"  href="#scroller-' +
+						i +
+						'">' + $h.text() + '</a></li>');
+					//最后设置自己为上一个h标签
+					$ph = $h;
+				});
+
+				//开启滚动监听, 监听所有在.nav类下的li
+				$('body').scrollspy();
+
+				//  侧边
+				$(document).ajaxComplete(function(event, xhr, option) {
+					if (option.url.indexOf("TopLists") > -1) {
+						setTimeout(function() {
+							$('#sidebar_scroller').toggle();
+							toggleContent();
+							toggleMain();
+						}, 300)
+					}
+				})
+
+
+
+				Notiflix.Notify.Success('已生成博文目录，点击右下角图标查看')
+				/*当前目录激活监听*/
+				$(window).scroll(function() {
+					var now = $('#sidebar_scroller').find('.active');
+					var prevNum = now.prevAll().length + 1;
+					var basicHeight = now.outerHeight();
+					$('.nav').scrollTop(prevNum * basicHeight - 14)
+				});
+
+			}
+		}
+
+
+		/*评论模块的滚动隐藏效果*/
+		var windowTop = 0;
+		$(window).scroll(function() {
+			var scrolls = $(this).scrollTop();
+			if (scrolls >= windowTop) { //当scrolls>windowTop时，表示页面在向下滑动
+				//$('#header').addClass('header-hide');
+				$('.float-btn').addClass('float-btn-hide');
+				windowTop = scrolls;
+			} else {
+				//$('#header').removeClass('header-hide');
+				$('.float-btn').removeClass('float-btn-hide');
+				windowTop = scrolls;
+			}
+		});
+
+		// 平滑滚动控制
+		myscroll = function() {
+			$('a[href*=\\#],area[href*=\\#]').click(function() {
+				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+					var $target = $(this.hash);
+					$target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+					if ($target.length) {
+						var targetOffset = $target.offset().top;
+						$('html,body').animate({
+								scrollTop: targetOffset
+							},
+							500);
+						return false;
+					}
+				}
+			})
+		}
+
+		$('.float-btn li,#blog_nav_newpost,.diggit,#btn_comment_submit').addClass('mdui-ripple');
+
+		$('.nav a').click(function() {
+			var w = document.body.clientWidth;
+			if (w <= 1200) {
+				$('#sideBarMain').toggleClass('sidebar-show');
+                toggleMain();
+                $('.btn-sidebar').toggleClass('btn-sidebar-open');
+			}
+		})
+		myscroll()
+	})
+</script>
+
+
+ <!-- 底部加了小鱼<・)))><<~ -->
+<div id="jsi-flying-fish-container" class="container"></div>
+<script
+src='https://files.cnblogs.com/files/structmooc/%E5%BA%95%E9%83%A8%E5%8A%A0%E4%BA%86%E5%B0%8F%E9%B1%BC.css' defer></script>
+<style>
+@media only screen and (max-width: 767px)
+{
+  #sidebar_search_box input[type=text]{width:calc(100% - 24px)
+}
+}
+</style>
+<!-- 底部加了小鱼<・)))><<~ -->
+  <!--点击冒点-->
+  <canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas><script src="https://blog-static.cnblogs.com/files/elkyo/mouse-click.js"></script>
+
+<script src="https://blog-static.cnblogs.com/files/byho/clipboard.min.js"></script>
+<script src="https://blog-static.cnblogs.com/files/byho/cp.js"></script>
+
+
+
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8G33EJ5dWE5OhU_7yPrjq1-RX_WLrFncdeqURrgWCuC0kS3zA58TCTKTNl97RtKmlC1A1giMZzPw3SSh_HCyzDu5B19gQYC_0uwMoDxBon5vI5xJuqM1pR1xwcqJeF1ggSL-l055UYg53Lz_gx_8hR4" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M95P3TTWJZ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-M95P3TTWJZ');
+</script>
+<script defer src="https://hm.baidu.com/hm.js?866c9be12d4a814454792b1fd0fed295"></script>
+</body>
+</html>

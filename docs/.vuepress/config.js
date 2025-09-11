@@ -17,8 +17,7 @@ export default defineUserConfig({
       // 首页侧边栏
       '/': [
         {
-          text: '🏠 快速开始',
-          icon: 'home',
+          text: '快速开始',
           children: [
             'README.md',
           ],
@@ -29,56 +28,30 @@ export default defineUserConfig({
         {
           text: '应用程序总览',
           link: '/apps/README.md',
-          icon: 'home',
         },
         {
-          text: '🌐 网络应用',
-          icon: 'network',
-          children: [
-            {
-              text: 'Firefox 浏览器',
-              link: '/apps/firefox.md',
-            },
-          ],
+          text: 'Firefox 浏览器',
+          link: '/apps/firefox.md',
         },
         {
-          text: '⌨️ 输入法',
-          icon: 'keyboard',
-          children: [
-            {
-              text: '搜狗输入法',
-              link: '/apps/sogou_input.md',
-            },
-          ],
+          text: '搜狗输入法',
+          link: '/apps/sogou_input.md',
         },
         {
-          text: '💻 开发环境',
-          icon: 'code',
-          children: [
-            {
-              text: 'IDE 开发环境',
-              link: '/apps/ide.md',
-            },
-            {
-              text: 'CUDA 环境配置',
-              link: '/apps/cuda.md',
-            },
-          ],
-        },
-        {
-          text: '🖥️ 虚拟化',
-          icon: 'desktop',
-          children: [
-            {
-              text: '虚拟机管理',
-              link: '/apps/virtual_machines.md',
-            },
-          ],
-        },
-        {
-          text: '📱 常用应用速览',
+          text: '常用应用速览',
           link: '/apps/quick_apps.md',
-          icon: 'app',
+        },
+        {
+          text: 'IDE 开发环境',
+          link: '/apps/ide.md',
+        },
+        {
+          text: 'CUDA 环境配置',
+          link: '/apps/cuda.md',
+        },
+        {
+          text: '虚拟机管理',
+          link: '/apps/virtual_machines.md',
         },
       ],
       // 系统结构页面侧边栏
@@ -86,28 +59,11 @@ export default defineUserConfig({
         {
           text: '系统结构总览',
           link: '/structure/README.md',
-          icon: 'home',
         },
         {
-          text: '📁 目录结构',
-          icon: 'folder',
-          children: [
-            {
-              text: '常用目录',
-              link: '/structure/common_dir.md',
-            },
-          ],
-        },
-        {
-          text: '📱 应用分类',
-          icon: 'app',
-          children: [
-            {
-              text: '应用分类配置',
-              link: '/structure/apps.json',
-            },
-          ],
-        },
+          text: '常用目录',
+          link: '/structure/common_dir.md',
+        }
       ],
       // 工具页面侧边栏
       '/utils/': [
@@ -121,25 +77,14 @@ export default defineUserConfig({
         },
         {
           text: '常用命令',
-          icon: 'terminal',
           children: [
-            {
-              text: '命令索引',
-              link: '/utils/common_cmd/index.md',
-            },
-            {
-              text: 'Asterisk 命令',
-              link: '/utils/common_cmd/asterisks_cmd.md',
-            },
-            {
-              text: '音频命令',
-              link: '/utils/common_cmd/audio_cmd.md',
-            },
+            '/utils/common_cmd/README.md',
+            '/utils/common_cmd/asterisks_cmd.md',
+            '/utils/common_cmd/audio_cmd.md',
           ],
         },
         {
           text: '用户配置',
-          icon: 'config',
           children: [
             '/utils/user_config/cursor_style.md',
           ],
@@ -148,10 +93,10 @@ export default defineUserConfig({
     },
     // 导航栏配置
     navbar: [
-      { text: '🏠 首页', link: '/', icon: 'home' },
-      { text: '📱 应用程序', link: '/apps/', icon: 'app' },
-      { text: '⚙️ 系统结构', link: '/structure/', icon: 'structure' },
-      { text: '🛠️ 工具', link: '/utils/', icon: 'tool' },
+      { text: '首页', link: '/' },
+      { text: '应用程序', link: '/apps/' },
+      { text: '系统结构', link: '/structure/' },
+      { text: '工具', link: '/utils/' },
     ],
     // 侧边栏深度
     sidebarDepth: 3,

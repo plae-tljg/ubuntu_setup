@@ -9,6 +9,46 @@ For Asterisk phone sever, common commands are like these:
 |     sudo asterisk -rvvv   | see asterisk console |
 | sudo asterisk -rvvvvvvvvvvvvvv    |  add as many `v` as you like  |
 
+## Location of Asterisk Files
+
+In `/etc/asterisks`, there are asterisk config files.  
+
+```bash
+sudo gedit /etc/asterisk/pjsip.conf 
+sudo gedit /etc/asterisk/extensions.conf 
+```
+
+In `/var/lib/asterisk`, these are default locations for audio, scripts, so on run by asterisk.  
+
+In `/var/spool/asterisk`, these contain asterisk generated files, like recording by `MixMonitor`.  
+
+Config files can be like:  
+
+<br />
+<CodeViewer 
+  title="Simple model" 
+  filePath="/lib/asterisk_scripts/pjsip.conf"
+  language="bash"
+/>
+
+<br />
+<CodeViewer 
+  title="Simple model" 
+  filePath="/lib/asterisk_scripts/extensions.conf"
+  language="bash"
+/>
+
+<br />
+
+### Some Miscellaneous Commands
+
+Remember change the permission and owners of files for asterisk using, like to `asterisk:asterisk` or `root:root` depending on which user using asterisk:  
+
+```bash
+sudo chmod -R 750 /var/lib/asterisk/agi-bin/
+sudo chown -R root:root .   #currently at /var/lib/asterisk/sound
+```
+
 ## Commands inside Asterisk Console
 
 | 命令             | 作用说明             |
@@ -58,4 +98,20 @@ sudo ln -s /var/spool/asterisk/monitor/rec asterisk_rec
 ```bash
 sudo ffmpeg -i /var/lib/asterisk/sounds/custom/output2.wav -ac 1 -ar 8000 -acodec pcm_s16le -y /var/lib/asterisk/sounds/custom/output3.wav
 sox input.wav -r 8000 -c 1 -s output.wav
+
+ffmpeg -i /var/lib/asterisk/sounds/custom/output2.wav \
+       -ac 1 \             # Convert to MONO (critical!)
+       -ar 8000 \          # 8kHz sample rate (telephony standard)
+       -acodec pcm_s16le \ # 16-bit PCM (required by Asterisk)
+       -y \                # Overwrite without prompt
+       /var/lib/asterisk/sounds/custom/output2.wav
 ```
+
+For bulk convert to suitable formats like `.ulaw`, follow scripts like:  
+
+<br />
+<CodeViewer 
+  title="Simple model" 
+  filePath="/lib/asterisk_scripts/convert_all_ulaw.sh"
+  language="bash"
+/>
