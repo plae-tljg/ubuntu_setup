@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Word - Professional Document Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            overflow: auto;
+        }
+        
+        /* Title Bar */
+        .title-bar {
+            background: linear-gradient(to bottom, #0078d4, #106ebe);
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title-bar .app-name {
+            font-weight: 600;
+        }
+        
+        .title-bar .document-name {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        /* Menu Bar */
+        .menu-bar {
+            background-color: #f3f2f1;
+            border-bottom: 1px solid #d2d0ce;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+        }
+        
+        .menu-item {
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background-color 0.1s;
+        }
+        
+        .menu-item:hover {
+            background-color: #e1dfdd;
+        }
+        
+        /* Toolbar */
+        .toolbar {
+            background-color: #f3f2f1;
+            border-bottom: 1px solid #d2d0ce;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-right: 16px;
+        }
+        
+        .toolbar-button {
+            padding: 6px 8px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 12px;
+            transition: background-color 0.1s;
+        }
+        
+        .toolbar-button:hover {
+            background-color: #e1dfdd;
+        }
+        
+        .toolbar-button.active {
+            background-color: #0078d4;
+            color: white;
+        }
+        
+        /* Main Editor Area */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 120px);
+        }
+        
+        .editor-container {
+            flex: 1;
+            background-color: white;
+            margin: 16px;
+            border: 1px solid #d2d0ce;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .editor-header {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #d2d0ce;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        #fake-editor {
+            flex: 1;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            outline: none;
+            font-family: 'Calibri', 'Segoe UI', sans-serif;
+            overflow-y: auto;
+            position: relative;
+            /* Disable spell check to remove red underlines */
+            spellcheck: false;
+        }
+        
+        .typed {
+            color: black;
+        }
+        
+        .remaining {
+            color: transparent;
+            user-select: none;
+        }
+        
+        /* Cursor Animation */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+            background-color: black;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            background-color: #f3f2f1;
+            border-top: 1px solid #d2d0ce;
+            padding: 4px 16px;
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-left {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .status-right {
+            display: flex;
+            gap: 16px;
+        }
+        
+        /* Control Panel - All buttons in one flex container */
+        .control-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .control-panel > div {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+        
+        /* File Import */
+        .file-import {
+            /* Remove individual positioning */
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .import-button {
+            padding: 6px 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        
+        .import-button:hover {
+            background: #218838;
+        }
+        
+        /* Mode Switcher */
+        .mode-switcher {
+            /* Remove individual positioning */
+        }
+        
+        .mode-button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border: none;
+            background: #f0f0f0;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .mode-button.active {
+            background: #0078d4;
+            color: white;
+        }
+        
+        .mode-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .mode-button.active:hover {
+            background: #106ebe;
+        }
+    </style>
+</head>
+<body>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <!-- File Import -->
+        <div class="file-import">
+            <input type="file" id="file-input" class="file-input" accept=".txt,.docx,.doc,.rtf,.md">
+            <button class="import-button" onclick="document.getElementById('file-input').click()">📁 Import Document</button>
+        </div>
+        
+        <!-- Mode Switcher -->
+        <div class="mode-switcher">
+            <button class="mode-button active">📄 Office Mode</button>
+            <a href="vscode-mode.html" class="mode-button">💻 Switch to VS Code</a>
+        </div>
+    </div>
+    
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <div class="app-name">Microsoft Word</div>
+        <div class="document-name" id="document-name">Annual Report.docx</div>
+    </div>
+    
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+        <div class="menu-item">File</div>
+        <div class="menu-item">Home</div>
+        <div class="menu-item">Insert</div>
+        <div class="menu-item">Page Layout</div>
+        <div class="menu-item">References</div>
+        <div class="menu-item">Review</div>
+        <div class="menu-item">View</div>
+    </div>
+    
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button class="toolbar-button active">📄</button>
+            <button class="toolbar-button">📋</button>
+            <button class="toolbar-button">📑</button>
+        </div>
+        <div class="toolbar-group">
+            <button class="toolbar-button">B</button>
+            <button class="toolbar-button">I</button>
+            <button class="toolbar-button">U</button>
+        </div>
+        <div class="toolbar-group">
+            <button class="toolbar-button">Align Left</button>
+            <button class="toolbar-button">Center</button>
+            <button class="toolbar-button">Align Right</button>
+        </div>
+        <div class="toolbar-group">
+            <button class="toolbar-button">📊</button>
+            <button class="toolbar-button">📈</button>
+            <button class="toolbar-button">📋</button>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Editor Area -->
+        <div class="editor-container">
+            <div class="editor-header" id="editor-header">
+                Page 1 | Section 1 | 1/1 | Position 2.5cm | Line 1 | Column 1 | Words 0
+            </div>
+            <div id="fake-editor" contenteditable="true" spellcheck="false"></div>
+        </div>
+    </div>
+    
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span>Ready</span>
+            <span id="typing-status">Waiting for input...</span>
+        </div>
+        <div class="status-right">
+            <span>English (United States)</span>
+            <span>100%</span>
+        </div>
+    </div>
+
+    <script>
+        // Default Office document content
+        let fullReport = `ANNUAL BUSINESS REPORT 2024
+
+EXECUTIVE SUMMARY
+
+This comprehensive report outlines our company's performance, achievements, and strategic initiatives throughout the fiscal year 2024. Under the leadership of our executive team, we have successfully navigated market challenges while maintaining steady growth and operational excellence.
+
+KEY PERFORMANCE INDICATORS
+
+Financial Performance:
+• Revenue Growth: 15% increase year-over-year
+• Profit Margin: 12.5% improvement from previous year
+• Market Share: Expanded by 8% in core segments
+• Customer Retention: 94% satisfaction rate
+
+Operational Excellence:
+• Process Optimization: 25% efficiency improvement
+• Quality Metrics: 99.2% defect-free delivery
+• Innovation Pipeline: 12 new product launches
+• Employee Engagement: 87% satisfaction score
+
+STRATEGIC INITIATIVES
+
+Digital Transformation:
+Our digital transformation initiative has yielded significant results, with 40% of our processes now automated. This has reduced operational costs by $2.3M while improving customer response times by 35%.
+
+Market Expansion:
+We successfully entered three new geographic markets, establishing partnerships with local distributors and achieving $5.2M in new revenue streams within the first six months.
+
+Sustainability Program:
+Our environmental sustainability program has reduced carbon footprint by 22% while implementing renewable energy solutions across 60% of our facilities.
+
+CHALLENGES AND MITIGATION
+
+Market Volatility:
+Despite economic uncertainties, we maintained stability through diversified portfolio management and strategic hedging practices.
+
+Supply Chain Optimization:
+Implemented advanced analytics to predict and mitigate supply chain disruptions, reducing inventory costs by 18%.
+
+FUTURE OUTLOOK
+
+Q1 2025 Objectives:
+• Launch next-generation product line
+• Expand digital platform capabilities
+• Strengthen international partnerships
+• Implement AI-driven customer service
+
+Long-term Vision:
+Our five-year strategic plan focuses on sustainable growth, technological innovation, and market leadership. We aim to achieve $500M annual revenue by 2029 through organic growth and strategic acquisitions.
+
+CONCLUSION
+
+The fiscal year 2024 has been marked by significant achievements and strategic progress. Our team's dedication, combined with innovative approaches and customer-centric focus, positions us well for continued success in the competitive marketplace.
+
+We remain committed to delivering exceptional value to our stakeholders while maintaining the highest standards of corporate responsibility and operational excellence.
+
+Prepared by: Corporate Strategy Team
+Date: December 2024
+Review Status: Final Draft`;
+
+        let currentIndex = 0;
+        let startTime = null;
+
+        const editor = document.getElementById('fake-editor');
+
+        // Update editor content
+        function updateEditor() {
+            if (currentIndex < fullReport.length) {
+                const typedText = fullReport.substring(0, currentIndex);
+                const remainingText = fullReport.substring(currentIndex);
+                
+                // Convert newlines to <br> tags and preserve spaces/tabs
+                const typedHtml = typedText
+                    .replace(/\n/g, '<br>')
+                    .replace(/ /g, '&nbsp;')
+                    .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                const remainingHtml = remainingText
+                    .replace(/\n/g, '<br>')
+                    .replace(/ /g, '&nbsp;')
+                    .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                
+                editor.innerHTML = `<span class="typed">${typedHtml}</span><span class="cursor"></span><span class="remaining">${remainingHtml}</span>`;
+                
+                // Update status bar
+                document.getElementById('typing-status').textContent = 'Typing...';
+            } else {
+                // Document completed
+                const completedHtml = fullReport
+                    .replace(/\n/g, '<br>')
+                    .replace(/ /g, '&nbsp;')
+                    .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                editor.innerHTML = `<span class="typed">${completedHtml}</span><span class="cursor"></span>`;
+                document.getElementById('typing-status').textContent = 'Document completed';
+                
+                // Show completion alert
+                setTimeout(() => {
+                    alert('🎉 Document completed successfully!');
+                }, 500);
+            }
+        }
+
+        // Initialize editor
+        updateEditor();
+
+        // File import functionality
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fullReport = e.target.result;
+                    currentIndex = 0;
+                    startTime = null;
+                    updateEditor();
+                    
+                    // Update document name
+                    document.getElementById('document-name').textContent = file.name;
+                    
+                    // Show success message
+                    alert(`✅ Document "${file.name}" imported successfully!`);
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Keyboard event listener
+        editor.addEventListener('keydown', function(event) {
+            // Prevent default behavior
+            event.preventDefault();
+
+            // Record start time
+            if (startTime === null) {
+                startTime = Date.now();
+            }
+
+            // Handle key presses
+            if (event.key.length === 1 || event.key === 'Backspace' || event.key === 'Delete') {
+                if (event.key === 'Backspace' || event.key === 'Delete') {
+                    // Backspace: move back one character
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateEditor();
+                    }
+                } else {
+                    // Any other key: advance one character
+                    if (currentIndex < fullReport.length) {
+                        currentIndex++;
+                        updateEditor();
+                        
+                        // Add typing sound effect (optional)
+                        playTypingSound();
+                    }
+                }
+            }
+        });
+
+        // Typing sound effect function
+        function playTypingSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                oscillator.type = 'square';
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {
+                // Ignore audio context errors
+            }
+        }
+
+        // Focus editor on page load
+        window.addEventListener('load', function() {
+            editor.focus();
+        });
+
+        // Add toolbar button interactions
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('toolbar-button')) {
+                // Remove active state from other buttons in the same group
+                const group = event.target.closest('.toolbar-group');
+                group.querySelectorAll('.toolbar-button').forEach(b => b.classList.remove('active'));
+                // Add active state to clicked button
+                event.target.classList.add('active');
+            }
+        });
+
+        // Add menu item click effects
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Simple menu click feedback
+                this.style.backgroundColor = '#0078d4';
+                this.style.color = 'white';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                    this.style.color = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
