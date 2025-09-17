@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Studio Code - Code Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            overflow: auto;
+        }
+        
+        /* Title Bar */
+        .title-bar {
+            background: linear-gradient(to bottom, #2d2d30, #1e1e1e);
+            color: #cccccc;
+            padding: 8px 16px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title-bar .app-name {
+            font-weight: 600;
+        }
+        
+        .title-bar .document-name {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        /* Activity Bar */
+        .activity-bar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 100vh;
+            background-color: #333333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            z-index: 100;
+        }
+        
+        .activity-icon {
+            width: 24px;
+            height: 24px;
+            margin: 8px 0;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        
+        .activity-icon:hover,
+        .activity-icon.active {
+            opacity: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 48px;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: #252526;
+            border-right: 1px solid #3c3c3c;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .sidebar-header {
+            background-color: #2d2d30;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #cccccc;
+            border-bottom: 1px solid #3c3c3c;
+        }
+        
+        .file-explorer {
+            flex: 1;
+            padding: 8px;
+            overflow-y: auto;
+        }
+        
+        .file-item {
+            padding: 4px 8px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 13px;
+            color: #cccccc;
+            transition: background-color 0.1s;
+        }
+        
+        .file-item:hover {
+            background-color: #2a2d2e;
+        }
+        
+        .file-item.active {
+            background-color: #094771;
+        }
+        
+        /* Main Editor Area */
+        .main-container {
+            margin-left: 298px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Tab Bar */
+        .tab-bar {
+            background-color: #2d2d30;
+            border-bottom: 1px solid #3c3c3c;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            height: 35px;
+        }
+        
+        .tab {
+            padding: 8px 16px;
+            background-color: #2d2d30;
+            border-right: 1px solid #3c3c3c;
+            cursor: pointer;
+            font-size: 13px;
+            color: #cccccc;
+            transition: background-color 0.1s;
+        }
+        
+        .tab:hover {
+            background-color: #2a2d2e;
+        }
+        
+        .tab.active {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        
+        .tab-close {
+            margin-left: 8px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        
+        .tab-close:hover {
+            opacity: 1;
+        }
+        
+        /* Editor Container */
+        .editor-container {
+            flex: 1;
+            background-color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .editor-header {
+            background-color: #2d2d30;
+            border-bottom: 1px solid #3c3c3c;
+            padding: 4px 16px;
+            font-size: 11px;
+            color: #cccccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .line-numbers {
+            background-color: #1e1e1e;
+            color: #858585;
+            padding: 20px 8px;
+            font-size: 14px;
+            line-height: 1.6;
+            user-select: none;
+            border-right: 1px solid #3c3c3c;
+            min-width: 50px;
+            text-align: right;
+        }
+        
+        #fake-editor {
+            flex: 1;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            outline: none;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-y: auto;
+            position: relative;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            /* Disable spell check to remove red underlines */
+            spellcheck: false;
+        }
+        
+        .typed {
+            color: #d4d4d4;
+        }
+        
+        .remaining {
+            color: transparent;
+            user-select: none;
+        }
+        
+        /* Cursor Animation */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 18px;
+            background-color: #d4d4d4;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            background-color: #007acc;
+            color: white;
+            padding: 4px 16px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 22px;
+        }
+        
+        .status-left {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .status-right {
+            display: flex;
+            gap: 16px;
+        }
+        
+        /* Control Panel - All buttons in one flex container */
+        .control-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .control-panel > div {
+            background: #2d2d30;
+            border: 1px solid #3c3c3c;
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+        
+        body.light-theme .control-panel > div {
+            background: #f3f3f3 !important;
+            border-color: #e1e1e1 !important;
+        }
+        
+        /* File Import */
+        .file-import {
+            /* Remove individual positioning */
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            /* Remove individual positioning */
+        }
+        
+        /* Mode Switcher */
+        .mode-switcher {
+            /* Remove individual positioning */
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .import-button {
+            padding: 6px 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        
+        .import-button:hover {
+            background: #218838;
+        }
+        
+        .theme-button {
+            padding: 6px 12px;
+            border: none;
+            background: #3c3c3c;
+            color: #d4d4d4;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .theme-button:hover {
+            background: #4c4c4c;
+        }
+        
+        .mode-button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border: none;
+            background: #3c3c3c;
+            color: #d4d4d4;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .mode-button.active {
+            background: #007acc;
+            color: white;
+        }
+        
+        .mode-button:hover {
+            background: #4c4c4c;
+        }
+        
+        .mode-button.active:hover {
+            background: #106ebe;
+        }
+        
+        /* Light Theme for VS Code */
+        body.light-theme {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .title-bar {
+            background: linear-gradient(to bottom, #f3f3f3, #e8e8e8) !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .activity-bar {
+            background-color: #f3f3f3 !important;
+        }
+        
+        body.light-theme .sidebar {
+            background-color: #f8f8f8 !important;
+            border-right-color: #e1e1e1 !important;
+        }
+        
+        body.light-theme .sidebar-header {
+            background-color: #f3f3f3 !important;
+            border-bottom-color: #e1e1e1 !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .file-item {
+            color: #333333 !important;
+        }
+        
+        body.light-theme .file-item:hover {
+            background-color: #e8e8e8 !important;
+        }
+        
+        body.light-theme .file-item.active {
+            background-color: #e3f2fd !important;
+        }
+        
+        body.light-theme .tab-bar {
+            background-color: #f3f3f3 !important;
+            border-bottom-color: #e1e1e1 !important;
+        }
+        
+        body.light-theme .tab {
+            background-color: #f3f3f3 !important;
+            border-right-color: #e1e1e1 !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .tab:hover {
+            background-color: #e8e8e8 !important;
+        }
+        
+        body.light-theme .tab.active {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        
+        body.light-theme .editor-container {
+            background-color: #ffffff !important;
+        }
+        
+        body.light-theme .editor-header {
+            background-color: #f3f3f3 !important;
+            border-bottom-color: #e1e1e1 !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .line-numbers {
+            background-color: #ffffff !important;
+            color: #999999 !important;
+            border-right-color: #e1e1e1 !important;
+        }
+        
+        body.light-theme #fake-editor {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .typed {
+            color: #333333 !important;
+        }
+        
+        body.light-theme .remaining {
+            color: transparent !important;
+        }
+        
+        body.light-theme .cursor {
+            background-color: #333333 !important;
+        }
+        
+        body.light-theme .terminal {
+            background-color: #ffffff !important;
+            border-top-color: #e1e1e1 !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .terminal-prompt {
+            color: #007acc !important;
+        }
+        
+        body.light-theme .status-bar {
+            background-color: #007acc !important;
+            color: white !important;
+        }
+        
+        body.light-theme .theme-button {
+            background: #e8e8e8 !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .theme-button:hover {
+            background: #d0d0d0 !important;
+        }
+        
+        body.light-theme .mode-button {
+            background: #e8e8e8 !important;
+            color: #333333 !important;
+        }
+        
+        body.light-theme .mode-button:hover {
+            background: #d0d0d0 !important;
+        }
+        
+        body.light-theme .mode-button.active {
+            background: #007acc !important;
+            color: white !important;
+        }
+        
+        body.light-theme .import-button {
+            background: #28a745 !important;
+        }
+        
+        /* Terminal */
+        .terminal {
+            background-color: #1e1e1e;
+            border-top: 1px solid #3c3c3c;
+            padding: 8px 16px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            color: #cccccc;
+            height: 120px;
+            overflow-y: auto;
+        }
+        
+        .terminal-line {
+            margin: 2px 0;
+        }
+        
+        .terminal-prompt {
+            color: #4ec9b0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Activity Bar -->
+    <div class="activity-bar">
+        <div class="activity-icon active">📁</div>
+        <div class="activity-icon">🔍</div>
+        <div class="activity-icon">🔧</div>
+        <div class="activity-icon">▶️</div>
+        <div class="activity-icon">📊</div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">EXPLORER</div>
+        <div class="file-explorer">
+            <div class="file-item active">📄 main.py</div>
+            <div class="file-item">📄 config.py</div>
+            <div class="file-item">📄 utils.py</div>
+            <div class="file-item">📁 src/</div>
+            <div class="file-item">📁 tests/</div>
+            <div class="file-item">📄 requirements.txt</div>
+            <div class="file-item">📄 README.md</div>
+        </div>
+    </div>
+    
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <!-- File Import -->
+        <div class="file-import">
+            <input type="file" id="file-input" class="file-input" accept=".py,.js,.html,.css,.json,.sql,.txt,.md,.xml,.csv">
+            <button class="import-button" onclick="document.getElementById('file-input').click()">📁 Import Code</button>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="theme-toggle" id="theme-toggle">
+            <button class="theme-button" onclick="toggleTheme()">🌞 Light</button>
+        </div>
+        
+        <!-- Mode Switcher -->
+        <div class="mode-switcher">
+            <button class="mode-button active">💻 VS Code Mode</button>
+            <a href="office-mode.html" class="mode-button">📄 Switch to Office</a>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="app-name">Visual Studio Code</div>
+            <div class="document-name" id="document-name">main.py</div>
+        </div>
+        
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+            <div class="tab active">
+                main.py
+                <span class="tab-close">×</span>
+            </div>
+            <div class="tab">
+                config.py
+                <span class="tab-close">×</span>
+            </div>
+        </div>
+        
+        <!-- Editor Container -->
+        <div class="editor-container">
+            <div class="editor-header" id="editor-header">
+                <span>Line 1, Column 1</span>
+                <span>Python</span>
+                <span>UTF-8</span>
+                <span>LF</span>
+            </div>
+            <div id="fake-editor" contenteditable="true" spellcheck="false"></div>
+        </div>
+        
+        <!-- Terminal -->
+        <div class="terminal">
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span> python main.py
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span> 
+            </div>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span>main.py</span>
+                <span id="typing-status">Ready</span>
+            </div>
+            <div class="status-right">
+                <span>Python</span>
+                <span>UTF-8</span>
+                <span>Ln 1, Col 1</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default Python code content
+        let fullReport = `#!/usr/bin/env python3
+"""
+Advanced Data Processing System
+Author: Development Team
+Date: December 2024
+"""
+
+import os
+import sys
+import json
+import logging
+from typing import List, Dict, Optional
+from datetime import datetime, timedelta
+import pandas as pd
+import numpy as np
+from sqlalchemy import create_engine, Column, Integer, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# Configuration
+CONFIG = {
+    'database_url': 'postgresql://user:pass@localhost/db',
+    'log_level': 'INFO',
+    'batch_size': 1000,
+    'timeout': 30
+}
+
+# Database Models
+Base = declarative_base()
+
+class DataRecord(Base):
+    __tablename__ = 'data_records'
+    
+    id = Column(Integer, primary_key=True)
+    timestamp = Column(DateTime, nullable=False)
+    value = Column(String(255), nullable=False)
+    category = Column(String(100), nullable=False)
+    metadata = Column(String(500))
+
+class DataProcessor:
+    """Main data processing class"""
+    
+    def __init__(self, config: Dict):
+        self.config = config
+        self.engine = create_engine(config['database_url'])
+        self.Session = sessionmaker(bind=self.engine)
+        self.logger = self._setup_logging()
+    
+    def _setup_logging(self) -> logging.Logger:
+        """Setup logging configuration"""
+        logger = logging.getLogger(__name__)
+        logger.setLevel(getattr(logging, self.config['log_level']))
+        
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        
+        return logger
+    
+    def process_data(self, data: List[Dict]) -> bool:
+        """Process incoming data batch"""
+        try:
+            self.logger.info(f"Processing {len(data)} records")
+            
+            # Data validation
+            validated_data = self._validate_data(data)
+            if not validated_data:
+                self.logger.error("Data validation failed")
+                return False
+            
+            # Transform data
+            transformed_data = self._transform_data(validated_data)
+            
+            # Store in database
+            success = self._store_data(transformed_data)
+            
+            if success:
+                self.logger.info("Data processing completed successfully")
+            else:
+                self.logger.error("Failed to store data")
+            
+            return success
+            
+        except Exception as e:
+            self.logger.error(f"Error processing data: {str(e)}")
+            return False
+    
+    def _validate_data(self, data: List[Dict]) -> List[Dict]:
+        """Validate input data"""
+        validated = []
+        
+        for record in data:
+            if self._is_valid_record(record):
+                validated.append(record)
+            else:
+                self.logger.warning(f"Invalid record skipped: {record}")
+        
+        return validated
+    
+    def _is_valid_record(self, record: Dict) -> bool:
+        """Check if a single record is valid"""
+        required_fields = ['timestamp', 'value', 'category']
+        
+        for field in required_fields:
+            if field not in record or not record[field]:
+                return False
+        
+        # Additional validation logic
+        try:
+            datetime.fromisoformat(record['timestamp'])
+            return True
+        except ValueError:
+            return False
+    
+    def _transform_data(self, data: List[Dict]) -> List[DataRecord]:
+        """Transform data to database models"""
+        transformed = []
+        
+        for record in data:
+            try:
+                db_record = DataRecord(
+                    timestamp=datetime.fromisoformat(record['timestamp']),
+                    value=str(record['value']),
+                    category=record['category'],
+                    metadata=json.dumps(record.get('metadata', {}))
+                )
+                transformed.append(db_record)
+            except Exception as e:
+                self.logger.warning(f"Failed to transform record: {e}")
+        
+        return transformed
+    
+    def _store_data(self, data: List[DataRecord]) -> bool:
+        """Store data in database"""
+        session = self.Session()
+        
+        try:
+            session.add_all(data)
+            session.commit()
+            return True
+        except Exception as e:
+            session.rollback()
+            self.logger.error(f"Database error: {e}")
+            return False
+        finally:
+            session.close()
+    
+    def get_statistics(self) -> Dict:
+        """Get processing statistics"""
+        session = self.Session()
+        
+        try:
+            total_records = session.query(DataRecord).count()
+            recent_records = session.query(DataRecord).filter(
+                DataRecord.timestamp >= datetime.now() - timedelta(days=1)
+            ).count()
+            
+            return {
+                'total_records': total_records,
+                'recent_records': recent_records,
+                'last_updated': datetime.now().isoformat()
+            }
+        except Exception as e:
+            self.logger.error(f"Error getting statistics: {e}")
+            return {}
+        finally:
+            session.close()
+
+def main():
+    """Main application entry point"""
+    print("Starting Data Processing System...")
+    
+    # Initialize processor
+    processor = DataProcessor(CONFIG)
+    
+    # Sample data for processing
+    sample_data = [
+        {
+            'timestamp': datetime.now().isoformat(),
+            'value': 'sample_value_1',
+            'category': 'test',
+            'metadata': {'source': 'manual', 'priority': 'high'}
+        },
+        {
+            'timestamp': datetime.now().isoformat(),
+            'value': 'sample_value_2',
+            'category': 'production',
+            'metadata': {'source': 'api', 'priority': 'medium'}
+        }
+    ]
+    
+    # Process data
+    success = processor.process_data(sample_data)
+    
+    if success:
+        stats = processor.get_statistics()
+        print(f"Processing completed. Stats: {stats}")
+    else:
+        print("Processing failed!")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()`;
+
+        let currentIndex = 0;
+        let startTime = null;
+        let isLightTheme = false;
+
+        const editor = document.getElementById('fake-editor');
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            isLightTheme = !isLightTheme;
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeButton = themeToggle.querySelector('.theme-button');
+            
+            console.log('Toggling theme, isLightTheme:', isLightTheme);
+            
+            if (isLightTheme) {
+                body.classList.add('light-theme');
+                themeToggle.classList.add('light-theme');
+                themeButton.textContent = '🌙 Dark';
+                console.log('Applied light theme');
+            } else {
+                body.classList.remove('light-theme');
+                themeToggle.classList.remove('light-theme');
+                themeButton.textContent = '🌞 Light';
+                console.log('Applied dark theme');
+            }
+            
+            // Force a re-render
+            body.style.display = 'none';
+            body.offsetHeight; // Trigger reflow
+            body.style.display = '';
+        }
+
+        // Update editor content
+        function updateEditor() {
+            if (currentIndex < fullReport.length) {
+                const typedText = fullReport.substring(0, currentIndex);
+                const remainingText = fullReport.substring(currentIndex);
+                
+                // Convert newlines to <br> tags and preserve spaces/tabs
+                const typedHtml = typedText
+                    .replace(/\n/g, '<br>')
+                    .replace(/ /g, '&nbsp;')
+                    .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                const remainingHtml = remainingText
+                    .replace(/\n/g, '<br>')
+                    .replace(/ /g, '&nbsp;')
+                    .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                
+                editor.innerHTML = `<span class="typed">${typedHtml}</span><span class="cursor"></span><span class="remaining">${remainingHtml}</span>`;
+                
+                // Update status bar
+                document.getElementById('typing-status').textContent = 'Typing...';
+            } else {
+                // Document completed
+                const completedHtml = fullReport
+                    .replace(/\n/g, '<br>')
+                    .replace(/ /g, '&nbsp;')
+                    .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                editor.innerHTML = `<span class="typed">${completedHtml}</span><span class="cursor"></span>`;
+                document.getElementById('typing-status').textContent = 'Code completed';
+                
+                // Show completion alert
+                setTimeout(() => {
+                    alert('🎉 Code completed successfully!');
+                }, 500);
+            }
+        }
+
+        // Initialize editor
+        updateEditor();
+
+        // File import functionality
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fullReport = e.target.result;
+                    currentIndex = 0;
+                    startTime = null;
+                    updateEditor();
+                    
+                    // Update document name
+                    document.getElementById('document-name').textContent = file.name;
+                    
+                    // Show success message
+                    alert(`✅ Code file "${file.name}" imported successfully!`);
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Keyboard event listener
+        editor.addEventListener('keydown', function(event) {
+            // Prevent default behavior
+            event.preventDefault();
+
+            // Record start time
+            if (startTime === null) {
+                startTime = Date.now();
+            }
+
+            // Handle key presses
+            if (event.key.length === 1 || event.key === 'Backspace' || event.key === 'Delete') {
+                if (event.key === 'Backspace' || event.key === 'Delete') {
+                    // Backspace: move back one character
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateEditor();
+                    }
+                } else {
+                    // Any other key: advance one character
+                    if (currentIndex < fullReport.length) {
+                        currentIndex++;
+                        updateEditor();
+                        
+                        // Add typing sound effect (optional)
+                        playTypingSound();
+                    }
+                }
+            }
+        });
+
+        // Typing sound effect function
+        function playTypingSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                oscillator.type = 'square';
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {
+                // Ignore audio context errors
+            }
+        }
+
+        // Focus editor on page load
+        window.addEventListener('load', function() {
+            editor.focus();
+        });
+
+        // Add activity bar interactions
+        document.querySelectorAll('.activity-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                document.querySelectorAll('.activity-icon').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Add file explorer interactions
+        document.querySelectorAll('.file-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.file-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Add tab interactions
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

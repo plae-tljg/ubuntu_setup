@@ -81,12 +81,15 @@ export default defineUserConfig({
             '/utils/common_cmd/README.md',
             '/utils/common_cmd/asterisks_cmd.md',
             '/utils/common_cmd/audio_cmd.md',
+            '/utils/common_cmd/reboot_router.md',
+            '/utils/common_cmd/send_email.md',
           ],
         },
         {
           text: '用户配置',
           children: [
             '/utils/user_config/cursor_style.md',
+            '/utils/user_config/code_highlight.md',
           ],
         },
         {

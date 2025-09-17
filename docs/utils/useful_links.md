@@ -12,3 +12,4 @@
 | ------------ | -------------------------------------------------------------------- |
 | 出勤记录 | <span style="color:red"><a :href="$withBase('/lib/record_boss_attendance/index.html')">`/lib/record_boss_attendance/index.html`</a></span> |
 | web math evolution algorithm | <span style="color:red"><a :href="$withBase('/lib/web_math_evolution/index.html')">`/lib/web_math_evolution/index.html`</a></span> |
+| Pretend you are Typing | <span style="color:red"><a :href="$withBase('/lib/Type_As_If_You_Are_Working/index.html')">`/lib/Type_As_If_You_Are_Working/index.html`</a></span> |

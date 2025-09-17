@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+************************************************************************** 
+*                                                                             
+* Title    : Asterisk Dialplan language definition
+* Author   : Benoit Frigon (bfrigon@gmail.com)
+*                                                                           
+************************************************************************** 
+-->
+<language id="ast_dialplan" _name="Asterisk Dialplan" version="2.0" _section="Sources">
+    <metadata>
+      <property name="mimetypes">text/x-c;text/x-csrc;image/x-xpixmap</property>
+      <property name="globs">*.conf</property>
+    </metadata>
+
+	<!-- Styles -->
+    <styles>
+		<style id="comment"           _name="Comment"             map-to="def:comment"/>
+		<style id="applications"      _name="Applications"        map-to="def:type"/>
+		<style id="functions"         _name="Functions"           map-to="def:type"/>
+		<style id="context"           _name="Contexts"		  	  map-to="def:preprocessor"/>
+		<style id="string"            _name="String"              map-to="def:string"/>
+		<style id="keyword"           _name="Keywords"            map-to="def:keyword"/>
+		<style id="extension"         _name="Extension"           map-to="def:special-constant"/>
+		<style id="priority"          _name="Priority"            map-to="def:base-n-integer"/>
+		<style id="brackets"          _name="Brackets"            map-to="def:string"/>
+		<style id="label"             _name="Labels"              map-to="def:preprocessor"/>
+    </styles>
+    
+    <default-regex-options case-sensitive="false"/>
+
+    <definitions>
+        <context id="ast_dialplan" class="no-spell-check">
+            <include>
+
+                <!-- Comments -->
+                <context id="comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+                    <start>\;</start>
+                </context>
+
+				<!-- Keyword : EXTEN => xxxxxxx, p, ... -->
+				<context id="keyword_exten" class="string">
+					<match>(exten)\s*=>\s*([^\s,]+)\s*,\s*(\d+|n)\s*(?:\(([^\)]+)\))?</match>
+					<include>
+						<context sub-pattern="1" style-ref="keyword" />
+						<context sub-pattern="2" style-ref="extension" />
+						<context sub-pattern="3" style-ref="priority" />
+						<context sub-pattern="4" style-ref="label" />
+					</include>
+				</context>
+
+				<!-- Keyword : SAME => p, ... -->
+				<context id="keyword_same" class="string">
+					<match>(same)\s*=>\s*(\d+|n)\s*(?:\(([^\)]+)\))?</match>
+					<include>
+						<context sub-pattern="1" style-ref="keyword" />
+						<context sub-pattern="2" style-ref="priority" />
+						<context sub-pattern="3" style-ref="label" />
+					</include>
+				</context>
+
+				<!-- Keyword : INCLUDE => nnnnnnn -->
+				<context id="keyword_include" class="string">
+					<match>(include)\s*=>\s*([^\s,]+)</match>
+					<include>
+						<context sub-pattern="1" style-ref="keyword" />
+						<context sub-pattern="2" style-ref="context" />
+					</include>
+				</context>
+				
+				<!-- Brackets -->
+				<context id="brackets" class="string" style-ref="brackets">
+					<match>\$\{|\}|\(|\)|\$\[|\]</match>
+				</context>
+				
+				<!-- Macro app -->
+				<context id="app_macro" class="string">
+					<match>(Macro)\s*\(\s*([^\s,]+)</match>
+					<include>
+						<context sub-pattern="1" style-ref="applications" />
+						<context sub-pattern="2" style-ref="string" />
+					</include>
+				</context>
+
+				<!-- Verbose app -->
+				<context id="app_verbose" class="string">
+					<match>(Verbose|NoOp)\s*\(\s*([^\)]+)</match>
+					<include>
+						<context sub-pattern="1" style-ref="applications" />
+						<context sub-pattern="2" style-ref="string" />
+					</include>
+				</context>
+
+				<!-- Context -->
+				<context id="context" style-ref="context" end-at-line-end="true" class="string">
+					<start>^\[</start>
+					<end>\]</end>
+				</context>
+
+				<!-- Applictions list -->
+				<context id="applications" style-ref="applications" class="keyword">
+					<keyword>AbsoluteTimeout</keyword>
+					<keyword>AddQueueMember</keyword>
+					<keyword>ADSIProg</keyword>
+					<keyword>AELSub</keyword>
+					<keyword>AgentCallbackLogin</keyword>
+					<keyword>AgentLogin</keyword>
+					<keyword>AgentMonitorOutgoing</keyword>
+					<keyword>AGI</keyword>
+					<keyword>AlarmReceiver</keyword>
+					<keyword>ALSAMonitor</keyword>
+					<keyword>AMD</keyword>
+					<keyword>Answer</keyword>
+					<keyword>AppendCDRUserField</keyword>
+					<keyword>Authenticate</keyword>
+					<keyword>BackGround</keyword>
+					<keyword>BackgroundDetect</keyword>
+					<keyword>Bridge</keyword>
+					<keyword>Busy</keyword>
+					<keyword>CallingPres</keyword>
+					<keyword>ChangeMonitor</keyword>
+					<keyword>ChanIsAvail</keyword>
+					<keyword>ChannelRedirect</keyword>
+					<keyword>ChanSpy</keyword>
+					<keyword>CheckGroup</keyword>
+					<keyword>ClearHash</keyword>
+					<keyword>ConfBridge</keyword>
+					<keyword>Congestion</keyword>
+					<keyword>ContinueWhile</keyword>
+					<keyword>ControlPlayback</keyword>
+					<keyword>Curl</keyword>
+					<keyword>Cut</keyword>
+					<keyword>DAHDIBarge</keyword>
+					<keyword>DAHDIRAS</keyword>
+					<keyword>DAHDIScan</keyword>
+					<keyword>DAHDISendKeypadFacility</keyword>
+					<keyword>DateTime</keyword>
+					<keyword>DBdel</keyword>
+					<keyword>DBdeltree</keyword>
+					<keyword>DBget</keyword>
+					<keyword>DBput</keyword>
+					<keyword>DBQuery</keyword>
+					<keyword>DBRewrite</keyword>
+					<keyword>DeadAGI</keyword>
+					<keyword>Dial</keyword>
+					<keyword>Dictate</keyword>
+					<keyword>DigitTimeout</keyword>
+					<keyword>Directory</keyword>
+					<keyword>DISA</keyword>
+					<keyword>DTMFToText</keyword>
+					<keyword>DumpChan</keyword>
+					<keyword>DUNDiLookup</keyword>
+					<keyword>EAGI</keyword>
+					<keyword>Echo</keyword>
+					<keyword>EndWhile</keyword>
+					<keyword>EnumLookup</keyword>
+					<keyword>Exec</keyword>
+					<keyword>ExecIf</keyword>
+					<keyword>ExecIfTime</keyword>
+					<keyword>ExitWhile</keyword>
+					<keyword>ExtenSpy</keyword>
+					<keyword>ExternIVR</keyword>
+					<keyword>Festival</keyword>
+					<keyword>Flash</keyword>
+					<keyword>Flite</keyword>
+					<keyword>ForkCDR</keyword>
+					<keyword>GetCPEID</keyword>
+					<keyword>GetGroupCount</keyword>
+					<keyword>GetGroupMatchCount</keyword>
+					<keyword>Gosub</keyword>
+					<keyword>GosubIf</keyword>
+					<keyword>Goto</keyword>
+					<keyword>GotoIf</keyword>
+					<keyword>GotoIfTime</keyword>
+					<keyword>Hangup</keyword>
+					<keyword>HasNewVoicemail</keyword>
+					<keyword>HasVoicemail</keyword>
+					<keyword>ICES</keyword>
+					<keyword>ImportVar</keyword>
+					<keyword>Incomplete</keyword>
+					<keyword>JabberJoin</keyword>
+					<keyword>JabberLeave</keyword>
+					<keyword>JabberSend</keyword>
+					<keyword>JabberSendGroup</keyword>
+					<keyword>JabberStatus</keyword>
+					<keyword>Jack</keyword>
+					<keyword>KeepAlive</keyword>
+					<keyword>Log</keyword>
+					<keyword>LookupBlacklist</keyword>
+					<keyword>LookupCIDName</keyword>
+					<keyword>Macro</keyword>
+					<keyword>MacroExclusive</keyword>
+					<keyword>MacroExit</keyword>
+					<keyword>MacroIf</keyword>
+					<keyword>MailboxExists</keyword>
+					<keyword>Math</keyword>
+					<keyword>MeetMe</keyword>
+					<keyword>MeetMeAdmin</keyword>
+					<keyword>MeetMeChannelAdmin</keyword>
+					<keyword>MeetMeCount</keyword>
+					<keyword>Milliwatt</keyword>
+					<keyword>MinivmAccMess</keyword>
+					<keyword>MinivmDelete</keyword>
+					<keyword>MinivmGreet</keyword>
+					<keyword>MinivmNotify</keyword>
+					<keyword>MinivmRecord</keyword>
+					<keyword>MixMonitor</keyword>
+					<keyword>Monitor</keyword>
+					<keyword>MP3Player</keyword>
+					<keyword>MSet</keyword>
+					<keyword>MusicOnHold</keyword>
+					<keyword>MYSQL</keyword>
+					<keyword>NBScat</keyword>
+					<keyword>NoCDR</keyword>
+					<keyword>NoOp</keyword>
+					<keyword>ODBCFinish</keyword>
+					<keyword>Originate</keyword>
+					<keyword>Page</keyword>
+					<keyword>Park</keyword>
+					<keyword>ParkAndAnnounce</keyword>
+					<keyword>ParkedCall</keyword>
+					<keyword>PauseQueueMember</keyword>
+					<keyword>Perl</keyword>
+					<keyword>PHP</keyword>
+					<keyword>Pickup</keyword>
+					<keyword>PickUP</keyword>
+					<keyword>PickupChan</keyword>
+					<keyword>Playback</keyword>
+					<keyword>Playtones</keyword>
+					<keyword>PPPD</keyword>
+					<keyword>PrivacyManager</keyword>
+					<keyword>Proceeding</keyword>
+					<keyword>Progress</keyword>
+					<keyword>Queue</keyword>
+					<keyword>Random</keyword>
+					<keyword>Read</keyword>
+					<keyword>ReadExten</keyword>
+					<keyword>ReadFile</keyword>
+					<keyword>RealTime</keyword>
+					<keyword>RealTimeUpdate</keyword>
+					<keyword>Record</keyword>
+					<keyword>RemoveQueueMember</keyword>
+					<keyword>ResetCDR</keyword>
+					<keyword>ResponseTimeout</keyword>
+					<keyword>RetryDial</keyword>
+					<keyword>Return</keyword>
+					<keyword>Ringing</keyword>
+					<keyword>Rpt</keyword>
+					<keyword>SayAlpha</keyword>
+					<keyword>SayCountedAdj</keyword>
+					<keyword>SayCountedNoun</keyword>
+					<keyword>SayDigits</keyword>
+					<keyword>SayNumber</keyword>
+					<keyword>SayPhonetic</keyword>
+					<keyword>SayUnixTime</keyword>
+					<keyword>SendDTMF</keyword>
+					<keyword>SendImage</keyword>
+					<keyword>SendText</keyword>
+					<keyword>SendURL</keyword>
+					<keyword>Set</keyword>
+					<keyword>SetAccount</keyword>
+					<keyword>SetAMAflags</keyword>
+					<keyword>SetCallerID</keyword>
+					<keyword>SetCallerPres</keyword>
+					<keyword>SetCDRUserField</keyword>
+					<keyword>SetCIDNum</keyword>
+					<keyword>SetGlobalVar</keyword>
+					<keyword>SetGroup</keyword>
+					<keyword>SetLanguage</keyword>
+					<keyword>SetMusicOnHold</keyword>
+					<keyword>SIPAddHeader</keyword>
+					<keyword>SIPCallPickup</keyword>
+					<keyword>SIPGetHeader</keyword>
+					<keyword>SIPdtmfMode</keyword>
+					<keyword>SMS</keyword>
+					<keyword>SoftHangup</keyword>
+					<keyword>SrxEchoCan</keyword>
+					<keyword>SrxDeflect</keyword>
+					<keyword>SrxMWI</keyword>
+					<keyword>StackPop</keyword>
+					<keyword>Steal</keyword>
+					<keyword>StopMonitor</keyword>
+					<keyword>StopMixMonitor</keyword>
+					<keyword>StopPlaytones</keyword>
+					<keyword>System</keyword>
+					<keyword>TestClient</keyword>
+					<keyword>TestServer</keyword>
+					<keyword>Transfer</keyword>
+					<keyword>TrySystem</keyword>
+					<keyword>TXTCIDName</keyword>
+					<keyword>UnpauseQueueMember</keyword>
+					<keyword>UserEvent</keyword>
+					<keyword>VMAuthenticate</keyword>
+					<keyword>VMSayName</keyword>
+					<keyword>VoiceMail</keyword>
+					<keyword>VoiceMailMain</keyword>
+					<keyword>Wait</keyword>
+					<keyword>WaitExten</keyword>
+					<keyword>WaitForRing</keyword>
+					<keyword>WaitMusicOnHold</keyword>
+					<keyword>WaitUntil</keyword>
+					<keyword>While</keyword>
+					<keyword>Zapateller</keyword>										
+                </context>
+
+				<!-- Functions list -->
+				<context id="functions" style-ref="applications" class="keyword">
+					<keyword>AES_DECRYPT</keyword>
+					<keyword>AES_ENCRYPT</keyword>
+					<keyword>AGC</keyword>
+					<keyword>AGENT</keyword>
+					<keyword>ARRAY</keyword>
+					<keyword>AST_CONFIG</keyword>
+					<keyword>AUDIOHOOK_INHERIT</keyword>
+					<keyword>BASE64_DECODE</keyword>
+					<keyword>BASE64_ENCODE</keyword>
+					<keyword>BLACKLIST</keyword>
+					<keyword>CALLERID</keyword>
+					<keyword>CALLERPRES</keyword>
+					<keyword>CDR</keyword>
+					<keyword>CHANNEL</keyword>
+					<keyword>CHANNELS</keyword>
+					<keyword>CHECKSIPDOMAIN</keyword>
+					<keyword>CHECK_MD5</keyword>
+					<keyword>clearhash</keyword>
+					<keyword>CONFBRIDGE</keyword>
+					<keyword>CONFBRIDGE_INFO</keyword>
+					<keyword>CONNECTEDLINE</keyword>
+					<keyword>CSV_QUOTE</keyword>
+					<keyword>CURL</keyword>
+					<keyword>CURLOPT</keyword>
+					<keyword>CUT</keyword>
+					<keyword>DB</keyword>
+					<keyword>DB_DELETE</keyword>
+					<keyword>DB_EXISTS</keyword>
+					<keyword>DEC</keyword>
+					<keyword>DENOISE</keyword>
+					<keyword>DEVICE_STATE</keyword>
+					<keyword>DIALGROUP</keyword>
+					<keyword>DIALPLAN_EXISTS</keyword>
+					<keyword>DUNDILOOKUP</keyword>
+					<keyword>DUNDIQUERY</keyword>
+					<keyword>DUNDIRESULT</keyword>
+					<keyword>ENUMLOOKUP</keyword>
+					<keyword>ENUMQUERY</keyword>
+					<keyword>ENUMRESULT</keyword>
+					<keyword>ENV</keyword>
+					<keyword>EVAL</keyword>
+					<keyword>EXCEPTION</keyword>
+					<keyword>EXISTS</keyword>
+					<keyword>EXTENSION_STATE</keyword>
+					<keyword>FIELDQTY</keyword>
+					<keyword>FILE</keyword>
+					<keyword>FILTER</keyword>
+					<keyword>GROUP</keyword>
+					<keyword>GROUP_COUNT</keyword>
+					<keyword>GROUP_LIST</keyword>
+					<keyword>GROUP_MATCH_COUNT</keyword>
+					<keyword>HASH</keyword>
+					<keyword>hashkeys</keyword>
+					<keyword>HINT</keyword>
+					<keyword>IAXPEER</keyword>
+					<keyword>iaxvar</keyword>
+					<keyword>IF</keyword>
+					<keyword>IFMODULE</keyword>
+					<keyword>IFTIME</keyword>
+					<keyword>IMPORT</keyword>
+					<keyword>INC</keyword>
+					<keyword>ISNULL</keyword>
+					<keyword>Jack_hook</keyword>
+					<keyword>KEYPADHASH</keyword>
+					<keyword>LANGUAGE</keyword>
+					<keyword>LEN</keyword>
+					<keyword>LOCK</keyword>
+					<keyword>MATH</keyword>
+					<keyword>MD5</keyword>
+					<keyword>MUSICCLASS</keyword>
+					<keyword>ODBC</keyword>
+					<keyword>QUEUEAGENTCOUNT</keyword>
+					<keyword>QUEUE_MEMBER_COUNT</keyword>
+					<keyword>QUEUE_MEMBER_LIST</keyword>
+					<keyword>QUEUE_WAITING_COUNT</keyword>
+					<keyword>QUOTE</keyword>
+					<keyword>RAND</keyword>
+					<keyword>REALTIME</keyword>
+					<keyword>REGEX</keyword>
+					<keyword>REPLACE</keyword>
+					<keyword>SET</keyword>
+					<keyword>SHA1</keyword>
+					<keyword>SHARED</keyword>
+					<keyword>SHELL</keyword>
+					<keyword>SIPCHANINFO</keyword>
+					<keyword>SIPPEER</keyword>
+					<keyword>SIPADDHEADER</keyword>
+					<keyword>SIP_HEADER</keyword>
+					<keyword>SORT</keyword>
+					<keyword>SQL_ESC</keyword>
+					<keyword>STAT</keyword>
+					<keyword>STRFTIME</keyword>
+					<keyword>STRPTIME</keyword>
+					<keyword>SYSINFO</keyword>
+					<keyword>TIMEOUT</keyword>
+					<keyword>TOUPPER</keyword>
+					<keyword>TOLOWER</keyword>
+					<keyword>TRYLOCK</keyword>
+					<keyword>TXTCIDNAME</keyword>
+					<keyword>UNLOCK</keyword>
+					<keyword>URIDECODE</keyword>
+					<keyword>URIENCODE</keyword>
+					<keyword>VOLUME</keyword>
+					<keyword>VMCOUNT</keyword>
+				</context>
+            </include>
+        </context>
+    </definitions>
+</language>

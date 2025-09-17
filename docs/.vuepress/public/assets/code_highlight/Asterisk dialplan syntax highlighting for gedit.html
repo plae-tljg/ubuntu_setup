@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <!-- Global site tag (gtag.js) - Google Analytics --> <script async="" src="Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit_files/google-analytics_analytics.js" type="text/javascript"></script> <script type="text/javascript"> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-41548680-2'); </script> <style> html { z-index: 0; } body { z-index: 1; } body, html { height: 100%; } body { font: 85% "Helvetica Neue", arial, sans-serif; background: black; color: #444; margin: 0; } .header { padding-top: 100px; background-color: #161d3d; } .header-center { position: relative; height: 120px; max-width: 750px; min-width: 500px; margin: 0 auto; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #232f63; border: solid #36499b; border-width: 2px 2px 0px 2px; } .header-center #title { position: relative; z-index: 25; padding: 35px 0px 0px 50px; font-size: 2.25em; color: #fff; } .header-center #subtitle { position: relative; z-index: 25; padding: 5px 0px 0px 70px; font-size: 1em; font-style: italic; color: #fff; } .header-center #logo { position: absolute; z-index: 20; display: block; width: 120px; height: 65px; right: 40px; top: 30px; } .footer { color: #777; text-align: center; margin: 0 auto 15px auto; } .footer-content { padding: 10px; font-size: 0.8em; } .button { display: inline-block; background-color: #375c9c; color: #c6d4eb !important; margin-right: 5px; text-decoration: none; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; padding: 6px; } .button.disabled { background-color: #ccc; color: #999 !important; } a.button:hover { background: #688cca; color: white !important; } .button i { vertical-align: middle; text-align: center; line-height: 1em; } .button.btn-hidden { display: none; } .button.btn-icon-small i { font-size: 1.5em; width: 1em; } .button.btn-icon-large { -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; padding: 10px; } .button.btn-icon-large i { font-size: 2.5em; width: 1em; } .button.btn-icon-left i { margin-right: 4px; } .button.btn-icon-right i { margin-left: 4px; } .button.float-right { float: right; } .button.float-left { float: left; } .menubar { background-color: #264273; } .menubar-center { max-width: 750px; min-width: 500px; margin: 0 auto; background-color: #4472c1; border: solid #36499b; border-width: 0px 2px; } .navmenu { margin: 0; padding: 3px 8px; overflow: hidden; } .navmenu i { font-size: 2em; width: 1em; line-height: 1em; vertical-align: middle; } .navmenu span { line-height: 2em; } .navmenu a { display: inline-block; color: #f2f2f2; text-align: center; margin: 0px 2px; padding: 5px; text-decoration: none; border-radius: 5px; } .navmenu a:hover { background-color: #b1c4e4; color: black; } .navmenu a.more { display: none; } .navmenu a.float-right { float: right; } .page { z-index: 3; position: relative; max-width: 750px; min-width: 500px; margin: 0 auto; background-color: #DEE0E2; overflow: hidden; min-height: 500px; -webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border: solid #36499b; border-width: 0px 2px 2px 2px; } .page-content { z-index: 4; padding: 40px; } .page-content p { margin: 10px 0px; line-height: 1.5; } .page-content blockquote { background: #444; color: #ddd; padding: 10px; border-left: 10px solid #222; } .page-content h1 { background-color: #1b2e50; color: #ccc; padding: 15px 40px; margin: 0px -30px 30px -30px; font-size: 1.1em; font-weight: bold; clear: both; } .page-content h2 { padding: 20px 0px 2px 30px; margin: 0px -30px 20px -30px; border-bottom: 2px solid #333; font-size: 1em; clear: both; } .page-content h3 { font-size: 0.9em; border-bottom: 1px solid #aaa; padding: 15px 0px 2px 0px; margin: 0px 0px 15px 0px; clear: both; } .page-content table { margin: 15px 0px; border: 1px solid #aaa; } .page-content th, .page-content td { padding: 6px 15px; text-align: left; } .page-content th { background: #b8b8b8; border-bottom: 1px solid #aaa; } .page-content tr td { background: #fff; } .page-content tr:nth-child(even) td { background: #e1e1e1; } .page-content ol { overflow: hidden; list-style: decimal outside none; } .page-content ul { margin-top: 5px; overflow: hidden; list-style: disc outside none; } .page-content a { color:#3b506b; font-weight: bold; border-bottom: #3b506b; } .page-content strong { font-weight: bold; } .page-content h1 a { color: #ccc; text-decoration: none; } .page-content blockquote a { color: #56a0ff; } .post-footer { background-color: #232f63; color: #e6e6e6; clear: both; margin: 20px -40px 20px -40px; padding: 5px 40px; } .post-footer a { color:white; } .post-content { margin-bottom: 25px; } .post-listing-entry { padding: 10px; border-bottom: 2px solid #888; overflow: auto; } .paginator { height: 26px; padding: 30px 0px 0px 0px; border-top: 2px solid #aaa; margin-top: 20px; } div.highlight, figure.highlight { background: #f8f8f8; border: 2px solid #bfbfbf; padding: 14px 10px; margin: 0px; clear: both; overflow-y: hidden; overflow-x: auto; -webkit-overflow-scrolling: touch; } .highlight pre, .highlight code { display: inline; } form[name='comment'] label { display: inline-block; width: 100%; } form[name='comment'] input { width: 260px; padding: 3px; } form[name='comment'] textarea { padding: 3px; min-height: 150px; width: 100%; resize: vertical; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; } .msgbox-background { display: none; } @font-face { font-family: 'fontello'; src: url('/images/fontello.eot?79734273'); src: url('/images/fontello.eot?79734273#iefix') format('embedded-opentype'), url('/images/fontello.svg?79734273#fontello') format('svg'); font-weight: normal; font-style: normal; } @font-face { font-family: 'fontello'; src: url('data:application/octet-stream;base64,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') format('woff'), url('data:application/octet-stream;base64,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') format('truetype'); } /* @media screen and (-webkit-min-device-pixel-ratio:0) { @font-face { font-family: 'fontello'; src: url('../font/fontello.svg?79734273#fontello') format('svg'); } } */ [class^="icon-"]:before, [class*=" icon-"]:before { font-family: "fontello"; font-style: normal; font-weight: normal; speak: none; display: inline-block; text-decoration: inherit; width: 1em; text-align: center; line-height: 1em; } .icon-check:before { content: '\e800'; } .icon-home:before { content: '\e801'; } .icon-error-alt:before { content: '\e803'; } .icon-spin6:before { content: '\e839'; } .icon-twitter:before { content: '\f099'; } .icon-facebook:before { content: '\f09a'; } .icon-menu:before { content: '\f0c9'; } .icon-mail-alt:before { content: '\f0e0'; } .icon-sitemap:before { content: '\f0e8'; } .icon-github:before { content: '\f113'; } .icon-angle-circled-left:before { content: '\f137'; } .icon-angle-circled-right:before { content: '\f138'; } .icon-google:before { content: '\f1a0'; } .icon-reddit-alien:before { content: '\f281'; } </style> <style> ul.tag-list { display: block; list-style: none; margin: 5px 0px 5px 0px; padding: 0px; overflow: hidden; } ul.tag-list li { float: left; padding: 0px; margin: 0px 10px 8px 0px; border: 1px solid #aaa; background-color: #ccc; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; } ul.tag-list a { color: black; display: block; margin: 0; padding: 5px 6px 4px 6px; text-decoration: none; text-transform: uppercase; font-size: 0.8em; white-space: nowrap; } ul.tag-list li:hover { background-color: #eee; } ul.tag-list a span { padding: 3px 6px 2px 6px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; font-weight: normal; background-color: #999; color: #fff; } </style> <style> .gallery { padding: 10px; background-color: #bdbdbd; border: 1px solid #888; text-align: center; } .gallery .media { margin: 5px; } .media { text-align: center; display: inline-block; line-height: 0px; padding: 5px; margin-right: 5px; max-width: 95%; *width: auto; *display: inline; zoom: 1; } .media.compact { max-width: 40%; } .media a { display: block; line-height: 0px; } .media .caption { display: block; line-height: 16px; padding: 3px 10px; background-color: #bbb; } .media.frame { border: 1px solid #aaa; background-color: white; box-shadow: 5px 5px 10px #777; } .media.alignleft { float: left; margin-right: 10px; margin-left: 0px; } .media.alignright { float: right; margin-left: 10px; margin-right: 0px; } .media img { vertical-align: bottom; } .media a img { cursor: pointer; } .img-container { position: relative; display: block; max-width: 100%; height: 0px; /*overflow: hidden;*/ *height: auto; *position: static; *padding: 0px !important; } .img-container img { position: absolute; display: block; left: 0px; top: 0px; right: 0px; bottom: 0px; max-width: 100%; max-height: 100%; *position: static; *display: inline; } </style> <style>@media only screen and (max-width: 650px) { body { margin: 5px; } .header { padding-top: 10px; background-color: black; } .header-center { height: 90px; min-width: 300px; } .header-center #logo { right: 15px; top: 20px; width: 90px; height: 50px; } .header-center #title { padding: 25px 0px 0px 15px; font-size: 1.7em; } .header-center #subtitle { font-size: 0.8em; padding: 5px 0px 0px 20px; } .page { min-width: 300px; } .page-content { padding: 10px; } .menubar-center { min-width: 300px; } .page-content p { font-size: 0.9em; } .page-content h1 { margin: 0px -5px 15px -5px; padding: 12px 10px; font-size: 1em; } .page-content h2 { padding: 10px 0px 2px 10px; margin: 0px -5px 10px -5px; } .page-content ul li, .page-content ol li { margin: 0px 0px 0px 0px; } .page-content blockquote { margin: 5px; } .gallery { margin: 20px -10px; padding: 10px 0px; } .gallery .media { margin: 3px; } .post-footer { margin: 30px -10px 15px -10px; padding: 5px 10px; } .navmenu a { padding: 8px 12px; } .navmenu a.icon { background-position: 6px center; } .navmenu a.more { display: block !important; float: right; } .navmenu a:not(.mobile) { display: none; clear: both; } .navmenu.responsive a:not(.mobile) { float: none; display: block; text-align: left; } .highlight { margin: 5px; } ul.tag-list li { margin: 0px 5px 4px 0px; } } @media only screen and (max-width: 430px) { .header-center #logo { right: 15px; top: 10px; width: 60px; height: 35px; } } </style> <meta name="language" content="english"> <meta name="DC.Language" content="en"> <meta name="description" content="Asterisk dialplan syntax highlighting for gtksourceview (gedit)"> <meta name="DC.description" content="Asterisk dialplan syntax highlighting for gtksourceview (gedit)"> <meta property="description" content="Asterisk dialplan syntax highlighting for gtksourceview (gedit)"> <meta property="og:description" content="Asterisk dialplan syntax highlighting for gtksourceview (gedit)"> <meta property="og:locale" content="en_US"> <meta property="og:title" content="Asterisk dialplan syntax highlighting for gedit"> <meta property="og:url" content="https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/"> <meta property="og:site_name" content="Benoit Frigon"> <meta property="og:type" content="article"> <meta property="article:publisher" content="https://www.frigon.info"> <meta property="article:section" content="asterisk"> <meta property="article:published_time" content="2013-06-09T22:28:41-04:00"> <meta property="article:modified_time" content="2018-12-30T19:39:03-05:00"> <meta property="article:tags" content="asterisk,tools,coding,telephony"> <meta name="dc.creator" content="Benoit Frigon"> <meta name="dc.date" content="2013-06-09T22:28:41-04:00"> <meta property="article:author" content="https://plus.google.com/u/0/100667493604379348233"> <meta property="og:image" content="https://www.frigon.info/images/post-thumbnail/dialplan-highlight.jpg"> <link rel="shortcut icon" href="https://www.frigon.info/favicon.ico" type="image/x-icon"> <link type="text/plain" rel="author" href="https://www.frigon.info/humans.txt"> <link rel="canonical" href="https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/"> <link rel="alternate" type="application/rss+xml" title="Benoit Frigon" href="https://www.frigon.info/feed.xml"> <link rel="author" href="https://plus.google.com/u/0/100667493604379348233"> <meta name="viewport" content="width=device-width"> <title>Asterisk dialplan syntax highlighting for gedit</title> <meta name="dc.title" content="Asterisk dialplan syntax highlighting for gedit"> <script type="text/javascript"> function deferloading() { var element = document.createElement("link"); element.rel = "stylesheet"; element.href = "/assets/main.css?v=004"; document.body.appendChild(element); var element = document.createElement("script"); element.src = "/assets/scripts.js?v=002"; document.body.appendChild(element); } if (window.addEventListener) window.addEventListener("load", deferloading, false); else if (window.attachEvent) window.attachEvent("onload", deferloading); else window.onload = deferloading; </script> <noscript> <link rel="stylesheet" href="/assets/main.css?v=004" /> </noscript> </head> <body> <div class="header"> <div class="header-center"> <div id="title">Benoit Frigon</div> <div id="subtitle">My blog about electronic projects, telephony and other stuff...</div> <img id="logo" alt="logo.jpg" src="data:image/jpeg;base64,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"> </div> </div> <div class="menubar"> <nav> <div class="menubar-center"> <div class="navmenu"> <a class="more mobile" href="javascript:void(0);"><i class="icon-menu"></i></a> <a class="float-right mobile" href="https://github.com/bfrigon"> <i class="icon-github"></i> <span></span> </a> <a class="float-right mobile" href="https://www.frigon.info/posts/"> <i class="icon-sitemap"></i> <span></span> </a> <a class=" mobile" href="https://www.frigon.info/"> <i class="icon-home"></i> <span></span> </a> <a class="" href="https://www.frigon.info/posts/projects/"> <span>Projects</span> </a> <a class="" href="https://www.frigon.info/posts/asterisk/"> <span>Asterisk</span> </a> <a class="" href="https://www.frigon.info/posts/diy/"> <span>DIY</span> </a> <a class="" href="https://www.frigon.info/posts/programming/"> <span>Programming</span> </a> <a class="" href="https://www.frigon.info/about/"> <span>About</span> </a> </div> </div> </nav> </div> <div class="page"> <div class="page-content"> <article class="hentry h-entry"> <header> <h1 itemscope="" itemtype="https://schema.org/BreadcrumbList"> <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"> <a itemscope="" itemtype="https://schema.org/Thing" itemprop="item" href="https://www.frigon.info/posts/asterisk/"> <span itemprop="name" class="p-category">Asterisk</span> </a> <meta itemprop="position" content="1"> </span> » <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"> <a itemscope="" itemtype="https://schema.org/Thing" itemprop="item" href="https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/" class="u-url"> <span itemprop="name" class="entry-title p-name">Asterisk dialplan syntax highlighting for gedit</span> </a> <meta itemprop="position" content="2"> <meta itemprop="image" content="https://www.frigon.info/images/post-thumbnail/dialplan-highlight.jpg"> </span> </h1> <a class="button btn-icon-small" href="https://www.facebook.com/sharer.php?u=https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/&amp;t=Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit"><i class="icon-facebook"></i></a><!-- --><a class="button btn-icon-small" href="https://twitter.com/share?text=Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit&amp;url=https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/"><i class="icon-twitter"></i></a><!-- --><a class="button btn-icon-small" href="https://plus.google.com/share?url=https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/"><i class="icon-google"></i></a><!-- --><a class="button btn-icon-small" href="https://www.reddit.com/submit?url=https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/&amp;title=Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit"><i class="icon-reddit-alien"></i></a> </header> <section role="main"> <div class="post-content e-content entry-content"> <p>I
+ made a language definition file for Asterisk dialplan in gedit 
+(gtksourceview 2.0). I find that it makes the dialplan much easier to 
+read. <!--more--></p> <h2 id="language-definition-file">Language definition file</h2> <p>Paste the following in: <strong>/usr/share/gtksourceview-2.0/language-specs/ast_dialplan.lang</strong></p> <script src="Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit_files/9129e3b66405e50ec8c9a8c3049bd47c.js" type="text/javascript"> </script><link rel="stylesheet" href="Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit_files/gist-embed-59543e005c9c.css"><div id="gist45100005" class="gist">
+    <div class="gist-file" translate="no" data-color-mode="light" data-light-theme="light">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container">
+  <div id="file-gedit_syntax_dialplan-lang" class="file my-2">
+    
+    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-text  " style="overflow: auto" tabindex="0" role="region" aria-label="gedit_syntax_dialplan.lang content, created by bfrigon on 02:32AM on February 23, 2017.">
+
+        
+<div class="js-check-hidden-unicode js-blob-code-container blob-code-content">
+
+  <template class="js-file-alert-template">
+  <div data-view-component="true" class="flash flash-warn flash-full d-flex flex-items-center">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    <span>
+      This file contains hidden or bidirectional Unicode text that may 
+be interpreted or compiled differently than what appears below. To 
+review, open the file in an editor that reveals hidden Unicode 
+characters.
+      <a class="Link--inTextBlock" href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
+    </span>
+
+
+  <div data-view-component="true" class="flash-action">        <a href="https://www.frigon.info/posts/asterisk/asterisk-dialplan-highlight/%7B%7B%20revealButtonHref%20%7D%7D" data-view-component="true" class="btn-sm btn">    Show hidden characters
+</a>
+</div>
+</div></template>
+<template class="js-line-alert-template">
+  <span aria-label="This line has hidden Unicode characters" data-view-component="true" class="line-alert tooltipped tooltipped-e">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+</span></template>
+
+  <table data-hpc="" class="highlight tab-size js-file-line-container" data-tab-size="4" data-paste-markdown-skip="" data-tagsearch-path="gedit_syntax_dialplan.lang">
+        <tbody><tr>
+          <td id="file-gedit_syntax_dialplan-lang-L1" class="blob-num js-line-number js-blob-rnum" data-line-number="1"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC1" class="blob-code blob-code-inner js-file-line">&lt;!--</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L2" class="blob-num js-line-number js-blob-rnum" data-line-number="2"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC2" class="blob-code blob-code-inner js-file-line">************************************************************************** </td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L3" class="blob-num js-line-number js-blob-rnum" data-line-number="3"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC3" class="blob-code blob-code-inner js-file-line">*                                                                             </td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L4" class="blob-num js-line-number js-blob-rnum" data-line-number="4"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC4" class="blob-code blob-code-inner js-file-line">* Title    : Asterisk Dialplan language definition</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L5" class="blob-num js-line-number js-blob-rnum" data-line-number="5"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC5" class="blob-code blob-code-inner js-file-line">* Author   : Benoit Frigon (bfrigon@gmail.com)</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L6" class="blob-num js-line-number js-blob-rnum" data-line-number="6"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC6" class="blob-code blob-code-inner js-file-line">*                                                                           </td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L7" class="blob-num js-line-number js-blob-rnum" data-line-number="7"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC7" class="blob-code blob-code-inner js-file-line">************************************************************************** </td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L8" class="blob-num js-line-number js-blob-rnum" data-line-number="8"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC8" class="blob-code blob-code-inner js-file-line">--&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L9" class="blob-num js-line-number js-blob-rnum" data-line-number="9"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC9" class="blob-code blob-code-inner js-file-line">&lt;language id="ast_dialplan" _name="Asterisk Dialplan" version="2.0" _section="Sources"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L10" class="blob-num js-line-number js-blob-rnum" data-line-number="10"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC10" class="blob-code blob-code-inner js-file-line">    &lt;metadata&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L11" class="blob-num js-line-number js-blob-rnum" data-line-number="11"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC11" class="blob-code blob-code-inner js-file-line">      &lt;property name="mimetypes"&gt;text/x-c;text/x-csrc;image/x-xpixmap&lt;/property&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L12" class="blob-num js-line-number js-blob-rnum" data-line-number="12"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC12" class="blob-code blob-code-inner js-file-line">      &lt;property name="globs"&gt;extensions.conf&lt;/property&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L13" class="blob-num js-line-number js-blob-rnum" data-line-number="13"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC13" class="blob-code blob-code-inner js-file-line">    &lt;/metadata&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L14" class="blob-num js-line-number js-blob-rnum" data-line-number="14"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC14" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L15" class="blob-num js-line-number js-blob-rnum" data-line-number="15"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC15" class="blob-code blob-code-inner js-file-line">	&lt;!-- Styles --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L16" class="blob-num js-line-number js-blob-rnum" data-line-number="16"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC16" class="blob-code blob-code-inner js-file-line">    &lt;styles&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L17" class="blob-num js-line-number js-blob-rnum" data-line-number="17"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC17" class="blob-code blob-code-inner js-file-line">		&lt;style id="comment"           _name="Comment"             map-to="def:comment"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L18" class="blob-num js-line-number js-blob-rnum" data-line-number="18"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC18" class="blob-code blob-code-inner js-file-line">		&lt;style id="applications"      _name="Applications"        map-to="def:type"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L19" class="blob-num js-line-number js-blob-rnum" data-line-number="19"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC19" class="blob-code blob-code-inner js-file-line">		&lt;style id="functions"         _name="Functions"           map-to="def:type"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L20" class="blob-num js-line-number js-blob-rnum" data-line-number="20"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC20" class="blob-code blob-code-inner js-file-line">		&lt;style id="context"           _name="Contexts"		  	  map-to="def:preprocessor"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L21" class="blob-num js-line-number js-blob-rnum" data-line-number="21"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC21" class="blob-code blob-code-inner js-file-line">		&lt;style id="string"            _name="String"              map-to="def:string"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L22" class="blob-num js-line-number js-blob-rnum" data-line-number="22"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC22" class="blob-code blob-code-inner js-file-line">		&lt;style id="keyword"           _name="Keywords"            map-to="def:keyword"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L23" class="blob-num js-line-number js-blob-rnum" data-line-number="23"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC23" class="blob-code blob-code-inner js-file-line">		&lt;style id="extension"         _name="Extension"           map-to="def:special-constant"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L24" class="blob-num js-line-number js-blob-rnum" data-line-number="24"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC24" class="blob-code blob-code-inner js-file-line">		&lt;style id="priority"          _name="Priority"            map-to="def:base-n-integer"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L25" class="blob-num js-line-number js-blob-rnum" data-line-number="25"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC25" class="blob-code blob-code-inner js-file-line">		&lt;style id="brackets"          _name="Brackets"            map-to="def:string"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L26" class="blob-num js-line-number js-blob-rnum" data-line-number="26"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC26" class="blob-code blob-code-inner js-file-line">		&lt;style id="label"             _name="Labels"              map-to="def:preprocessor"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L27" class="blob-num js-line-number js-blob-rnum" data-line-number="27"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC27" class="blob-code blob-code-inner js-file-line">    &lt;/styles&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L28" class="blob-num js-line-number js-blob-rnum" data-line-number="28"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC28" class="blob-code blob-code-inner js-file-line">    </td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L29" class="blob-num js-line-number js-blob-rnum" data-line-number="29"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC29" class="blob-code blob-code-inner js-file-line">    &lt;default-regex-options case-sensitive="false"/&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L30" class="blob-num js-line-number js-blob-rnum" data-line-number="30"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC30" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L31" class="blob-num js-line-number js-blob-rnum" data-line-number="31"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC31" class="blob-code blob-code-inner js-file-line">    &lt;definitions&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L32" class="blob-num js-line-number js-blob-rnum" data-line-number="32"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC32" class="blob-code blob-code-inner js-file-line">        &lt;context id="ast_dialplan" class="no-spell-check"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L33" class="blob-num js-line-number js-blob-rnum" data-line-number="33"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC33" class="blob-code blob-code-inner js-file-line">            &lt;include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L34" class="blob-num js-line-number js-blob-rnum" data-line-number="34"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC34" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L35" class="blob-num js-line-number js-blob-rnum" data-line-number="35"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC35" class="blob-code blob-code-inner js-file-line">                &lt;!-- Comments --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L36" class="blob-num js-line-number js-blob-rnum" data-line-number="36"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC36" class="blob-code blob-code-inner js-file-line">
+                &lt;context id="comment" style-ref="comment" 
+end-at-line-end="true" class="comment" 
+class-disabled="no-spell-check"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L37" class="blob-num js-line-number js-blob-rnum" data-line-number="37"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC37" class="blob-code blob-code-inner js-file-line">                    &lt;start&gt;\;&lt;/start&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L38" class="blob-num js-line-number js-blob-rnum" data-line-number="38"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC38" class="blob-code blob-code-inner js-file-line">                &lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L39" class="blob-num js-line-number js-blob-rnum" data-line-number="39"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC39" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L40" class="blob-num js-line-number js-blob-rnum" data-line-number="40"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC40" class="blob-code blob-code-inner js-file-line">				&lt;!-- Keyword : EXTEN =&gt; xxxxxxx, p, ... --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L41" class="blob-num js-line-number js-blob-rnum" data-line-number="41"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC41" class="blob-code blob-code-inner js-file-line">				&lt;context id="keyword_exten" class="string"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L42" class="blob-num js-line-number js-blob-rnum" data-line-number="42"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC42" class="blob-code blob-code-inner js-file-line">					&lt;match&gt;(exten)\s*=&gt;\s*([^\s,]+)\s*,\s*(\d+|n)\s*(?:\(([^\)]+)\))?&lt;/match&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L43" class="blob-num js-line-number js-blob-rnum" data-line-number="43"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC43" class="blob-code blob-code-inner js-file-line">					&lt;include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L44" class="blob-num js-line-number js-blob-rnum" data-line-number="44"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC44" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="1" style-ref="keyword" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L45" class="blob-num js-line-number js-blob-rnum" data-line-number="45"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC45" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="2" style-ref="extension" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L46" class="blob-num js-line-number js-blob-rnum" data-line-number="46"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC46" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="3" style-ref="priority" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L47" class="blob-num js-line-number js-blob-rnum" data-line-number="47"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC47" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="4" style-ref="label" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L48" class="blob-num js-line-number js-blob-rnum" data-line-number="48"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC48" class="blob-code blob-code-inner js-file-line">					&lt;/include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L49" class="blob-num js-line-number js-blob-rnum" data-line-number="49"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC49" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L50" class="blob-num js-line-number js-blob-rnum" data-line-number="50"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC50" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L51" class="blob-num js-line-number js-blob-rnum" data-line-number="51"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC51" class="blob-code blob-code-inner js-file-line">				&lt;!-- Keyword : SAME =&gt; p, ... --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L52" class="blob-num js-line-number js-blob-rnum" data-line-number="52"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC52" class="blob-code blob-code-inner js-file-line">				&lt;context id="keyword_same" class="string"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L53" class="blob-num js-line-number js-blob-rnum" data-line-number="53"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC53" class="blob-code blob-code-inner js-file-line">					&lt;match&gt;(same)\s*=&gt;\s*(\d+|n)\s*(?:\(([^\)]+)\))?&lt;/match&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L54" class="blob-num js-line-number js-blob-rnum" data-line-number="54"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC54" class="blob-code blob-code-inner js-file-line">					&lt;include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L55" class="blob-num js-line-number js-blob-rnum" data-line-number="55"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC55" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="1" style-ref="keyword" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L56" class="blob-num js-line-number js-blob-rnum" data-line-number="56"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC56" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="2" style-ref="priority" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L57" class="blob-num js-line-number js-blob-rnum" data-line-number="57"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC57" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="3" style-ref="label" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L58" class="blob-num js-line-number js-blob-rnum" data-line-number="58"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC58" class="blob-code blob-code-inner js-file-line">					&lt;/include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L59" class="blob-num js-line-number js-blob-rnum" data-line-number="59"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC59" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L60" class="blob-num js-line-number js-blob-rnum" data-line-number="60"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC60" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L61" class="blob-num js-line-number js-blob-rnum" data-line-number="61"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC61" class="blob-code blob-code-inner js-file-line">				&lt;!-- Keyword : INCLUDE =&gt; nnnnnnn --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L62" class="blob-num js-line-number js-blob-rnum" data-line-number="62"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC62" class="blob-code blob-code-inner js-file-line">				&lt;context id="keyword_include" class="string"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L63" class="blob-num js-line-number js-blob-rnum" data-line-number="63"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC63" class="blob-code blob-code-inner js-file-line">					&lt;match&gt;(include)\s*=&gt;\s*([^\s,]+)&lt;/match&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L64" class="blob-num js-line-number js-blob-rnum" data-line-number="64"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC64" class="blob-code blob-code-inner js-file-line">					&lt;include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L65" class="blob-num js-line-number js-blob-rnum" data-line-number="65"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC65" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="1" style-ref="keyword" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L66" class="blob-num js-line-number js-blob-rnum" data-line-number="66"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC66" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="2" style-ref="context" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L67" class="blob-num js-line-number js-blob-rnum" data-line-number="67"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC67" class="blob-code blob-code-inner js-file-line">					&lt;/include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L68" class="blob-num js-line-number js-blob-rnum" data-line-number="68"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC68" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L69" class="blob-num js-line-number js-blob-rnum" data-line-number="69"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC69" class="blob-code blob-code-inner js-file-line">				</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L70" class="blob-num js-line-number js-blob-rnum" data-line-number="70"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC70" class="blob-code blob-code-inner js-file-line">				&lt;!-- Brackets --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L71" class="blob-num js-line-number js-blob-rnum" data-line-number="71"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC71" class="blob-code blob-code-inner js-file-line">				&lt;context id="brackets" class="string" style-ref="brackets"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L72" class="blob-num js-line-number js-blob-rnum" data-line-number="72"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC72" class="blob-code blob-code-inner js-file-line">					&lt;match&gt;\$\{|\}|\(|\)|\$\[|\]&lt;/match&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L73" class="blob-num js-line-number js-blob-rnum" data-line-number="73"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC73" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L74" class="blob-num js-line-number js-blob-rnum" data-line-number="74"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC74" class="blob-code blob-code-inner js-file-line">				</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L75" class="blob-num js-line-number js-blob-rnum" data-line-number="75"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC75" class="blob-code blob-code-inner js-file-line">				&lt;!-- Macro app --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L76" class="blob-num js-line-number js-blob-rnum" data-line-number="76"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC76" class="blob-code blob-code-inner js-file-line">				&lt;context id="app_macro" class="string"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L77" class="blob-num js-line-number js-blob-rnum" data-line-number="77"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC77" class="blob-code blob-code-inner js-file-line">					&lt;match&gt;(Macro)\s*\(\s*([^\s,]+)&lt;/match&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L78" class="blob-num js-line-number js-blob-rnum" data-line-number="78"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC78" class="blob-code blob-code-inner js-file-line">					&lt;include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L79" class="blob-num js-line-number js-blob-rnum" data-line-number="79"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC79" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="1" style-ref="applications" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L80" class="blob-num js-line-number js-blob-rnum" data-line-number="80"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC80" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="2" style-ref="string" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L81" class="blob-num js-line-number js-blob-rnum" data-line-number="81"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC81" class="blob-code blob-code-inner js-file-line">					&lt;/include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L82" class="blob-num js-line-number js-blob-rnum" data-line-number="82"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC82" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L83" class="blob-num js-line-number js-blob-rnum" data-line-number="83"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC83" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L84" class="blob-num js-line-number js-blob-rnum" data-line-number="84"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC84" class="blob-code blob-code-inner js-file-line">				&lt;!-- Verbose app --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L85" class="blob-num js-line-number js-blob-rnum" data-line-number="85"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC85" class="blob-code blob-code-inner js-file-line">				&lt;context id="app_verbose" class="string"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L86" class="blob-num js-line-number js-blob-rnum" data-line-number="86"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC86" class="blob-code blob-code-inner js-file-line">					&lt;match&gt;(Verbose|NoOp)\s*\(\s*([^\)]+)&lt;/match&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L87" class="blob-num js-line-number js-blob-rnum" data-line-number="87"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC87" class="blob-code blob-code-inner js-file-line">					&lt;include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L88" class="blob-num js-line-number js-blob-rnum" data-line-number="88"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC88" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="1" style-ref="applications" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L89" class="blob-num js-line-number js-blob-rnum" data-line-number="89"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC89" class="blob-code blob-code-inner js-file-line">						&lt;context sub-pattern="2" style-ref="string" /&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L90" class="blob-num js-line-number js-blob-rnum" data-line-number="90"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC90" class="blob-code blob-code-inner js-file-line">					&lt;/include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L91" class="blob-num js-line-number js-blob-rnum" data-line-number="91"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC91" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L92" class="blob-num js-line-number js-blob-rnum" data-line-number="92"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC92" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L93" class="blob-num js-line-number js-blob-rnum" data-line-number="93"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC93" class="blob-code blob-code-inner js-file-line">				&lt;!-- Context --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L94" class="blob-num js-line-number js-blob-rnum" data-line-number="94"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC94" class="blob-code blob-code-inner js-file-line">				&lt;context id="context" style-ref="context" end-at-line-end="true" class="string"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L95" class="blob-num js-line-number js-blob-rnum" data-line-number="95"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC95" class="blob-code blob-code-inner js-file-line">					&lt;start&gt;^\[&lt;/start&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L96" class="blob-num js-line-number js-blob-rnum" data-line-number="96"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC96" class="blob-code blob-code-inner js-file-line">					&lt;end&gt;\]&lt;/end&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L97" class="blob-num js-line-number js-blob-rnum" data-line-number="97"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC97" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L98" class="blob-num js-line-number js-blob-rnum" data-line-number="98"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC98" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L99" class="blob-num js-line-number js-blob-rnum" data-line-number="99"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC99" class="blob-code blob-code-inner js-file-line">				&lt;!-- Applictions list --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L100" class="blob-num js-line-number js-blob-rnum" data-line-number="100"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC100" class="blob-code blob-code-inner js-file-line">				&lt;context id="applications" style-ref="applications" class="keyword"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L101" class="blob-num js-line-number js-blob-rnum" data-line-number="101"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC101" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AbsoluteTimeout&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L102" class="blob-num js-line-number js-blob-rnum" data-line-number="102"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC102" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AddQueueMember&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L103" class="blob-num js-line-number js-blob-rnum" data-line-number="103"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC103" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ADSIProg&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L104" class="blob-num js-line-number js-blob-rnum" data-line-number="104"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC104" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AELSub&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L105" class="blob-num js-line-number js-blob-rnum" data-line-number="105"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC105" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AgentCallbackLogin&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L106" class="blob-num js-line-number js-blob-rnum" data-line-number="106"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC106" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AgentLogin&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L107" class="blob-num js-line-number js-blob-rnum" data-line-number="107"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC107" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AgentMonitorOutgoing&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L108" class="blob-num js-line-number js-blob-rnum" data-line-number="108"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC108" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AGI&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L109" class="blob-num js-line-number js-blob-rnum" data-line-number="109"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC109" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AlarmReceiver&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L110" class="blob-num js-line-number js-blob-rnum" data-line-number="110"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC110" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ALSAMonitor&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L111" class="blob-num js-line-number js-blob-rnum" data-line-number="111"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC111" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AMD&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L112" class="blob-num js-line-number js-blob-rnum" data-line-number="112"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC112" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Answer&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L113" class="blob-num js-line-number js-blob-rnum" data-line-number="113"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC113" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AppendCDRUserField&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L114" class="blob-num js-line-number js-blob-rnum" data-line-number="114"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC114" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Authenticate&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L115" class="blob-num js-line-number js-blob-rnum" data-line-number="115"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC115" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;BackGround&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L116" class="blob-num js-line-number js-blob-rnum" data-line-number="116"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC116" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;BackgroundDetect&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L117" class="blob-num js-line-number js-blob-rnum" data-line-number="117"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC117" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Bridge&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L118" class="blob-num js-line-number js-blob-rnum" data-line-number="118"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC118" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Busy&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L119" class="blob-num js-line-number js-blob-rnum" data-line-number="119"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC119" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CallingPres&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L120" class="blob-num js-line-number js-blob-rnum" data-line-number="120"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC120" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ChangeMonitor&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L121" class="blob-num js-line-number js-blob-rnum" data-line-number="121"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC121" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ChanIsAvail&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L122" class="blob-num js-line-number js-blob-rnum" data-line-number="122"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC122" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ChannelRedirect&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L123" class="blob-num js-line-number js-blob-rnum" data-line-number="123"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC123" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ChanSpy&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L124" class="blob-num js-line-number js-blob-rnum" data-line-number="124"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC124" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CheckGroup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L125" class="blob-num js-line-number js-blob-rnum" data-line-number="125"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC125" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ClearHash&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L126" class="blob-num js-line-number js-blob-rnum" data-line-number="126"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC126" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ConfBridge&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L127" class="blob-num js-line-number js-blob-rnum" data-line-number="127"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC127" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Congestion&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L128" class="blob-num js-line-number js-blob-rnum" data-line-number="128"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC128" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ContinueWhile&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L129" class="blob-num js-line-number js-blob-rnum" data-line-number="129"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC129" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ControlPlayback&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L130" class="blob-num js-line-number js-blob-rnum" data-line-number="130"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC130" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Curl&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L131" class="blob-num js-line-number js-blob-rnum" data-line-number="131"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC131" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Cut&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L132" class="blob-num js-line-number js-blob-rnum" data-line-number="132"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC132" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DAHDIBarge&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L133" class="blob-num js-line-number js-blob-rnum" data-line-number="133"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC133" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DAHDIRAS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L134" class="blob-num js-line-number js-blob-rnum" data-line-number="134"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC134" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DAHDIScan&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L135" class="blob-num js-line-number js-blob-rnum" data-line-number="135"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC135" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DAHDISendKeypadFacility&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L136" class="blob-num js-line-number js-blob-rnum" data-line-number="136"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC136" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DateTime&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L137" class="blob-num js-line-number js-blob-rnum" data-line-number="137"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC137" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DBdel&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L138" class="blob-num js-line-number js-blob-rnum" data-line-number="138"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC138" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DBdeltree&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L139" class="blob-num js-line-number js-blob-rnum" data-line-number="139"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC139" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DBget&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L140" class="blob-num js-line-number js-blob-rnum" data-line-number="140"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC140" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DBput&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L141" class="blob-num js-line-number js-blob-rnum" data-line-number="141"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC141" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DBQuery&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L142" class="blob-num js-line-number js-blob-rnum" data-line-number="142"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC142" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DBRewrite&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L143" class="blob-num js-line-number js-blob-rnum" data-line-number="143"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC143" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DeadAGI&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L144" class="blob-num js-line-number js-blob-rnum" data-line-number="144"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC144" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Dial&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L145" class="blob-num js-line-number js-blob-rnum" data-line-number="145"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC145" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Dictate&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L146" class="blob-num js-line-number js-blob-rnum" data-line-number="146"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC146" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DigitTimeout&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L147" class="blob-num js-line-number js-blob-rnum" data-line-number="147"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC147" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Directory&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L148" class="blob-num js-line-number js-blob-rnum" data-line-number="148"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC148" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DISA&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L149" class="blob-num js-line-number js-blob-rnum" data-line-number="149"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC149" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DTMFToText&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L150" class="blob-num js-line-number js-blob-rnum" data-line-number="150"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC150" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DumpChan&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L151" class="blob-num js-line-number js-blob-rnum" data-line-number="151"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC151" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DUNDiLookup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L152" class="blob-num js-line-number js-blob-rnum" data-line-number="152"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC152" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EAGI&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L153" class="blob-num js-line-number js-blob-rnum" data-line-number="153"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC153" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Echo&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L154" class="blob-num js-line-number js-blob-rnum" data-line-number="154"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC154" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EndWhile&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L155" class="blob-num js-line-number js-blob-rnum" data-line-number="155"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC155" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EnumLookup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L156" class="blob-num js-line-number js-blob-rnum" data-line-number="156"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC156" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Exec&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L157" class="blob-num js-line-number js-blob-rnum" data-line-number="157"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC157" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ExecIf&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L158" class="blob-num js-line-number js-blob-rnum" data-line-number="158"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC158" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ExecIfTime&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L159" class="blob-num js-line-number js-blob-rnum" data-line-number="159"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC159" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ExitWhile&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L160" class="blob-num js-line-number js-blob-rnum" data-line-number="160"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC160" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ExtenSpy&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L161" class="blob-num js-line-number js-blob-rnum" data-line-number="161"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC161" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ExternIVR&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L162" class="blob-num js-line-number js-blob-rnum" data-line-number="162"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC162" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Festival&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L163" class="blob-num js-line-number js-blob-rnum" data-line-number="163"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC163" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Flash&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L164" class="blob-num js-line-number js-blob-rnum" data-line-number="164"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC164" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Flite&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L165" class="blob-num js-line-number js-blob-rnum" data-line-number="165"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC165" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ForkCDR&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L166" class="blob-num js-line-number js-blob-rnum" data-line-number="166"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC166" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GetCPEID&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L167" class="blob-num js-line-number js-blob-rnum" data-line-number="167"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC167" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GetGroupCount&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L168" class="blob-num js-line-number js-blob-rnum" data-line-number="168"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC168" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GetGroupMatchCount&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L169" class="blob-num js-line-number js-blob-rnum" data-line-number="169"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC169" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Gosub&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L170" class="blob-num js-line-number js-blob-rnum" data-line-number="170"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC170" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GosubIf&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L171" class="blob-num js-line-number js-blob-rnum" data-line-number="171"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC171" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Goto&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L172" class="blob-num js-line-number js-blob-rnum" data-line-number="172"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC172" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GotoIf&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L173" class="blob-num js-line-number js-blob-rnum" data-line-number="173"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC173" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GotoIfTime&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L174" class="blob-num js-line-number js-blob-rnum" data-line-number="174"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC174" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Hangup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L175" class="blob-num js-line-number js-blob-rnum" data-line-number="175"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC175" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;HasNewVoicemail&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L176" class="blob-num js-line-number js-blob-rnum" data-line-number="176"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC176" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;HasVoicemail&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L177" class="blob-num js-line-number js-blob-rnum" data-line-number="177"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC177" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ICES&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L178" class="blob-num js-line-number js-blob-rnum" data-line-number="178"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC178" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ImportVar&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L179" class="blob-num js-line-number js-blob-rnum" data-line-number="179"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC179" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Incomplete&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L180" class="blob-num js-line-number js-blob-rnum" data-line-number="180"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC180" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;JabberJoin&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L181" class="blob-num js-line-number js-blob-rnum" data-line-number="181"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC181" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;JabberLeave&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L182" class="blob-num js-line-number js-blob-rnum" data-line-number="182"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC182" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;JabberSend&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L183" class="blob-num js-line-number js-blob-rnum" data-line-number="183"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC183" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;JabberSendGroup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L184" class="blob-num js-line-number js-blob-rnum" data-line-number="184"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC184" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;JabberStatus&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L185" class="blob-num js-line-number js-blob-rnum" data-line-number="185"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC185" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Jack&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L186" class="blob-num js-line-number js-blob-rnum" data-line-number="186"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC186" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;KeepAlive&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L187" class="blob-num js-line-number js-blob-rnum" data-line-number="187"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC187" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Log&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L188" class="blob-num js-line-number js-blob-rnum" data-line-number="188"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC188" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;LookupBlacklist&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L189" class="blob-num js-line-number js-blob-rnum" data-line-number="189"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC189" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;LookupCIDName&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L190" class="blob-num js-line-number js-blob-rnum" data-line-number="190"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC190" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Macro&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L191" class="blob-num js-line-number js-blob-rnum" data-line-number="191"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC191" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MacroExclusive&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L192" class="blob-num js-line-number js-blob-rnum" data-line-number="192"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC192" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MacroExit&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L193" class="blob-num js-line-number js-blob-rnum" data-line-number="193"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC193" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MacroIf&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L194" class="blob-num js-line-number js-blob-rnum" data-line-number="194"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC194" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MailboxExists&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L195" class="blob-num js-line-number js-blob-rnum" data-line-number="195"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC195" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Math&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L196" class="blob-num js-line-number js-blob-rnum" data-line-number="196"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC196" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MeetMe&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L197" class="blob-num js-line-number js-blob-rnum" data-line-number="197"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC197" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MeetMeAdmin&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L198" class="blob-num js-line-number js-blob-rnum" data-line-number="198"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC198" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MeetMeChannelAdmin&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L199" class="blob-num js-line-number js-blob-rnum" data-line-number="199"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC199" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MeetMeCount&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L200" class="blob-num js-line-number js-blob-rnum" data-line-number="200"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC200" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Milliwatt&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L201" class="blob-num js-line-number js-blob-rnum" data-line-number="201"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC201" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MinivmAccMess&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L202" class="blob-num js-line-number js-blob-rnum" data-line-number="202"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC202" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MinivmDelete&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L203" class="blob-num js-line-number js-blob-rnum" data-line-number="203"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC203" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MinivmGreet&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L204" class="blob-num js-line-number js-blob-rnum" data-line-number="204"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC204" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MinivmNotify&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L205" class="blob-num js-line-number js-blob-rnum" data-line-number="205"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC205" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MinivmRecord&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L206" class="blob-num js-line-number js-blob-rnum" data-line-number="206"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC206" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MixMonitor&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L207" class="blob-num js-line-number js-blob-rnum" data-line-number="207"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC207" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Monitor&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L208" class="blob-num js-line-number js-blob-rnum" data-line-number="208"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC208" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MP3Player&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L209" class="blob-num js-line-number js-blob-rnum" data-line-number="209"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC209" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MSet&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L210" class="blob-num js-line-number js-blob-rnum" data-line-number="210"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC210" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MusicOnHold&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L211" class="blob-num js-line-number js-blob-rnum" data-line-number="211"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC211" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MYSQL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L212" class="blob-num js-line-number js-blob-rnum" data-line-number="212"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC212" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;NBScat&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L213" class="blob-num js-line-number js-blob-rnum" data-line-number="213"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC213" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;NoCDR&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L214" class="blob-num js-line-number js-blob-rnum" data-line-number="214"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC214" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;NoOp&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L215" class="blob-num js-line-number js-blob-rnum" data-line-number="215"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC215" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ODBCFinish&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L216" class="blob-num js-line-number js-blob-rnum" data-line-number="216"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC216" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Originate&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L217" class="blob-num js-line-number js-blob-rnum" data-line-number="217"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC217" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Page&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L218" class="blob-num js-line-number js-blob-rnum" data-line-number="218"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC218" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Park&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L219" class="blob-num js-line-number js-blob-rnum" data-line-number="219"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC219" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ParkAndAnnounce&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L220" class="blob-num js-line-number js-blob-rnum" data-line-number="220"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC220" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ParkedCall&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L221" class="blob-num js-line-number js-blob-rnum" data-line-number="221"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC221" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;PauseQueueMember&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L222" class="blob-num js-line-number js-blob-rnum" data-line-number="222"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC222" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Perl&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L223" class="blob-num js-line-number js-blob-rnum" data-line-number="223"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC223" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;PHP&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L224" class="blob-num js-line-number js-blob-rnum" data-line-number="224"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC224" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Pickup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L225" class="blob-num js-line-number js-blob-rnum" data-line-number="225"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC225" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;PickUP&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L226" class="blob-num js-line-number js-blob-rnum" data-line-number="226"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC226" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;PickupChan&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L227" class="blob-num js-line-number js-blob-rnum" data-line-number="227"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC227" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Playback&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L228" class="blob-num js-line-number js-blob-rnum" data-line-number="228"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC228" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Playtones&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L229" class="blob-num js-line-number js-blob-rnum" data-line-number="229"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC229" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;PPPD&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L230" class="blob-num js-line-number js-blob-rnum" data-line-number="230"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC230" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;PrivacyManager&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L231" class="blob-num js-line-number js-blob-rnum" data-line-number="231"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC231" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Proceeding&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L232" class="blob-num js-line-number js-blob-rnum" data-line-number="232"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC232" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Progress&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L233" class="blob-num js-line-number js-blob-rnum" data-line-number="233"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC233" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Queue&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L234" class="blob-num js-line-number js-blob-rnum" data-line-number="234"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC234" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Random&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L235" class="blob-num js-line-number js-blob-rnum" data-line-number="235"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC235" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Read&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L236" class="blob-num js-line-number js-blob-rnum" data-line-number="236"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC236" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ReadExten&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L237" class="blob-num js-line-number js-blob-rnum" data-line-number="237"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC237" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ReadFile&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L238" class="blob-num js-line-number js-blob-rnum" data-line-number="238"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC238" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;RealTime&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L239" class="blob-num js-line-number js-blob-rnum" data-line-number="239"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC239" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;RealTimeUpdate&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L240" class="blob-num js-line-number js-blob-rnum" data-line-number="240"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC240" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Record&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L241" class="blob-num js-line-number js-blob-rnum" data-line-number="241"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC241" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;RemoveQueueMember&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L242" class="blob-num js-line-number js-blob-rnum" data-line-number="242"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC242" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ResetCDR&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L243" class="blob-num js-line-number js-blob-rnum" data-line-number="243"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC243" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ResponseTimeout&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L244" class="blob-num js-line-number js-blob-rnum" data-line-number="244"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC244" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;RetryDial&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L245" class="blob-num js-line-number js-blob-rnum" data-line-number="245"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC245" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Return&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L246" class="blob-num js-line-number js-blob-rnum" data-line-number="246"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC246" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Ringing&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L247" class="blob-num js-line-number js-blob-rnum" data-line-number="247"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC247" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Rpt&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L248" class="blob-num js-line-number js-blob-rnum" data-line-number="248"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC248" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayAlpha&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L249" class="blob-num js-line-number js-blob-rnum" data-line-number="249"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC249" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayCountedAdj&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L250" class="blob-num js-line-number js-blob-rnum" data-line-number="250"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC250" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayCountedNoun&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L251" class="blob-num js-line-number js-blob-rnum" data-line-number="251"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC251" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayDigits&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L252" class="blob-num js-line-number js-blob-rnum" data-line-number="252"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC252" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayNumber&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L253" class="blob-num js-line-number js-blob-rnum" data-line-number="253"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC253" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayPhonetic&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L254" class="blob-num js-line-number js-blob-rnum" data-line-number="254"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC254" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SayUnixTime&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L255" class="blob-num js-line-number js-blob-rnum" data-line-number="255"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC255" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SendDTMF&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L256" class="blob-num js-line-number js-blob-rnum" data-line-number="256"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC256" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SendImage&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L257" class="blob-num js-line-number js-blob-rnum" data-line-number="257"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC257" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SendText&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L258" class="blob-num js-line-number js-blob-rnum" data-line-number="258"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC258" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SendURL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L259" class="blob-num js-line-number js-blob-rnum" data-line-number="259"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC259" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Set&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L260" class="blob-num js-line-number js-blob-rnum" data-line-number="260"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC260" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetAccount&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L261" class="blob-num js-line-number js-blob-rnum" data-line-number="261"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC261" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetAMAflags&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L262" class="blob-num js-line-number js-blob-rnum" data-line-number="262"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC262" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetCallerID&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L263" class="blob-num js-line-number js-blob-rnum" data-line-number="263"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC263" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetCallerPres&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L264" class="blob-num js-line-number js-blob-rnum" data-line-number="264"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC264" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetCDRUserField&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L265" class="blob-num js-line-number js-blob-rnum" data-line-number="265"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC265" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetCIDNum&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L266" class="blob-num js-line-number js-blob-rnum" data-line-number="266"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC266" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetGlobalVar&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L267" class="blob-num js-line-number js-blob-rnum" data-line-number="267"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC267" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetGroup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L268" class="blob-num js-line-number js-blob-rnum" data-line-number="268"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC268" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetLanguage&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L269" class="blob-num js-line-number js-blob-rnum" data-line-number="269"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC269" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SetMusicOnHold&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L270" class="blob-num js-line-number js-blob-rnum" data-line-number="270"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC270" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPAddHeader&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L271" class="blob-num js-line-number js-blob-rnum" data-line-number="271"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC271" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPCallPickup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L272" class="blob-num js-line-number js-blob-rnum" data-line-number="272"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC272" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPGetHeader&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L273" class="blob-num js-line-number js-blob-rnum" data-line-number="273"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC273" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPdtmfMode&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L274" class="blob-num js-line-number js-blob-rnum" data-line-number="274"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC274" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SMS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L275" class="blob-num js-line-number js-blob-rnum" data-line-number="275"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC275" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SoftHangup&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L276" class="blob-num js-line-number js-blob-rnum" data-line-number="276"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC276" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SrxEchoCan&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L277" class="blob-num js-line-number js-blob-rnum" data-line-number="277"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC277" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SrxDeflect&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L278" class="blob-num js-line-number js-blob-rnum" data-line-number="278"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC278" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SrxMWI&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L279" class="blob-num js-line-number js-blob-rnum" data-line-number="279"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC279" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;StackPop&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L280" class="blob-num js-line-number js-blob-rnum" data-line-number="280"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC280" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Steal&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L281" class="blob-num js-line-number js-blob-rnum" data-line-number="281"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC281" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;StopMonitor&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L282" class="blob-num js-line-number js-blob-rnum" data-line-number="282"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC282" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;StopMixMonitor&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L283" class="blob-num js-line-number js-blob-rnum" data-line-number="283"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC283" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;StopPlaytones&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L284" class="blob-num js-line-number js-blob-rnum" data-line-number="284"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC284" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;System&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L285" class="blob-num js-line-number js-blob-rnum" data-line-number="285"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC285" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TestClient&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L286" class="blob-num js-line-number js-blob-rnum" data-line-number="286"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC286" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TestServer&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L287" class="blob-num js-line-number js-blob-rnum" data-line-number="287"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC287" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Transfer&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L288" class="blob-num js-line-number js-blob-rnum" data-line-number="288"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC288" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TrySystem&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L289" class="blob-num js-line-number js-blob-rnum" data-line-number="289"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC289" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TXTCIDName&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L290" class="blob-num js-line-number js-blob-rnum" data-line-number="290"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC290" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;UnpauseQueueMember&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L291" class="blob-num js-line-number js-blob-rnum" data-line-number="291"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC291" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;UserEvent&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L292" class="blob-num js-line-number js-blob-rnum" data-line-number="292"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC292" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;VMAuthenticate&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L293" class="blob-num js-line-number js-blob-rnum" data-line-number="293"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC293" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;VMSayName&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L294" class="blob-num js-line-number js-blob-rnum" data-line-number="294"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC294" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;VoiceMail&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L295" class="blob-num js-line-number js-blob-rnum" data-line-number="295"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC295" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;VoiceMailMain&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L296" class="blob-num js-line-number js-blob-rnum" data-line-number="296"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC296" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Wait&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L297" class="blob-num js-line-number js-blob-rnum" data-line-number="297"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC297" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;WaitExten&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L298" class="blob-num js-line-number js-blob-rnum" data-line-number="298"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC298" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;WaitForRing&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L299" class="blob-num js-line-number js-blob-rnum" data-line-number="299"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC299" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;WaitMusicOnHold&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L300" class="blob-num js-line-number js-blob-rnum" data-line-number="300"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC300" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;WaitUntil&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L301" class="blob-num js-line-number js-blob-rnum" data-line-number="301"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC301" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;While&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L302" class="blob-num js-line-number js-blob-rnum" data-line-number="302"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC302" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Zapateller&lt;/keyword&gt;										</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L303" class="blob-num js-line-number js-blob-rnum" data-line-number="303"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC303" class="blob-code blob-code-inner js-file-line">                &lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L304" class="blob-num js-line-number js-blob-rnum" data-line-number="304"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC304" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L305" class="blob-num js-line-number js-blob-rnum" data-line-number="305"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC305" class="blob-code blob-code-inner js-file-line">				&lt;!-- Functions list --&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L306" class="blob-num js-line-number js-blob-rnum" data-line-number="306"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC306" class="blob-code blob-code-inner js-file-line">				&lt;context id="functions" style-ref="applications" class="keyword"&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L307" class="blob-num js-line-number js-blob-rnum" data-line-number="307"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC307" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AES_DECRYPT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L308" class="blob-num js-line-number js-blob-rnum" data-line-number="308"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC308" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AES_ENCRYPT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L309" class="blob-num js-line-number js-blob-rnum" data-line-number="309"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC309" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AGC&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L310" class="blob-num js-line-number js-blob-rnum" data-line-number="310"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC310" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AGENT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L311" class="blob-num js-line-number js-blob-rnum" data-line-number="311"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC311" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ARRAY&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L312" class="blob-num js-line-number js-blob-rnum" data-line-number="312"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC312" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AST_CONFIG&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L313" class="blob-num js-line-number js-blob-rnum" data-line-number="313"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC313" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;AUDIOHOOK_INHERIT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L314" class="blob-num js-line-number js-blob-rnum" data-line-number="314"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC314" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;BASE64_DECODE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L315" class="blob-num js-line-number js-blob-rnum" data-line-number="315"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC315" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;BASE64_ENCODE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L316" class="blob-num js-line-number js-blob-rnum" data-line-number="316"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC316" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;BLACKLIST&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L317" class="blob-num js-line-number js-blob-rnum" data-line-number="317"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC317" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CALLERID&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L318" class="blob-num js-line-number js-blob-rnum" data-line-number="318"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC318" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CALLERPRES&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L319" class="blob-num js-line-number js-blob-rnum" data-line-number="319"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC319" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CDR&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L320" class="blob-num js-line-number js-blob-rnum" data-line-number="320"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC320" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CHANNEL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L321" class="blob-num js-line-number js-blob-rnum" data-line-number="321"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC321" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CHANNELS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L322" class="blob-num js-line-number js-blob-rnum" data-line-number="322"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC322" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CHECKSIPDOMAIN&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L323" class="blob-num js-line-number js-blob-rnum" data-line-number="323"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC323" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CHECK_MD5&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L324" class="blob-num js-line-number js-blob-rnum" data-line-number="324"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC324" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;clearhash&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L325" class="blob-num js-line-number js-blob-rnum" data-line-number="325"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC325" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CONFBRIDGE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L326" class="blob-num js-line-number js-blob-rnum" data-line-number="326"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC326" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CONFBRIDGE_INFO&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L327" class="blob-num js-line-number js-blob-rnum" data-line-number="327"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC327" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CONNECTEDLINE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L328" class="blob-num js-line-number js-blob-rnum" data-line-number="328"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC328" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CSV_QUOTE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L329" class="blob-num js-line-number js-blob-rnum" data-line-number="329"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC329" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CURL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L330" class="blob-num js-line-number js-blob-rnum" data-line-number="330"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC330" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CURLOPT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L331" class="blob-num js-line-number js-blob-rnum" data-line-number="331"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC331" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;CUT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L332" class="blob-num js-line-number js-blob-rnum" data-line-number="332"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC332" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DB&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L333" class="blob-num js-line-number js-blob-rnum" data-line-number="333"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC333" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DB_DELETE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L334" class="blob-num js-line-number js-blob-rnum" data-line-number="334"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC334" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DB_EXISTS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L335" class="blob-num js-line-number js-blob-rnum" data-line-number="335"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC335" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DEC&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L336" class="blob-num js-line-number js-blob-rnum" data-line-number="336"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC336" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DENOISE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L337" class="blob-num js-line-number js-blob-rnum" data-line-number="337"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC337" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DEVICE_STATE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L338" class="blob-num js-line-number js-blob-rnum" data-line-number="338"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC338" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DIALGROUP&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L339" class="blob-num js-line-number js-blob-rnum" data-line-number="339"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC339" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DIALPLAN_EXISTS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L340" class="blob-num js-line-number js-blob-rnum" data-line-number="340"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC340" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DUNDILOOKUP&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L341" class="blob-num js-line-number js-blob-rnum" data-line-number="341"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC341" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DUNDIQUERY&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L342" class="blob-num js-line-number js-blob-rnum" data-line-number="342"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC342" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;DUNDIRESULT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L343" class="blob-num js-line-number js-blob-rnum" data-line-number="343"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC343" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ENUMLOOKUP&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L344" class="blob-num js-line-number js-blob-rnum" data-line-number="344"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC344" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ENUMQUERY&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L345" class="blob-num js-line-number js-blob-rnum" data-line-number="345"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC345" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ENUMRESULT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L346" class="blob-num js-line-number js-blob-rnum" data-line-number="346"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC346" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ENV&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L347" class="blob-num js-line-number js-blob-rnum" data-line-number="347"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC347" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EVAL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L348" class="blob-num js-line-number js-blob-rnum" data-line-number="348"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC348" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EXCEPTION&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L349" class="blob-num js-line-number js-blob-rnum" data-line-number="349"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC349" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EXISTS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L350" class="blob-num js-line-number js-blob-rnum" data-line-number="350"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC350" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;EXTENSION_STATE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L351" class="blob-num js-line-number js-blob-rnum" data-line-number="351"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC351" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;FIELDQTY&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L352" class="blob-num js-line-number js-blob-rnum" data-line-number="352"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC352" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;FILE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L353" class="blob-num js-line-number js-blob-rnum" data-line-number="353"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC353" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;FILTER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L354" class="blob-num js-line-number js-blob-rnum" data-line-number="354"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC354" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GROUP&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L355" class="blob-num js-line-number js-blob-rnum" data-line-number="355"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC355" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GROUP_COUNT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L356" class="blob-num js-line-number js-blob-rnum" data-line-number="356"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC356" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GROUP_LIST&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L357" class="blob-num js-line-number js-blob-rnum" data-line-number="357"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC357" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;GROUP_MATCH_COUNT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L358" class="blob-num js-line-number js-blob-rnum" data-line-number="358"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC358" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;HASH&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L359" class="blob-num js-line-number js-blob-rnum" data-line-number="359"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC359" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;hashkeys&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L360" class="blob-num js-line-number js-blob-rnum" data-line-number="360"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC360" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;HINT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L361" class="blob-num js-line-number js-blob-rnum" data-line-number="361"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC361" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;IAXPEER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L362" class="blob-num js-line-number js-blob-rnum" data-line-number="362"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC362" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;iaxvar&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L363" class="blob-num js-line-number js-blob-rnum" data-line-number="363"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC363" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;IF&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L364" class="blob-num js-line-number js-blob-rnum" data-line-number="364"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC364" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;IFMODULE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L365" class="blob-num js-line-number js-blob-rnum" data-line-number="365"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC365" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;IFTIME&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L366" class="blob-num js-line-number js-blob-rnum" data-line-number="366"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC366" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;IMPORT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L367" class="blob-num js-line-number js-blob-rnum" data-line-number="367"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC367" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;INC&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L368" class="blob-num js-line-number js-blob-rnum" data-line-number="368"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC368" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ISNULL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L369" class="blob-num js-line-number js-blob-rnum" data-line-number="369"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC369" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;Jack_hook&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L370" class="blob-num js-line-number js-blob-rnum" data-line-number="370"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC370" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;KEYPADHASH&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L371" class="blob-num js-line-number js-blob-rnum" data-line-number="371"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC371" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;LANGUAGE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L372" class="blob-num js-line-number js-blob-rnum" data-line-number="372"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC372" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;LEN&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L373" class="blob-num js-line-number js-blob-rnum" data-line-number="373"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC373" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;LOCK&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L374" class="blob-num js-line-number js-blob-rnum" data-line-number="374"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC374" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MATH&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L375" class="blob-num js-line-number js-blob-rnum" data-line-number="375"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC375" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MD5&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L376" class="blob-num js-line-number js-blob-rnum" data-line-number="376"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC376" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;MUSICCLASS&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L377" class="blob-num js-line-number js-blob-rnum" data-line-number="377"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC377" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;ODBC&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L378" class="blob-num js-line-number js-blob-rnum" data-line-number="378"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC378" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;QUEUEAGENTCOUNT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L379" class="blob-num js-line-number js-blob-rnum" data-line-number="379"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC379" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;QUEUE_MEMBER_COUNT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L380" class="blob-num js-line-number js-blob-rnum" data-line-number="380"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC380" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;QUEUE_MEMBER_LIST&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L381" class="blob-num js-line-number js-blob-rnum" data-line-number="381"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC381" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;QUEUE_WAITING_COUNT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L382" class="blob-num js-line-number js-blob-rnum" data-line-number="382"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC382" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;QUOTE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L383" class="blob-num js-line-number js-blob-rnum" data-line-number="383"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC383" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;RAND&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L384" class="blob-num js-line-number js-blob-rnum" data-line-number="384"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC384" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;REALTIME&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L385" class="blob-num js-line-number js-blob-rnum" data-line-number="385"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC385" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;REGEX&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L386" class="blob-num js-line-number js-blob-rnum" data-line-number="386"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC386" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;REPLACE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L387" class="blob-num js-line-number js-blob-rnum" data-line-number="387"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC387" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SET&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L388" class="blob-num js-line-number js-blob-rnum" data-line-number="388"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC388" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SHA1&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L389" class="blob-num js-line-number js-blob-rnum" data-line-number="389"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC389" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SHARED&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L390" class="blob-num js-line-number js-blob-rnum" data-line-number="390"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC390" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SHELL&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L391" class="blob-num js-line-number js-blob-rnum" data-line-number="391"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC391" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPCHANINFO&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L392" class="blob-num js-line-number js-blob-rnum" data-line-number="392"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC392" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPPEER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L393" class="blob-num js-line-number js-blob-rnum" data-line-number="393"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC393" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIPADDHEADER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L394" class="blob-num js-line-number js-blob-rnum" data-line-number="394"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC394" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SIP_HEADER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L395" class="blob-num js-line-number js-blob-rnum" data-line-number="395"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC395" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SORT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L396" class="blob-num js-line-number js-blob-rnum" data-line-number="396"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC396" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SQL_ESC&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L397" class="blob-num js-line-number js-blob-rnum" data-line-number="397"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC397" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;STAT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L398" class="blob-num js-line-number js-blob-rnum" data-line-number="398"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC398" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;STRFTIME&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L399" class="blob-num js-line-number js-blob-rnum" data-line-number="399"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC399" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;STRPTIME&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L400" class="blob-num js-line-number js-blob-rnum" data-line-number="400"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC400" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;SYSINFO&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L401" class="blob-num js-line-number js-blob-rnum" data-line-number="401"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC401" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TIMEOUT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L402" class="blob-num js-line-number js-blob-rnum" data-line-number="402"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC402" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TOUPPER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L403" class="blob-num js-line-number js-blob-rnum" data-line-number="403"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC403" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TOLOWER&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L404" class="blob-num js-line-number js-blob-rnum" data-line-number="404"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC404" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TRYLOCK&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L405" class="blob-num js-line-number js-blob-rnum" data-line-number="405"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC405" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;TXTCIDNAME&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L406" class="blob-num js-line-number js-blob-rnum" data-line-number="406"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC406" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;UNLOCK&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L407" class="blob-num js-line-number js-blob-rnum" data-line-number="407"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC407" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;URIDECODE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L408" class="blob-num js-line-number js-blob-rnum" data-line-number="408"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC408" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;URIENCODE&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L409" class="blob-num js-line-number js-blob-rnum" data-line-number="409"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC409" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;VOLUME&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L410" class="blob-num js-line-number js-blob-rnum" data-line-number="410"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC410" class="blob-code blob-code-inner js-file-line">					&lt;keyword&gt;VMCOUNT&lt;/keyword&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L411" class="blob-num js-line-number js-blob-rnum" data-line-number="411"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC411" class="blob-code blob-code-inner js-file-line">				&lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L412" class="blob-num js-line-number js-blob-rnum" data-line-number="412"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC412" class="blob-code blob-code-inner js-file-line">            &lt;/include&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L413" class="blob-num js-line-number js-blob-rnum" data-line-number="413"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC413" class="blob-code blob-code-inner js-file-line">        &lt;/context&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L414" class="blob-num js-line-number js-blob-rnum" data-line-number="414"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC414" class="blob-code blob-code-inner js-file-line">    &lt;/definitions&gt;</td>
+        </tr>
+        <tr>
+          <td id="file-gedit_syntax_dialplan-lang-L415" class="blob-num js-line-number js-blob-rnum" data-line-number="415"></td>
+          <td id="file-gedit_syntax_dialplan-lang-LC415" class="blob-code blob-code-inner js-file-line">&lt;/language&gt;</td>
+        </tr>
+  </tbody></table>
+</div>
+
+
+    </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/bfrigon/9129e3b66405e50ec8c9a8c3049bd47c/raw/3e0c11ba7048bc860c46711b1122b7723678862a/gedit_syntax_dialplan.lang" style="float:right" class="Link--inTextBlock">view raw</a>
+        <a href="https://gist.github.com/bfrigon/9129e3b66405e50ec8c9a8c3049bd47c#file-gedit_syntax_dialplan-lang" class="Link--inTextBlock">
+          gedit_syntax_dialplan.lang
+        </a>
+        hosted with ❤ by <a class="Link--inTextBlock" href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+ <h2 id="other-editors">Other editors</h2> <p>These are language definitions for other editors (untested)</p> <ul> <li><a href="https://www.voip-info.org/wiki/view/vim+syntax+highlighting">VIM (by Tilghman Lesher)</a></li> <li><a href="https://www.voip-info.org/wiki/view/Nano+syntax+highlighting">Nano (by jmcanfield, Johan Adler)</a></li> <li><a href="https://www.voip-info.org/wiki/view/Kate+Kwrite+Syntax+Highlighting">Kate (by Robert Schneider)</a></li> </ul> </div> </section> <footer> <div class="post-footer"> <p class="postdata"> Posted on <span class="dt-published published" title="Sun, 09 Jun 2013 22:28:41 -0400">Jun 09, 2013</span><br> Last updated on <span class="dt-updated updated" title="Sun, 30 Dec 2018 19:39:03 -0500">Dec 30, 2018</span><br> <span class="p-author h-card vcard author">By <a class="p-name fn" href="https://plus.google.com/u/0/100667493604379348233">Benoit Frigon</a></span><br> </p> <ul class="tag-list"> <li><a href="https://www.frigon.info/tag/asterisk/">#asterisk</a></li> <li><a href="https://www.frigon.info/tag/tools/">#tools</a></li> <li><a href="https://www.frigon.info/tag/coding/">#coding</a></li> <li><a href="https://www.frigon.info/tag/telephony/">#telephony</a></li> </ul> </div> </footer> </article> </div> </div> <div class="footer"> <div class="footer-content"> <span>© 2013-2020 Benoit Frigon.</span> </div> </div> <script defer="defer" src="Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;a48b6301cc5049ca9df9e020609e7c26&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+ 
+<link rel="stylesheet" href="Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit_files/main.css"><script src="Asterisk%20dialplan%20syntax%20highlighting%20for%20gedit_files/scripts.js"></script></body></html>
