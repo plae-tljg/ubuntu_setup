@@ -1,6 +1,6 @@
 # Virtual Machine
 
-# Genymotion
+## Genymotion
 
 Download package from [https://www.genymotion.com/product-desktop/download/](https://www.genymotion.com/product-desktop/download/)  
 
@@ -12,7 +12,7 @@ chmod +x genymotion-X.Y.Z-linux_x64.run
 ./genymotion-X.Y.Z-linux_x64.run -d PATH
 ```
 
-# Virtualbox
+## Virtualbox
 
 Do not use apt install virtualbox, that may install you the older version of virtualbox and may have some problem on running.  
 
