@@ -75,12 +75,15 @@ if git show-ref --verify --quiet refs/heads/gh-pages; then
     fi
 else
     echo "🆕 本地 gh-pages 分支不存在，创建新分支..."
-    git checkout -b gh-pages
     
     if [ "$REMOTE_EXISTS" = true ]; then
-        echo "🔄 设置上游分支并拉取..."
-        git branch --set-upstream-to=origin/gh-pages gh-pages
-        git pull origin gh-pages
+        echo "🔄 从远程 gh-pages 分支创建本地分支..."
+        git checkout -b gh-pages origin/gh-pages
+    else
+        echo "🆕 创建空的 gh-pages 分支..."
+        git checkout --orphan gh-pages
+        git rm -rf . 2>/dev/null || true
+        git clean -fdx 2>/dev/null || true
     fi
 fi
 
