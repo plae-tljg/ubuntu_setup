@@ -241,3 +241,29 @@ Using GPU for CUDA and integrated graphics for display - can’t make it work "
   htmlPath="/assets/cuda/use_integrated_graphics/Using GPU for CUDA and integrated graphics for display - can't make it work - CUDA _ CUDA Setup and Installation - NVIDIA Developer Forums.html"
   originalUrl="https://forums.developer.nvidia.com/t/using-gpu-for-cuda-and-integrated-graphics-for-display-cant-make-it-work/49820"
 />
+
+## Final Talk
+
+After installing with the `-no-opengl-files`, the `nvidia-smi` initially work fine, but eventually same problem after say several week 
+
+![CUDA Fail Again](/assets/cuda/cuda_fail_again.png)
+
+```
+          _————             +--------------------------------------+  
+         //¯¯\\\\           |    _  _     _    _ _                 |  
+        // _  _\\           |   | \| |_ _(_)__| (_)__ _            |  
+        \|(0)(0)\           |   | .` \ V / / _` | / _` |_          |  
+        d  n ¨  b           |   |_|\_|\_/|_\__,_|_\__,_( )         |  
+         \_U_^  /           |                          |/          |  
+         /   \_/|_____      |       Nvidia,                        |  
+      ___\   |__/\    \_    |          Fuck you!                   |  
+     /   |   / |:|      \   |   ___        _                   _   |  
+    /    /  /\ |:|     | \  |  | __|  _ __| |__  _  _ ___ _  _| |  |  
+   |    /\__/ \|:\     |  \ |  | _| || / _| / / | || / _ \ || |_|  |  
+    \  /\   / ||: \    \  | |  |_| \_,_\__|_\_\  \_, \___/\_,_(_)  |  
+     \/  \_/  ||: |     |  \|                    |__/              |  
+     /     /  //; \     |  |+--------------------------------------+  
+     \    /  /|;   \    |  \  
+```
+
+I eventually have to plug my DP cable to GPU rather than to motehrboard. Hope that it will not have problem later.  
