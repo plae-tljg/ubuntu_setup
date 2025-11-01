@@ -42,8 +42,11 @@ export default defineUserConfig({
           ],
         },
         {
-          text: 'CUDA 环境配置',
-          link: '/apps/cuda.md',
+          text: 'GPU 配置',
+          children: [
+            {text: 'CUDA 环境配置', link: '/apps/gpu/cuda.md'},
+            {text: '旧版 iGPU 问题记录', link: '/apps/gpu/old_igpu_problems.md'},
+          ],
         }
       ],
       // 工具页面侧边栏
