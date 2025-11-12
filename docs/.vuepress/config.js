@@ -29,7 +29,6 @@ export default defineUserConfig({
           text: '通用应用',
           children: [
             {text: 'Firefox 浏览器', link: '/apps/common/firefox.md'},
-            {text: '搜狗输入法', link: '/apps/common/sogou_input.md'},
             {text: '常用应用速览', link: '/apps/common/quick_apps.md'},
             {text: 'IDE 开发环境', link: '/apps/common/ide.md'},
             {text: '虚拟机管理', link: '/apps/common/virtual_machines.md'},
@@ -46,6 +45,12 @@ export default defineUserConfig({
           children: [
             {text: 'CUDA 环境配置', link: '/apps/gpu/cuda.md'},
             {text: '旧版 iGPU 问题记录', link: '/apps/gpu/old_igpu_problems.md'},
+          ],
+        },
+        {
+          text: '旧/不再使用',
+          children: [
+            {text: '搜狗输入法', link: '/apps/common/old/sogou_input.md'},
           ],
         }
       ],
@@ -81,12 +86,28 @@ export default defineUserConfig({
           ],
         },
       ],
+      // 开发相关页面侧边栏
+      '/dev/': [
+        {text: '开发相关总览', link: '/dev/README.md'},
+        {text: 'HTTPS 配置', link: '/dev/https.md'},
+        {text: 'SSH 命令', link: '/dev/ssh.md'},
+        {text: 'Web 开发', children: [
+          {text: 'HTML Outlook', link: '/dev/web_dev/html.md'},
+        ]},
+        {text: 'Git 操作', children: [
+          {text: 'Git Breaking Change', link: '/dev/git/breaking_change.md'},
+        ]},
+        {text: '网络配置', children: [
+          {text: '静态 IP 配置', link: '/dev/internet/static_ip.md'},
+        ]},
+      ],
     },
     // 导航栏配置
     navbar: [
       { text: '首页', link: '/' },
       { text: '应用程序', link: '/apps/' },
       { text: '工具', link: '/utils/' },
+      { text: '开发相关', link: '/dev/' },
     ],
     // 侧边栏深度
     sidebarDepth: 3,
