@@ -96,6 +96,7 @@ export default defineUserConfig({
         ]},
         {text: 'Git 操作', children: [
           {text: 'Git Breaking Change', link: '/dev/git/breaking_change.md'},
+          {text: 'Github Pages', link: '/dev/git/github_pages.md'},
         ]},
         {text: '网络配置', children: [
           {text: '静态 IP 配置', link: '/dev/internet/static_ip.md'},
