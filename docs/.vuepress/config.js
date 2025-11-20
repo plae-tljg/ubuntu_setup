@@ -31,7 +31,12 @@ export default defineUserConfig({
             {text: 'Firefox 浏览器', link: '/apps/common/firefox.md'},
             {text: '常用应用速览', link: '/apps/common/quick_apps.md'},
             {text: 'IDE 开发环境', link: '/apps/common/ide.md'},
-            {text: '虚拟机管理', link: '/apps/common/virtual_machines.md'},
+            {text: '虚拟机管理', 
+              children: [
+                {text: 'VirtualBox', link: '/apps/common/vm/virtual_machines.md'},
+                {text: 'KVM/QEMU', link: '/apps/common/vm/kvm_qemu.md'},
+              ],
+            },
           ],
         },
         {
@@ -99,7 +104,8 @@ export default defineUserConfig({
           {text: 'Github Pages', link: '/dev/git/github_pages.md'},
         ]},
         {text: '网络配置', children: [
-          {text: '静态 IP 配置', link: '/dev/internet/static_ip.md'},
+          {text: '静态 IP 配置', link: '/dev/internet/static_ip.md'}, 
+          {text: 'Wi-Fi 重连', link: '/dev/internet/wifi_reconnect.md'},
         ]},
       ],
     },

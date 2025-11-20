@@ -1,0 +1,19 @@
+  version: 2
+  renderer: NetworkManager  # Change this if you need GUI management
+  ethernets:
+    enp4s0:
+      dhcp4: no
+      dhcp6: no
+  bridges:
+    br0:
+      interfaces: [enp4s0]
+      dhcp4: no
+      addresses: [192.168.13.114/24]
+      routes:
+        - to: default
+          via: 192.168.13.1
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+      parameters:
+        stp: true
+        forward-delay: 4
