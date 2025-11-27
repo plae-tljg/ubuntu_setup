@@ -28,3 +28,14 @@ sudo systemctl restart postgresql
 sudo -u postgres psql
 \password postgres  # type the password
 ```
+
+
+## Further Dev
+
+For further allowing accessing remotely and easily, we can do more:  
+
+<CodeViewer 
+  title="AI chat for modifying config" 
+  filePath="/lib/psql/chat-PostgreSQL Network Access Setup.txt"
+  language="conf"
+/>
