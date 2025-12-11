@@ -115,6 +115,12 @@ NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Ma
   originalUrl="https://forums.developer.nvidia.com/t/using-gpu-for-cuda-and-integrated-graphics-for-display-cant-make-it-work/49820"
 />
 
+<ReferenceViewer 
+  title="Using GPU for CUDA and integrated graphics for display - can't make it work " 
+  htmlPath="/assets/cuda/How to make desktop Ubuntu boot in headless mode_ - Deep Learning - fast.ai Course Forums"
+  originalUrl="https://forums.fast.ai/t/how-to-make-desktop-ubuntu-boot-in-headless-mode/19582/4?replies_to_post_number=4"
+/>
+
 ## 之前的问题总结
 
 使用 `--no-opengl-files` 安装后，`nvidia-smi` 最初工作正常，但几周后出现了同样的问题。
