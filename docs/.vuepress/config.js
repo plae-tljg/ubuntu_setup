@@ -94,6 +94,7 @@ export default defineUserConfig({
       // 开发相关页面侧边栏
       '/dev/': [
         {text: '开发相关总览', link: '/dev/README.md'},
+        {text: 'Headless 模式', link: '/dev/headless.md'},
         {text: 'HTTPS 配置', link: '/dev/https.md'},
         {text: 'SSH 命令', link: '/dev/ssh.md'},
         {text: 'Web 开发', children: [
