@@ -7,7 +7,6 @@ neovim
 audacity
 grub customizer
 boot repair
-pgadmin 4
 mysql workbench
 jupyter notebook
 db browser for sqlite

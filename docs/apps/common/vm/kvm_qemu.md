@@ -101,7 +101,7 @@ ip addr show br0
 
 ## 5. 虚拟机共享文件夹（virtiofs）
 
-KVM 支持通过 `virtiofs` 实现高效的主机-虚拟机共享文件夹。假设主机与虚拟机均已准备好 `/home/fit/00shared` 目录。
+KVM 支持通过 `virtiofs` 实现高效的主机-虚拟机共享文件夹。假设主机与虚拟机均已准备好 `/home/lkm/00shared` 目录。
 
 ### 权限设置
 
@@ -109,7 +109,7 @@ KVM 支持通过 `virtiofs` 实现高效的主机-虚拟机共享文件夹。假
 >
 > 在宿主机和虚拟机内均执行（实际生产环境下请按需调整权限，勿用于敏感目录）：
 > ```bash
-> sudo chmod 777 /home/fit/00shared
+> sudo chmod 777 /home/lkm/00shared
 > ```
 
 ### 挂载共享文件夹
@@ -118,7 +118,7 @@ KVM 支持通过 `virtiofs` 实现高效的主机-虚拟机共享文件夹。假
 
 ```bash
 # inside VM
-sudo mount -t virtiofs /home/fit/00shared /home/fit/00shared
+sudo mount -t virtiofs /home/lkm/00shared /home/lkm/00shared
 ```
 
 ### 开机自动挂载
@@ -129,10 +129,10 @@ sudo mount -t virtiofs /home/fit/00shared /home/fit/00shared
 sudo nano /etc/fstab
 ```
 
-添加以下行，实现自动挂载 virtiofs 共享目录（假设共享名和挂载点均为 `/home/fit/00shared`）：
+添加以下行，实现自动挂载 virtiofs 共享目录（假设共享名和挂载点均为 `/home/lkm/00shared`）：
 
 ```bash
-/home/fit/00shared /home/fit/00shared  virtiofs  defaults,_netdev  0  0
+/home/lkm/00shared /home/lkm/00shared  virtiofs  defaults,_netdev  0  0
 ```
 
 > 注：确保创建和启动虚拟机时已添加 virtiofs 设备，具体请参考 [libvirt documentation](https://wiki.libvirt.org/guestfs-and-virtiofs.html) 或 virt-manager 图形设置。
