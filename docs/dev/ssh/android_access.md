@@ -117,6 +117,8 @@ nautilus sftp://username@192.168.8.120:8022
 
 ### 故障排查
 
+#### SSH 连接问题
+
 1. **检查 SSH 服务器是否运行**：
    ```bash
    # 在 Termux 中
@@ -132,6 +134,60 @@ nautilus sftp://username@192.168.8.120:8022
 3. **检查 IP 地址**：手机 IP 可能会变化，重新运行 `ifconfig` 确认
 
 4. **确保在同一 WiFi 网络**：两台设备必须在同一局域网
+
+#### .ssh 文件夹复制后的连接问题
+
+当从其他计算机复制 `.ssh` 文件夹到新 Ubuntu 系统后，可能遇到连接问题。这通常是文件权限问题：
+
+**修复权限**：
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/android_fit  # 或其他私钥文件
+chmod 644 ~/.ssh/known_hosts
+chown -R $USER:$USER ~/.ssh
+```
+
+**如果遇到 "Host key verification failed"**：
+```bash
+ssh-keygen -R 192.168.10.193  # 替换为你的 Android IP
+```
+
+#### 网络连接问题："No route to host"
+
+如果遇到 `No route to host` 错误，这通常是网络层问题，不是 SSH 配置问题。
+
+**奇怪的网络行为**：有时从 Ubuntu ping Android 不通，但从 Android ping Ubuntu 后，连接突然恢复。这是因为：
+
+- **ARP 缓存问题**：Android 首先 ping Ubuntu 会建立 ARP 表项
+- **状态防火墙**：Android ping Ubuntu 后创建了允许返回流量的状态
+- **网络接口唤醒**：初始 ping "唤醒" 了网络栈
+
+**解决方案**：
+1. 尝试先从 Android ping Ubuntu，然后再从 Ubuntu 连接
+2. 或者在 Ubuntu 上先 ping Android 几次：
+   ```bash
+   ping -c 2 192.168.10.193
+   ```
+
+#### 文件传输后其他应用检测不到文件
+
+当通过 SFTP 传输文件到 Android 后，其他应用（如 `File Manager`）可能无法检测到新文件，除非重启手机。这是 Android 媒体扫描器的问题。
+
+**解决方案**：在 Termux 中运行媒体扫描命令：
+
+```bash
+termux-media-scan -r ~/storage/shared
+```
+
+这会强制 Android 重新扫描媒体文件，使其对其他应用可见，而无需重启。
+
+**创建快捷方式**：为了方便，可以在 `~/.bashrc` 中添加别名：
+
+```bash
+alias rescan='termux-media-scan -r ~/storage/shared'
+```
+
+添加后，使用 `source ~/.bashrc` 应用更改。然后只需输入 `rescan` 即可。
 
 ## 方法 2：FTP 服务器（简单快速）
 
@@ -170,4 +226,3 @@ LocalSend 允许在本地网络上直接传输文件，无需配置。
 - **最简单**：LocalSend
 - **最功能丰富**：KDE Connect
 - **最快速设置**：FTP 服务器应用
-

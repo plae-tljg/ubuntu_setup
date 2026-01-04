@@ -107,6 +107,7 @@ export default defineUserConfig({
       '/dev/': [
         {text: '开发相关总览', link: '/dev/README.md'},
         {text: 'Headless 模式', link: '/dev/headless.md'},
+        {text: '多 SSD 配置', link: '/dev/multiple_ssds.md'},
         {text: 'HTTPS 配置', link: '/dev/https.md'},
         {text: 'SSH 配置', children: [
           {text: 'SSH 总览', link: '/dev/ssh/README.md'},
@@ -135,12 +136,24 @@ export default defineUserConfig({
           {text: '音频处理', link: '/dev/asterisk/audio.md'},
         ]},
       ],
+      // 家居设备页面侧边栏
+      '/household/': [
+        {text: '家居设备总览', link: '/household/README.md'},
+        {text: 'IP Camera 监控', children: [
+          {text: '监控总览', link: '/household/ip_cam/ip_cam.md'},
+          {text: "旧方案记录", children: [
+            {text: 'IP Camera 监控总览', link: '/household/ip_cam/old/camera_monitoring.md'},
+            {text: '配置指南', link: '/household/ip_cam/old/ip_cam_install.md'},
+          ]},
+        ]},
+      ],
     },
     // 导航栏配置
     navbar: [
       { text: '首页', link: '/' },
       { text: '应用程序', link: '/apps/' },
       { text: '工具', link: '/utils/' },
+      { text: '家居', link: '/household/' },
       { text: '开发相关', link: '/dev/' },
     ],
     // 侧边栏深度
